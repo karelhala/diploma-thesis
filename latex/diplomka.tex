@@ -1,0 +1,148 @@
+\documentclass[12pt,twoside,a4paper]{report}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+	\PrerenderUnicode{ěščřžýáíéĚŠČŘŽÝÁÍÉďťňĎŤŇůúÚóÓ}
+
+\usepackage[czech]{babel}
+\usepackage[IL2]{fontenc}
+
+\usepackage{ulem}
+\usepackage{parskip}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[compact]{titlesec}
+\usepackage{hyperref}
+
+\usepackage[top=2.5cm, bottom=3.5cm, left=3.5cm, right=2.5cm]{geometry}
+
+\renewcommand{\baselinestretch}{1.5}
+\newcommand{\blank}[1]{\hspace*{#1}}
+
+\usepackage{afterpage}
+\newcommand\blankpage{
+    \null
+    \thispagestyle{empty}
+    \newpage
+}
+
+\titleformat{\chapter}[display]
+    {\normalfont\Large\bfseries}{\chaptertitlename\ \thechapter\Makeuppercase}{20pt}{\Large}
+\titlespacing*{\chapter}{0pt}{0pt}{10pt}
+
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{
+{\setlength{\parindent}{0pt} \raggedright \normalfont
+\bfseries\Large\thechapter\ #1
+\par\nobreak\vspace{10 pt}}}
+\makeatother
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+%  Začátek dokumentu
+%------------------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+\afterpage{\blankpage}
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+%  Titulní list
+%------------------------------------------------------------------------------------------------------------------------------------------
+\pagestyle{empty}
+%\includepdf[pages={1}]{titulni_list.pdf}
+%\includepdf[pages={1,2}]{zadani.pdf}
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+%  Abstrakt
+%------------------------------------------------------------------------------------------------------------------------------------------
+\section*{Abstrakt}
+text
+\section*{Summary}
+text
+
+\hbox{}
+\vfill
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+%  Klíčová slova
+%------------------------------------------------------------------------------------------------------------------------------------------
+\section*{Klíčová slova}
+text
+\section*{Key words}
+text
+\vskip1cm
+
+\newpage
+\hbox{}
+\vfill
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+%  Bibliografická citace
+%------------------------------------------------------------------------------------------------------------------------------------------
+\section*{Bibliografická citace}
+text
+\vskip1cm
+
+\newpage
+\hbox{}
+\vfill
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+%  Prohlášení
+%------------------------------------------------------------------------------------------------------------------------------------------
+\section*{Čestné prohlášení}
+Prohlašuji, že předložená diplomová práce je původní a zpracoval jsem ji samostatně. Prohlašuji, že citace použitých pramenů jsou úplné a že jsem ve své práci neporušil autorská práva (ve smyslu Zákona č. 121/2000 Sb., o~právu autorském a~o~právech souvisejících s~právem autorským).
+\\
+\par V~Brně dne xx. x. 2017 % doplnit datum
+\hfill\dotuline{\blank{5cm}}\hskip2cm
+\par\hfill jméno \hskip5cm\blank{-4cm}
+\vskip1cm
+
+\newpage
+\hbox{}
+\vfill
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+%  Poděkování
+%------------------------------------------------------------------------------------------------------------------------------------------
+\section*{Poděkování}
+text
+\vskip1cm
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+%  Obsah
+%-----------------------------------------------------------------------------------------------------------------------------------------
+\renewcommand{\baselinestretch}{1}
+\tableofcontents
+
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+
+%------------------------------------------------------------------------------------------------------------------------------------------
+%  Vlastní texty
+%------------------------------------------------------------------------------------------------------------------------------------------
+\renewcommand{\baselinestretch}{1.5}
+
+\input{uvod}
+
+\pagestyle{plain}     % zapne obyčejné číslování
+
+\input{teorie}
+\input{analyza}
+\input{navrhy}
+\input{Zaver}
+\addcontentsline{toc}{chapter}{ZÁVĚR}
+\newpage
+
+\listoffigures
+\addcontentsline{toc}{chapter}{Seznam obrázků}
+\newpage
+\listoftables
+\addcontentsline{toc}{chapter}{Seznam tabulek}
+\newpage
+\addcontentsline{toc}{chapter}{Seznam použitých zdrojů}
+\input{Literatura}
+
+
+\end{document}

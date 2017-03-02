@@ -1,9 +1,11 @@
 # makefile pro preklad LaTeX verze Bc. prace
+# makefile for compilation of the thesis
 # (c) 2008 Michal Bidlo
 # E-mail: bidlom AT fit vutbr cz
+# Edited by: dytrych AT fit vutbr cz
 #===========================================
-# asi budete chtit prejmenovat:
-CO=diplomaThesis
+# asi budete chtit prejmenovat / you will probably rename:
+CO=diplomka
 
 all: $(CO).pdf
 
@@ -24,16 +26,27 @@ $(CO).dvi: $(CO).tex $(CO).bib
 	latex $(CO)
 	latex $(CO)
 
-desky:
-#	latex desky
-#	dvips desky
-#	dvipdf desky
-	pdflatex desky
-
 clean:
-	rm -f *.dvi *.log $(CO).blg $(CO).bbl $(CO).toc *.aux $(CO).out $(CO).lof
-	rm -f $(CO).pdf
+	rm -f *.dvi *.log $(CO).blg $(CO).bbl $(CO).toc *.aux $(CO).out $(CO).lof $(CO).ptc $(CO).lot
 	rm -f *~
 
 pack:
-	tar czvf bp-xjmeno.tar.gz *.tex *.bib *.bst ./fig/* ./cls/* Makefile Changelog
+	tar czvf $(CO).tar.gz *.tex *.bib *.bst ./template-fig/* ./bib-styles/* ./cls/* zadani.pdf $(CO).pdf Makefile Changelog
+
+rename:
+	mv $(CO).tex $(NAME).tex
+	mv $(CO)-01-kapitoly-chapters.tex $(NAME)-01-kapitoly-chapters.tex
+	mv $(CO)-20-literatura-bibliography.bib $(NAME)-20-literatura-bibliography.bib
+	mv $(CO)-30-prilohy-appendices.tex $(NAME)-30-prilohy-appendices.tex
+	sed -i "s/$(CO)-01-kapitoly-chapters/$(NAME)-01-kapitoly-chapters/g" $(NAME).tex
+	sed -i "s/$(CO)-20-literatura-bibliography/$(NAME)-20-literatura-bibliography/g" $(NAME).tex
+	sed -i "s/$(CO)-30-prilohy-appendices/$(NAME)-30-prilohy-appendices/g" $(NAME).tex
+	sed -i "s/$(CO)/$(NAME)/g" Makefile
+
+# Pozor, vlna neresi vse (viz popis.txt) / Warning - vlna is not solving all problems (see description.txt)
+vlna:
+	vlna -l *.tex
+
+# Spocita normostrany / Count of standard pages
+normostrany:
+	echo "scale=2; `detex -n *.tex | wc -c`/1800;" | bc
