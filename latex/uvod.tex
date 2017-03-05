@@ -9,9 +9,21 @@
 %  Cíl a metodika práce
 %------------------------------------------------------------------------------------------------------------------------------------------
 \chapter*{CÍL DIPLOMOVÉ PRÁCE}
+Hlavním cílem této práce je vytvořit platformu, která bude schopná zpracovat data zadaná uživatelem, analyzovat je a na základě vnitřní logiky a informace nesené v těchto datech je uložit do logických celků. Tyto celky poté zobrazit uživateli, nechat jej dále definovat dodatečné informace, provádět reporting případně zobrazit v přehledných grafech.
+
+Platforma se bude zaměřovat převážně na uživatelské rozhraní, tak aby její používání bylo co nejintuitivnější a nejjednodušší.
 \addcontentsline{toc}{chapter}{CÍL DIPLOMOVÉ PRÁCE}
-\par text
 
 \chapter*{METODIKA PRÁCE}
 \addcontentsline{toc}{chapter}{METODIKA PRÁCE}
-\par text
+\section*{Metody}
+\par Nejdůležitějším zaměřením této platformy je uživatelská přívětivost a jednoduchost na používání, proto bude při vývoji kladen důraz na spokojenost uživatelů. Tohoto bude dosaženo použitím agilních metodik při vývoji, kdy bude postupně dodáváný produkt předáván úzkému kruhu uživatelů, kteří se budou vyjadřovat k uživatelskému rozhraní. Platforma bude psána jako webová aplikace, která bude přistupovat do databáze přes rozhraní napsané v jazyce Java.
+\par V části zpracování dat bude použito několik ETL metodik a data mining technik, které povedou k získání logických informací ze zadaných informací. Platforma bude vyvýjena s možností 
+škálovatelnosti a použití nad velkým objemem dat.
+\addcontentsline{toc}{section}{Metody}
+
+\section*{Postupy}
+\addcontentsline{toc}{section}{Postupy}
+\par K vytvoření co nejpřívětivější platformy budou využity zkušenosti a knižní publikace zabývající se tímto tématem. Dále budou analyzovány jednotlivé postupy zadávání dat uživatelů do takovéhoto systému, které povedou ke zpřehlednění a zjednodušení používání.
+\par Pro komunikaci se serverem bude použit standard REST, kterýusnadní komunikaci se serverem a umožní případné navázání nových aplikací. V případě že bude vytvořena mobilní aplikace pro záskávání dat nebude nutné psát znovu stejnou nebo podobnou logiku.
+\par Pro zabezpečené přihlášení do aplikace bude použit autentikační server, který bude zajišťovat výtváření a správu uživatelů spolu s jejich právy.
