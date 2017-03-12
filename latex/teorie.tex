@@ -67,7 +67,7 @@ Platforma jako služba tento pojem označuje službu, která zahrnuje kompletní
 
 \par Samostatá data jako taková však nejsou to nejdůležitější, pokud nebudeme schopni vhodně interpretovat a využít data, která jsme nashromáždili jsou nám k ničemu, z toho důvodu vzniklo strojové učení. V podstatě to znamená, že pokud předáme stroji dostatečně velké možství dat a nastavíme správně parametry, tak nám mohou stroje umožnit rychlejší interpretaci takových dat. Ale na předpovědi je nutno nahlížet s odstupem a nebrat je příliš vážně a přesně, naštěstí například pro úspěšný prodej není potřeba přesných předpovědí, stačí pouze vědět kdy a komu poslat přesně cílenou reklamu. Pokud se systém trefí do těhcot kritérií je velká pravděpodobnost že si námi zacílený zákazník pořídí produkt, který se mu snažíme prodat. \cite{predictive-analytics}
 
-\subsection{Big data}
+\subsection{Big data} \label{big-data}
 Označení Big data může dostat jakékoliv množství strukturovaných, nestrukturovaných a částečně strukturovaných dat, které mají poteciál k tomu aby z nich bylo možné vydolovat nějaké zkryté informace. Ve zkratce to znamená že data začnou výt velkými v momentě, kdy jejich zpracování tradičními metodami je časově a technologicky složité.\cite{big-data-anayitics}
 
 \par Big data lze definovat pomocí pravidla \textbf{3V} -- Volume, Velocity, Variety. Pro přesné definování můžeme vzít v úvahu také Veracity, Validity a Volatility.\cite{big-data-anayitics}
@@ -97,7 +97,32 @@ Nejvhodnější místo pro uložení takového množství dat, je cloud, přesn�
 \paragraph{Tolerace pádů} u cloudových řešení je nutnost a musí být u takovýchto řešení co nejnižší, aby byl zajištěn nepřetržitý chod. \cite{big-data-dummies}
 
 \subsection{Data-mining}
+\par Pokud budeme potřebovat velkémožstvídat (Big data \ref{big-data}), musíme je nejdříve očistit od chybně zapsaných dat. Dokonce i když máme data ve standrardní formě nemůžeme počítat s tím, že jsou tyto data naprosto bez chybná. Takto chybně zapsaná data mohou být nicméně důležitá pro náš systém.\cite{data-mining-principles}
 
+\par Dále některé atributy mohou naprosto chybět pro některé záznamy, pro vypořádání s takto chybějícími atributmi můžeme zvolit jednu ze dvou taktik. \cite{data-mining-principles}
+\begin{enumerate}
+  \item Odstranění -- jednoduše odstraníme celý záznam ve kterém se nám nachází nějaký chybějící atribut.
+  \item Náhrada -- použijeme nejvíce frekventovanou, nebo nějakou výchozí hodnotu na místě ve kterém najdeme chybějící atributy. \cite{data-mining-principles}
+\end{enumerate}
+
+\par Na obrázku \ref{crisp-dm} vidíme jednotlivé fáze popsané v CRISP-DM \footnote{Zkratka znamená cross-industry process for data mining} modelu, tyto fáze jsou:
+\paragraph{Pochopení podniku} na začátek je potřeba pochopit, co za problém se snažíme vyřešit pomocí dolování dat. Tento první krok je nejdůležitější, ze začátku budeme mít pouze slabé pochopení tohoto kroku a v rámci procesu dolování dat se budeme vracet do tohoto bodu. \cite{data-mining-practical}
+
+\paragraph{Pochopení dat} často narazíme na data, která nebudou naprosto sedět zadanému problému, proto se musíme zaměřit na jejich silné a slabé stránky. Často se stává že historická data neodpovídají aktuálním problémům podniku. Další složkou, která se projeví do dat je samozřejmě cena, některé datové sady jsou takřka zadarmo, další se dají pořídit a některá prostě neexistují. Proto v rámci pochopení dat musíme zvážit případné rozšíření datové složky a zda se nám vyplatí investovat do dalších dat. \cite{data-mining-practical}
+
+\paragraph{Příprava dat} je dost možné, že tato část bude předcházet \textbf{pochopení dat}, protože jednoduše pro pochopení dat musíme nejdříve tyto data očistit od případných chybných a chybějících atributů. \cite{data-mining-practical}
+
+\paragraph{Modelování} primární fáze ve které jsou použity techniky pro dolování dat. \cite{data-mining-practical}
+
+\paragraph{Vyhodnocení} po aplikování modelování se nacházíme ve fázi, kde musíme ověřit, zda výsledný model je to co podnik potřebuje. Pokud tomu tak není, vracíme se zpátky na pochopení podniku a opakujeme celé kolečko znovu. Pro vyhodnocování používáme jak kvantitativní tak kvalitativní kritéria. \cite{data-mining-practical}
+
+\paragraph{Nasazení} po vyhodnocení že námi zvolený model je v pořádku a že techniky zvolené pro dolování dat byly korektní aplikujeme výsledek na reálné využití. Bez ohledu na to zda nasazení proběhlo v pořádku vracíme se zpátky do první fáze -- pochopení podniku. Další proces dolování dat může vyvodit jiný model, který může být vhodnější pro daný problém. \cite{data-mining-practical}
+\begin{figure}[h]
+\label{crisp-dm}
+\centering
+\includegraphics[width=\textwidth]{data-mining-process}
+\caption{Fáze CRISP-DM, referenční model.}
+\end{figure}
 \subsection{Extraction, Transaction, Loading}
 
 \subsection{NoSql databáze}
