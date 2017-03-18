@@ -133,7 +133,7 @@ Nejvhodnější místo pro uložení takového množství dat, je cloud, přesn�
 
 \subsubsection{pokročilá vizualizace dat vs. statické grafy}
 \begin{itemize}
-  \item \textbf{Dynamické datové sady} -- při změně datových sad (databází) se automaticky graf překreslí.
+  \item \textbf{Dynamické datové sady} -- Při změně datových sad (databází) se automaticky graf překreslí.
   \item \textbf{Vizuální dotazování} --Jednoduchá manipulace s grafy, to znamená například kliknutím na sloupec se provede akce, která má za následek překreslení grafu. 
   \item \textbf{Několik dimenzí, propojené vizualizace} -- Klasický graf nedokáže zobrazit závislosti mezi několika dimenzemi, proto je vhodné zobrazit provázané grafy, které reagují v závislosti na navigaci v jedné dimenzi. Například -- počet prodaných kusů v čase, při výběru specifického měsíce a roku se automaticky překreslí graf na počet prodaných kusů za den.
   \item \textit{Animované vizualizace} -- Pokud má dimenze velké množství hodnot je vhodné použít animaci pro jednoduché ovládání a znázornění.
@@ -142,6 +142,17 @@ Nejvhodnější místo pro uložení takového množství dat, je cloud, přesn�
 \end{itemize}
 
 \subsection{Single page aplikace}
+\par Tradiční přístup k vývoji webové aplikace je že máme databázi připojenou do serverového back-endu ke kterému jsme schopní se dostat pomocí webového rozhraní. Celá těžká práce je založena na serveru, to znamená navigace, veškerá logika a práva. To často vede k zatížení serveru a má za následek neresponzivní a pomalé aplikace. Z toho důvodu byl vyvinut nový způsob zobrazování aplikace, takzvané \textbfb{Single page aplikace} (zkráceně pouze SPA). Tyto aplikace využívají JavaScript k vykreslení stránky a navigaci, to znamená méně dotazů na server při přechodu mezi jednotlivými částmi aplikace. V případě že server budeme využívat pouze jako zdroj informací, je možné uživateli doručit intuitivní a snadno použitelnou aplikaci, kdy například ani pád serveru, nefunkční nebo pomalé připojení, nemusí znamenat pád aplikace \footnote{Takovémuto přístupu se říká Service Worker a více se můžete dozvědět na \url{https://developers.google.com/web/fundamentals/getting-started/codelabs/offline/}}. \cite{serverless-singlepage-apps}
+
+\subsubsection{Výhody Single page aplikací}
+\begin{itemize}
+  \item \textbf{Vykreslování}
+  \item \textbf{Responzibilita}
+  \item \textbf{Notifikace}
+  \item \textit{Přístupnost}
+  \item \textit{Aktualizace}
+  \item \textit{Multiplatformní}  \cite{SPA}
+\end{itemize}
 \subsection{Dynamická a interaktivní vizualizace dat}
 \subsection{Webová služba RESTful}
 Restufl web APIs
