@@ -131,28 +131,62 @@ Nejvhodnější místo pro uložení takového množství dat, je cloud, přesn�
 \section{Platforma pro pokročilou vizualizaci dat}
 \par Podniky často zjišťují že vizualizace dat je pro ně důležitým prvkem v odhalování problémů a monitorování podniku.Často se stává že klasické zobrazení dat v podobně reportů za použití tabulek nedokáže zaměřit celý problém, nebo často vede ke špatné analýze. Z toho plyne že je lepší použití grafických prvků jako (jednoduše řečeno grafů), pro ještě lepší usnadnění analýzy je vhodné použít dynamických a interaktivních grafických prvků. Mezi tyto dynamické a interaktivní prvky patří dashboardy, grafy a tabulky které se automaticky aktualizují pokud se jejich datová sada změní.
 
-\subsubsection{pokročilá vizualizace dat vs. statické grafy}
+\subsubsection{Pokročilá vizualizace dat vs. statické grafy}
 \begin{itemize}
   \item \textbf{Dynamické datové sady} -- Při změně datových sad (databází) se automaticky graf překreslí.
-  \item \textbf{Vizuální dotazování} --Jednoduchá manipulace s grafy, to znamená například kliknutím na sloupec se provede akce, která má za následek překreslení grafu. 
+  \item \textbf{Vizuální dotazování} --Jednoduchá manipulace s grafy, to znamená například kliknutím na sloupec se provede akce, která má za následek překreslení grafu.
   \item \textbf{Několik dimenzí, propojené vizualizace} -- Klasický graf nedokáže zobrazit závislosti mezi několika dimenzemi, proto je vhodné zobrazit provázané grafy, které reagují v závislosti na navigaci v jedné dimenzi. Například -- počet prodaných kusů v čase, při výběru specifického měsíce a roku se automaticky překreslí graf na počet prodaných kusů za den.
-  \item \textit{Animované vizualizace} -- Pokud má dimenze velké množství hodnot je vhodné použít animaci pro jednoduché ovládání a znázornění.
-  \item \textit{Zosobnění} -- Analytici mohou mít různé pochopení dat a proto je dobré je nechat pracovat individuálně s daty. Často se také může stávat že různí analytici mají přístup k různým daotvým sadám, proto je potřeba zajistit pověřovací úrovně.
-  \item \textit{Varování pro podnik} -- Pokud se stane že na obrazovce se nachází příliš mnoho dat může se často stávat že analytici jednoduše nebudou schopni odhalit problém včas. Proto by platforma pro pokročilou vizualizaci dat měla nabízet nějaký druh upozorňování. Tato upozorňování však nesmí být pouze grafického typu, ale také ve formě nějaké zprávy v případě že se uživatel nedívá přímo na vizualizaci. \cite{advanced-data-vizualization-platforms}
+  \item \textbf{Animované vizualizace} -- Pokud má dimenze velké množství hodnot je vhodné použít animaci pro jednoduché ovládání a znázornění.
+  \item \textbf{Zosobnění} -- Analytici mohou mít různé pochopení dat a proto je dobré je nechat pracovat individuálně s daty. Často se také může stávat že různí analytici mají přístup k různým daotvým sadám, proto je potřeba zajistit pověřovací úrovně.
+  \item \textbf{Varování pro podnik} -- Pokud se stane že na obrazovce se nachází příliš mnoho dat může se často stávat že analytici jednoduše nebudou schopni odhalit problém včas. Proto by platforma pro pokročilou vizualizaci dat měla nabízet nějaký druh upozorňování. Tato upozorňování však nesmí být pouze grafického typu, ale také ve formě nějaké zprávy v případě že se uživatel nedívá přímo na vizualizaci. \cite{advanced-data-vizualization-platforms}
 \end{itemize}
 
 \subsection{Single page aplikace}
-\par Tradiční přístup k vývoji webové aplikace je že máme databázi připojenou do serverového back-endu ke kterému jsme schopní se dostat pomocí webového rozhraní. Celá těžká práce je založena na serveru, to znamená navigace, veškerá logika a práva. To často vede k zatížení serveru a má za následek neresponzivní a pomalé aplikace. Z toho důvodu byl vyvinut nový způsob zobrazování aplikace, takzvané \textbfb{Single page aplikace} (zkráceně pouze SPA). Tyto aplikace využívají JavaScript k vykreslení stránky a navigaci, to znamená méně dotazů na server při přechodu mezi jednotlivými částmi aplikace. V případě že server budeme využívat pouze jako zdroj informací, je možné uživateli doručit intuitivní a snadno použitelnou aplikaci, kdy například ani pád serveru, nefunkční nebo pomalé připojení, nemusí znamenat pád aplikace \footnote{Takovémuto přístupu se říká Service Worker a více se můžete dozvědět na \url{https://developers.google.com/web/fundamentals/getting-started/codelabs/offline/}}. \cite{serverless-singlepage-apps}
+\par Tradiční přístup k vývoji webové aplikace je že máme databázi připojenou do serverového back-endu ke kterému jsme schopní se dostat pomocí webového rozhraní. Celá těžká práce je založena na serveru, to znamená navigace, veškerá logika a práva. To často vede k zatížení serveru a má za následek neresponzivní a pomalé aplikace. Z toho důvodu byl vyvinut nový způsob zobrazování aplikace, takzvané \textbf{Single page aplikace} (zkráceně pouze SPA). Tyto aplikace využívají JavaScript k vykreslení stránky a navigaci, to znamená méně dotazů na server při přechodu mezi jednotlivými částmi aplikace. V případě že server budeme využívat pouze jako zdroj informací, je možné uživateli doručit intuitivní a snadno použitelnou aplikaci, kdy například ani pád serveru, nefunkční nebo pomalé připojení, nemusí znamenat pád aplikace \footnote{Takovémuto přístupu se říká Service Worker a více se můžete dozvědět na \url{https://developers.google.com/web/fundamentals/getting-started/codelabs/offline/}}. \cite{serverless-singlepage-apps}
 
 \subsubsection{Výhody Single page aplikací}
 \begin{itemize}
-  \item \textbf{Vykreslování}
-  \item \textbf{Responzibilita}
-  \item \textbf{Notifikace}
-  \item \textit{Přístupnost}
-  \item \textit{Aktualizace}
-  \item \textit{Multiplatformní}  \cite{SPA}
+  \item \textbf{Vykreslování} -- Klasické webové aplikace potřebují při většině uživatelských akcí překreslit celou stránku. To vede k pauze, kdy uživatel čeká na zpracování požadavku na serveru a poté vykreslení celé stránky webovým prohlížečem. Pokud je uživatel připojen pomalým připojením, nebo je server zaneprázdněný, může tato pauza vykreslování trvat řádově několik vteřin. V případě použití SPA to není potřeba. Pouze část stránky se vždy překreslí a často není potřeba k takové akci činnosti serveru.
+  \item \textbf{Responzibilita} -- Takovéto aplikace minimalizují reakční čas tím, že větší část logiky je přenesena k uživateli. Pouze zpracování dat, validaci a autentizaci má na starosti server. Jak jsou tato data zobrazena a přípaná filtrace je zpracována u uživatele pomocí SPA. Například pokud uživatel filtruje data pomocí výběru sloupce v grafu není potřeba provést získání dat, tím se nezatěžuje server a stránka zůstává nadále responzivní.
+  \item \textbf{Notifikace} -- Pokud takto napsaná aplikace musí čekat na server může uživateli dát nějakým grafickým prvkem najevo takovou zkutečnost. Případně je možné uživatele upozornit na zprávy ze serveru za pomocí \textbf{Webových notifikací}\footnote{Pro detailní popis můžete následovat \url{https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API}.}.
+  \item \textbf{Přístupnost} -- Díky tomu že jsou SPA napsány jako webové aplikace je možné se k nim dostat odkudkoliv, pokud má uživatel připojení k danému serveru, kde je takováto aplikace uložena.
+  \item \textbf{Aktualizace} -- V případě aplikací, které jsou uloženy u uživatele je často potřeba vydat aktualizační balíček a uživatel si ho musí nainstalovat. V případě SPA tomu tak není, aktualizace se provádí takřka automaticky stačí na server nahrát novou verzi aplikace. Jediný problém je že si uživatel musí obnovit stránku.
+  \item \textbf{Multiplatformní} -- Webové aplikace jsou dostupné takřka na všech platformách, od mobilních zařízení až po velkoplošné obrazovky. Limitací je snad pouze používání zastaralých prohlížečů, naštěstí uživatelé začínají používat modernější prohlížeče a chápou nutnost aktualizací. Jak lze vidět na grafu \ref{browser-share}, tak modernější prohlížeč chrome je o hodně používanější než zastaralý prohlížeč Internet explorer ve verzi 9 a méně. \cite{SPA}
 \end{itemize}
+\begin{figure}[H]
+\centering
+  \begin{tikzpicture}
+  \centering
+  \begin{axis}[
+      symbolic y coords={Chrome,Firefox 5+,IE 11.0,Safari 10.0,Edge 14,Opera 15+,Safari 9.1,IE 8.0,IE 9.0,IE 10.0,Edge 13,Safari 9.0,Safari 8.0,Chromium,Opera 12.1,Safari 5.1,Edge 12,Safari 5.0,Safari 6.1,Safari 6.2,Firefox 3.0,IE 6.0,IE 7.0,Other},
+      ytick=data,
+      y post scale=2,
+      x post scale=1.75,
+      xmin=0,
+      axis y line*=none,
+      axis x line*=bottom]
+      \addplot[xbar,fill=blue] coordinates {
+        (62.62,Chrome)
+        (14.68,Firefox 5+)
+        (7.87,IE 11.0)
+        (3.23,Safari 10.0)
+        (3.05,Edge 14)
+        (1.38,Opera 15+)
+        (1.01,Safari 9.1)
+        (0.86,IE 8.0)
+        (0.54,IE 9.0)
+        (0.53,IE 10.0)
+        (0.37,Edge 13)
+        (0.24,Safari 9.0)
+        (0.2,Chromium)
+        (0.18,Opera 12.1)
+      };
+  \end{axis}
+  \end{tikzpicture}
+  \caption{Podíl vybraných prohlížečů mezi uživateli. Vypracováno na základě dat TODO}
+  % http://gs.statcounter.com/browser-version-partially-combined-market-share/desktop/worldwide/#monthly-201612-201703-bar
+  \label{browser-share}
+\end{figure}
 \subsection{Dynamická a interaktivní vizualizace dat}
 \subsection{Webová služba RESTful}
 Restufl web APIs
