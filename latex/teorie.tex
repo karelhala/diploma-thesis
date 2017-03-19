@@ -214,8 +214,22 @@ Největším problémem při přístupu k datům, pří použití REST je rozhod
 \paragraph{OAuth 2.0} Toto je vylepšený protokol a je momentálně nejvíce rozšířený. Ve zkratce to znamená to, že není nutné pro každé zařízení generovat specifický token, který je možno v případě napadení zařízení zrušit. Tento protokl využívá prostředníka pro uchování klientských údajů. Je to v podstatě to, že služba požádá jiný server, který spravuje daného uživatele o přihlašovací token. Uživatel je přesměrován na adresu třetí serveru, kam zadá své údaje, server poté vyhodnotí správnost těchto údajů a službě která si vyžádala přihlašovací token odešle buď povolí nebo zakáže přihlášení. Výhodou je to, že pokud je uživatel jednou přihlášen na třetím serveru není nutné se znovu přihlašovat. A také pokud uživatel již nevěří službě která má přístup k přihlašovacímu tokenu, jednoduše jí zakáže přístup. \cite{rest-cookbook}
 
 \section{Server pro řízení přístupu a identity}
-\url{http://www.sersc.org/journals/IJMUE/vol9_no9_2014/9.pdf}
+\par Mnoho firem stále váhá s přechodem z vlastního řešení (jak databázových jednotek, tak aplikací) do cloudu. Hlavní problém je často zabezpečení, firmy jednoduše nechtějí věřit jiné firmě s důvěrnými informacemi, že je ochrání před případným napadením. Naštěstí mnoho poskytovatelů cloudů si toto uvědomuje a tak nemalou část financí investují do robustního autentikačního formátu. \cite{cloud-security}
+
+\subsubsection{Mechanismy používané pro zabezpečení dat v cloudu}
+\begin{itemize}
+  \item \textbf{RSA} -- Pro přihlášení je potřeba HW token, který je synchronizován se servery cloudu.
+  \item \textbf{Vícefaktorové} -- Pokud se uživatel chce přihlásit dostane email nebo zprávu s pinem, který po jednom přihlášení, nebo po určitém čase, ztrácí platnost.
+  \item \textbf{Single sign-on} -- Uživatel je přihlášen ke druhé službě a ta jej autorizuje vůči aplikaci, kterou se chystá použít. Výhoda je ta, že není nutnost vždy zadávat přihlašovací údaje, při přístupu k aplikaci je vyžádán od druhé služby takzvaný JSON web token. \cite{cloud-security}
+\end{itemize}
 
 \subsection{JSON Web Token}
-https://tools.ietf.org/html/rfc7519
-https://scotch.io/tutorials/the-anatomy-of-a-json-web-token
+\par Zkráceně JWT jsou standard pro autentizaci napříč aplikacemi. Takový token nezávisí na programovacím jazyce, nese veškeré informace (přihlašovací údaje a svůj podpis) a je jednoduše použitelný (může být součástí hlavičky nebo součástí dotazu).  \cite{scotch-jwt}
+
+\par JWT je text, který je zahashován pomocí base64 a rozdělen do 3 částí:
+
+\paragraph{Hlavička} obsahuje typ a hashovací algoritmus použitý pro dekódování podpisu.
+
+\paragraph{Náklad} zde se nachází data, která služba poskytuje. Často jsou zde přihlašovací údaje (uživatelské jméno a čas vypršení), dále může obsahovat jakákoliv data chceme, například pohlaví uživatele, věk, email, atd.
+
+\paragraph{Podpis} je text, který vznikne spojením hlavičky a nákladu, který je poté zahashován pomocí algoritmu, který je určen v hlavičce tokenu. \cite{rfc-jwt}
