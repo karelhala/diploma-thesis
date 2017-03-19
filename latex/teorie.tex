@@ -188,8 +188,30 @@ Nejvhodnější místo pro uložení takového množství dat, je cloud, přesn�
   \label{browser-share}
 \end{figure}
 \subsection{Dynamická a interaktivní vizualizace dat}
+\par Problém moderní doby je přehršel informací, proto se lidé snaží najít spůsob snadné vizualizace velkého množství dat. Jedním z možných způsobů jak vizualizovat data je pomocí grafů (doslovně je to mapování informací na vizuální objekty), pokud použijeme webových technologií získáme silný nástroj v podobě zinteraktivnění takovýchto grafů. \cite{interactive-data-reily}
+
+\par Statická vizualizace je často nepoužitelná a nedostatečná, proto je vhodné použít více grafů najednou, to může vést k nepřehlednosti a ke zmatení. Proto vznikla technologie interaktivní vizualizace, kdy uživatel samotný se snaží vybrat a zpřehlednit data k obrazu svému. interaktivní vizualizace se změnila pouze nepatrně od roku 1996, kdy Ben Shneiderman z Univerzity Marilandu pronesl ,,Nejdříve náhled, poté zoom a filtrování, na závěr detail na vyžádání."\cite{interactive-data-reily}
+
+\par Při vytváření interaktivní vizualizaci dat se musíme zaměřit na 4 fáze návrhu a vývoje. \textbf{Vytvoření designových návrhů} -- kdy navrhneme co a jak bude vypadat v našem systému. \textbf{Realizace alternativ} -- zapracujeme návrhy a vytvoříme první prototypy. \textbf{Verifikace a redefinice návrhů} -- kdy předložíme uživateli námi vytvořené řešení a zapíšeme si jeho reakce a chování. \textbf{Pochopení uživatelských potřeb} -- ze zápisků z předešlého kroku a z požadavků uživatele vyvedeme závěry a opět se vracíme do prvního kroku vytvoření návrhů. Celý koloběh si můžeme prohlédnout na obrázku \ref{data-cycle}. \cite{the-ux-book}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{data_driven}
+\caption{Cyklus návrhu grafických prvků.}
+\label{data-cycle}
+\end{figure}
+
 \subsection{Webová služba RESTful}
-Restufl web APIs
+\par Od počátku webových služeb server používal takzvané sezení (anglicky \textit{session}), uživateli se při každém načtení stránky přiřadil speciální token, který si server uložil a pracoval s ním pro přístup k datům. Server takto často například ukládal historii navštívených stránek na dané webové stránce, případně filtrovaná data atd. Bohužel ukládání těchto dat vedlo k zahlcení paměti serveru a dlouhým odpovědím ze serveru (kdy server musel často poskládat velké množství dat dohromady). Na základě tohoto se zavedla bezestavová komunikace, kdy si server již nedrží stav o uživatelských akcích, ale odpovídá na všechny dotazy jako na nové sezení. Jedním kdo využívá tohoto bezestavového přístupu k uživatelům je architektický styl RESTful (zkráceně můžeme používat pouze REST). \cite{rest-cookbook}
+
+\subsubsection{Autentizace}
+Největším problémem při přístupu k datům, pří použití REST je rozhodně způsob autentizace, server si nedrží přihlášené sezení, ale musí nějakým způsobem odlišit práva jednotlivých uživatelů. Na základě toho vzniklo několik druhů autentizace při použití REST. \cite{rest-cookbook}
+
+\paragraph{Základní přihlášení -- Basic Auth} Uživatel si nejdříve vytvoří učet (nebo je mu přidělen) a na základě toho zná své uživatelské jméno a heslo. Při každém dotazu na server uživatel pošle toto jméno a heslo a server vyhodnotí zda mu pošle data jaká chce. Tento přístup je jednoduchý, ale velice nebezpečný. Jméno a heslo se posílá jako text, který je pouze spojen pomocí \textbf{Base64} do jednoho textu. Pokud server používá nezabezpečené připojení HTTP útočník může toto heslo a jméno jednoduše získat. Při použití zabezpečeného připojení tento problém mizí. \cite{rest-cookbook}
+
+\paragraph{OAuth 1.0} Je zkratka Otevřené autentikace (Open authentication) ve verzi jedna. Při této metodě odpadá problém, kdy uživatel používá více zařízení k přístupu na danou stránku a jedno zařízení by bylo napadeno a uživatel by byl nucen změnit heslo pro všechny zařízení (kde by byl nucen znovu provést přihlášení). Tento problém je řešen tak, že každé zařízení má speciální přihlašovací token a pokud jedno zařízení začne vykazovat špatné chováníuživatel je schopen tomuto zařízení zrušit přístup. \cite{rest-cookbook}
+
+\paragraph{OAuth 2.0} Toto je vylepšený protokol a je momentálně nejvíce rozšířený. Ve zkratce to znamená to, že není nutné pro každé zařízení generovat specifický token, který je možno v případě napadení zařízení zrušit. Tento protokl využívá prostředníka pro uchování klientských údajů. Je to v podstatě to, že služba požádá jiný server, který spravuje daného uživatele o přihlašovací token. Uživatel je přesměrován na adresu třetí serveru, kam zadá své údaje, server poté vyhodnotí správnost těchto údajů a službě která si vyžádala přihlašovací token odešle buď povolí nebo zakáže přihlášení. Výhodou je to, že pokud je uživatel jednou přihlášen na třetím serveru není nutné se znovu přihlašovat. A také pokud uživatel již nevěří službě která má přístup k přihlašovacímu tokenu, jednoduše jí zakáže přístup. \cite{rest-cookbook}
 
 \section{Server pro řízení přístupu a identity}
 \url{http://www.sersc.org/journals/IJMUE/vol9_no9_2014/9.pdf}
