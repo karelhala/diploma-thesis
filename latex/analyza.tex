@@ -2,4 +2,44 @@
 %  Analyza prostredku
 %------------------------------------------------------------------------------------------------------------------------------------------
 \chapter{ANALYTICKÁ ČÁST} \label{analyza}
-text
+\par Před samotným vývojem platformy pro definici a zpracování dat musíme provést průzkum aktuálních technologií zaměřujících se na vývoj webových aplikací a jejich výběr. Výběr echnologií, které nám pomohou při vývoji je velice podstatný, protože nám urychlí dodání a co je dležitější, pozdější úprava bude značně jednodušší pokud zvolíme technologie, které nám takovýto pozdější vývoj usnadní.
+
+\par Nejenom vývojovími technologiemi je potřeba se zabývat, ale také aktuálním stavem trhu a toho co uživatelé nejčasteji používají. Proto se v této části zaměříme také průzkumem trhu.
+
+\section{Webové technologie}
+\par Aktuální trend v používání webových prohlížečů můžeme vidět na grafu \ref{browser-share}, kde jde jasně vidět že moderní prohlížeče v podání Chrome a Firefox převládají nad tolika vývojáří proklínaný a čím dál tím méně používaný Internet Explorer. dále si uživatelé již uvědomují, že aktualizace prohlížeče je pro zachování zabezpečení nutností a tak naštěstí webové prohlížeče pomalu začínají pořádně fungovat s novým standardem JavaScriptu nazvaný EcmaSript 6 (znáý též pod názvem ES2015 a ES6). \cite{es6}
+
+\par Nový standard ES6 přináší mnoho vylepšení a mnoho optimalizací. Nicméně ani většina moderních prohlížečů nepodporuje 100 \% tento standard, například prohlížeč \textbf{Google chrome} ve verzi 57 podporuje 97 \% nového standardu, obdobně je na tom \textbf{Edge} (verze 15 podporuje 95 \%) a \textbf{Firefox} (verze 52 zvládá 94\%). \cite{es6-coverage}
+
+\subsection{Webový aplikační rámec}
+\par V aktuální době se mnoha vývojářům webových aplikací ověřili takzvané webové aplikační rámce. Dříve hojně využíváná knihovna  \textbf{jQuery} má již mnoho nástupců jak v podobě knihoven, tak aplikačních rámců. Výhoda takových aplikačních rámců je že se stará v podstatě o veškerou těžkou a neustále se opakující práci a nechává programátorovi volnou ruku při realizaci samostatné aplikace. \cite{framework}
+
+\par V předešlém odstavci bylo použito obou pojmů, jak JavaScriptové knihovny, tak aplikačního webového rámce. Tyto pojmy dost často vedou k hádkám a nedorozumění, kdy valná většina programátorů nerozumí rozdílům mezi aplikačním rámcem a knihovnou.
+\begin{itemize}
+  \item \textbf{JavaScriptová knihovna} slouží ke konání jednoho úkolu. Vezměme si například výrobu kávy, můžeme si postavit vodu na oheň ohřát ji, rozemlít zrnka kávy a tento prášek zalít horkou vodou. Každý jeden nástroj by představoval knihovnu.
+  \item \textbf{Aplikační webový rámec} má na starosti veškerou práci a často zahrnuje přesně definovanou architekturu. Pokud si vezmeme příklad s kávou, aplikační webový rámec by byl kávovar, do kterého nalijeme vodu a nasypeme kávová zrna. \cite{framework-vs-library}
+\end{itemize}
+
+\paragraph{Angular.js} je plnohodnotný aplikační rámec, v aktuální době pravděpodobně nejpoužívanější. \footnote{Přesná čísla se určit nedají, nicméně více informací o popularitě se můžete dočist zde: \url{https://hackernoon.com/5-best-javascript-frameworks-in-2017-7a63b3870282\#.ufk9gznfd}}.
+
+\par Strukturální webový aplikační rámec, pro dynamické webové aplikace. Jeho přední výhodou je že se soustřeďuje na tvoření jednostránkových aplikací. Takže často snižuje počet dat nutných pro načtení apracování s aplikací. První datum vydaní bylo v roce 2010 a v roce 2016 byla vydána verze 2, která umožňuje vytvářet uživatelské rozhraní jak pro webové, tak pro mobilní aplikace.\cite{angular-js}
+
+\paragraph{React.js} není plnohodnotný aplikační rámec, jako \textbf{Angular.js}, nicméně je velkým hráčem na poli vývoje webových aplikací. Jeho výhodou je jeho jednoduchost, nastavení aplikace a počáteční vývoj je velice jednoduchý, nicméně nedokáže tolik věcí co plnohodnotný rámec. Samostatný ovšem není příliš vhodný, potřebuje několik rozšíření, které z něho udělají silnějšího hráče, to ale vede k jeho yesložitění a častým problémům s nastavením. \cite{react-js}
+
+\paragraph{Vue.js} je progresivní rámec, pro vytváření uživatelských rozhraní. Jeho tvůrci kladli důraz na jeho jednoduchost použití a inspirovali se v \textbf{React.js}, výhodou oproti zmíněnému má použití s webovou stránkou, kdy se nesnaží obcházet její vykreslování, ale pracuje přímo s html elementy. Dále je tento rámec také zaměřen na práci s jednostránkovou aplikací, takže je výborným kompromisem mezi \textbf{Angular.js} -- který může být příliš náročný pro pochopení, a \textbf{React.js} -- který může vést k zesložitění při použití s více rozšířeními. \cite{vue-js}
+
+\subsection{Silné vs. slabé typování}
+\par Pro vývoj responzivních webových aplikací se používá JavaScript, který je ale slabě typovaný. To znamená že proměnná nemá předem určený pevný typ a může ho během chodu aplikace měnit. To může mít za následek chyby spojené s očekávaným typem, který může být chybný. Takže například při očekávání čísla budeme sčítat, ale aplikace nám během jejího chodu vrátila text. Takový problém může vést až k pádu, případně zamrznutí aplikace. Proto vznikl způsob jak přivést silné typování do slabě typovaných jazyků, jejich zástupci jsou \textbf{Typescript} a \textbf{Flow}.
+
+\paragraph{Typescript} je podmnožinou JavaScriptu, to znamená že veškeré soubory jsou přeloženy do předem vybrané verze specifikace a ty jsou poté spuštěny v prohlížeči. Není tedy nutné nutit uživatele do používání jiného prohlížeče. Velkou výhodou je také to, že se tým okolo Typescriptu snaží co nejvíce sledovat trend vývoje JavaScriptu a tak přináší mnoho novinek ještě před tím, než je začnou používat prohlížeče. Takže je možné použít velkou část nových technologií, bez nutnosti psát ne zrovna příjemně čitelný kód. \cite{typescript}
+
+\paragraph{Flow} je další způsob jak přivést silné typování do světa JavaScriptu, oproti \textbf{Typescriptu} má výhody, že problémy s implicitní deklarací, které mohou nastat během používání aplikace jsou lépe vyhodnoceny a programátor je o tomto informován již během překladu aplikace. Ale jeho nevýhodou je, že nesleduje takovou měrou nejnovější trendy a je často pozadu. Někdy schválně, protože pro překlad novějších definic do staršího použití existují další nástroje. \cite{flow}
+
+\subsection{Responzivní aplikační rámec}
+\par Pro usnadnění používání webových aplikací na jekémkoliv zařízení vzniká aktuálně mnoho knihoven a aplikačních rámců, které mají za úkol sjednotit design napříč několika aplikacemi a také jejich responzibilitu. To znamená že stejná aplikace se bude chovat a vypadat stejně bez ohledu na to, na jakém zařízení ji otevřeme (mobilní zařízení, tablet, počítač, televize, atd.)
+
+\paragraph{Material design} vznikl na popud zjednodušení a zpřehlednění uživatelského rozhraní, jeho hlavním zaměřením je dotek, hlas a kliknutí. Definuje tři pravidla \textbf{Material je metafora} -- chytře využívat prostor a pohyb jednotlivých elementů. \textbf{Tučné, grafické, záměrné} -- základními stavebními bloky jsou typografie, mřížka, místo, barva a použití obrázků. \textbf{Pohyb má význam} -- pokud uživatel vykoná nějakou akci design mu napoví jaká akce se stane pohybem. \cite{material}
+
+\paragraph{Boostrap} jeden z prvních responzivních rámců, který přivedl sjednocení uživatelského rozhraní napříč všemi platformami s největším důrazem na mobilní platformy. Dost často jsou vytvořeny webové aplikace, které nerespektují různé rozlyšení pro různé uživatele, tomuto se chtěl bootstrap vyhnout. Nyní nabízí velké množství doplňků a rozšíření, díky kterým z něj dělají rávem nejrozšířenější responzivní rámec. \cite{bootstrap}
+
+\paragraph{Patternfly} se inspiroval bootsrapem a vytvořil vlastní responzivní rámec, dále nabízí několik widgetů pro zobrazování složitějších uživatelských dat. Jeho hlavním zaměřením je unifikovat jednotlivé aplikace ve firmě, tak aby měli stejný, ale unikátní design. Proto nabízí několik jednoduchých přístupů co a jak dělat pro dosažení co nejvíce podobného vzhledu napříč aplikacemi. \cite{patternfly}
