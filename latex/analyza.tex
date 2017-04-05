@@ -43,3 +43,39 @@
 \paragraph{Boostrap} jeden z prvních responzivních rámců, který přivedl sjednocení uživatelského rozhraní napříč všemi platformami s největším důrazem na mobilní platformy. Dost často jsou vytvořeny webové aplikace, které nerespektují různé rozlyšení pro různé uživatele, tomuto se chtěl bootstrap vyhnout. Nyní nabízí velké množství doplňků a rozšíření, díky kterým z něj dělají rávem nejrozšířenější responzivní rámec. \cite{bootstrap}
 
 \paragraph{Patternfly} se inspiroval bootsrapem a vytvořil vlastní responzivní rámec, dále nabízí několik widgetů pro zobrazování složitějších uživatelských dat. Jeho hlavním zaměřením je unifikovat jednotlivé aplikace ve firmě, tak aby měli stejný, ale unikátní design. Proto nabízí několik jednoduchých přístupů co a jak dělat pro dosažení co nejvíce podobného vzhledu napříč aplikacemi. \cite{patternfly}
+
+\section{Single sign-on}
+\par V aktuální době velká část společností nabízejících větší potrfolio aplikací volí takzvanou službu single sign-on, kdy uživatel nemusí pokaždé zadávat své přihlašovací údaje, ale o jeho identifikaci se postará specializovaná služba. Většinou se stačí do této služby přihlásit jednou a dokud nevyprší čas od posledního použití aplikace, která používá tuto službu, nebo není uživatel schválně  odhlášen nemusí se znovu přihlašovat. Jako protiklad je postaven Single sign-off, kdy při odhlášení v jedné aplikaci je uživatel automaticky odhlášen ze všech ostatních aplikací, toto napomáhá dalšímu zabezpečení.
+
+\subsection{Standardy získání identity}
+\par V aktuální době jsou pravděpodobně nejrozšířenější dva standardy použití SSO -- novější \textbf{OpenID Connect} a starší, ale robustnější \textbf{SAML}.
+\paragraph{OpenID Connect} je v podstatě identitní vrstva postavená nad OAuth 2.0, poskytuje možnost identifikace uživatele a také získání základních informací. Modernější a v aktuální době více používaný způsob převážně kvůli jeho jednoduchosti a nižšímu zatížení serveru. \cite{oidc}
+
+\paragraph{SAML} se skládá ze dvou částí, poskytovatele služby a poskytovatele totožnosti (tím může být například Facebook, Google, Github, atd.). Jakým způsobem je uživatel přihlášen do služby můžeme vidět na obrázku \ref{saml2}. Nejdříve uživatel vytvoří požadavek na poskytovatele služby, ten vygeneruje SAML požadavek v URL, aplikace přesměruje uživatele na poskytovatele totožnosti, ten ověří přihlašovací údaje, přepošle zpět na poskytovatele služby požadavek na potvrzení, dále je uživatel přesměrován na cílový požadavake, o který si znovu požádá a server mu jej vrátí. \cite{saml}
+\begin{figure}[hp]
+  \centering
+  \includegraphics[max size={\textwidth}{\textheight}]{SAML2.pdf}
+  \caption{Předání uživatelského požadavku při použití SAML2}
+  \label{saml2}
+\end{figure}
+
+\subsection{Autentikační servery}
+\par Aktuální trh nabízí velké množství autentikačních serverů, které spravují uživatele a poskytují přihlášení do více aplikací. Některé jsou dokonce volně k použití bez nutnosti zakoupit licenci, je nutné pouze spravovat servery na kterých takováto služba poběží.
+
+\paragraph{Keycloak} je open sourcové řešení, které nabízí připojení jak přes sociální síťe a možnost získání uživatelských účtů z LDAP, Active Directory a nebo přímo z databáze. Jeho velkou premisou je jednoduchost správy uživatelů, včetně definice přístupových práv pro jednotlivé části aplikace. \cite{keycloak}
+\paragraph{Sterling externí autentikační server} je řešení od IBM nabízející rozšířené autentizace a validace služeb pro IBM produkty, nabízí napojení například na LDAP a možnost SSH autentizace. \cite{ibm-ster}
+\paragraph{Active Directory Federation Services} od firmy Microsoft nabízí možnost sdílet identifikační informace napříč důveryhodným obchodním partnerům skrze extranet. Výhodou je že se nemusí aplikace starat o všechny uživatele, ale pouze si vyžádá od spřátelené aplikace jeho práva.  \cite{ADFS}
+
+\section{Datová analýza}
+\par Pokud firma disponuje velkým množstvím dat je vhodné nad těmito daty najít nějaké souvislosti, které jí dopomůžou k vytváření dalšího zisku, případně pouze pro pochopení daného zákazníka, nebo skupiny zákazníků. Pokud je těchto dat opravdu hodně, můžeme je označit za Big Data (popsáno v \ref{big-data}), poté procesům k získání dalších informací říkáme Dolování dat (blíže popsáno v \ref{data-mining}).
+
+\subsection{Shluková analýza}
+\par Pro bližší pochopení velkého množství dat je vhodné použít metodu shlukoví analýzy, což je zjednodušené proces organizace objektů do skupin, tak aby její člonové byli nějakým způsobem co nejvíce podobní. Shlukovou analýzu můžeme rozdělit do dvou skupin \textbf{nehierarchické} a \textbf{hierarchické}.
+
+\paragraph{Nehierarchické} metody mohou být tvrdé nebo jemné, tvrdé seskupují data na základě specifické shlukové vlastnosti -- pokud patří do tohoto shluku namůže patřit do jiného. Jemné na druhou stranu nedefinují přesnou hranici -- patří do tohoto shluku, ale má některé vlatnosti daotových bodů jiných shluků. Pro dělení můžeme použít metodu K-means, která přiřadí každý bod do shluku jemuž středu je nejblíže a při každém běhu algoritmu se středy shluků přepočítávají jako aritmetické průměry všech bodů.
+
+\paragraph{Hierarchické} metody můžeme použít ve dvou způsobech ze shora dolů a odspodu nahoru. V prnvím případě vezmeme všechny datové body a označíme jej za shluk, který poté rozdělíme na další shluky, které dále dělíme. Opět můžeme využít K-means pro dělení shluků. Druhý způsob (odspodu nahoru) je nejlépe použít v případě že máme menší vzorek dat a chceme co nejlepší shluk. 
+
+\par Pro shrnutí je potřeba si uvědomit dvě věci, jaký je nejmenší počet shluků a naopak jaký je největzší počet těchto shluků. Na první otázku je jednoduché odpovědět, je to v podstatě celý seznam datových bodů v jednom shluku (není nám to příliš užitečné, ale je to shluk dat). Na otázku největšího počtu shluků můžeme říct, že jím je počet všech datových bodů (toto opět není příliš užitečné). Proces shlukování je tedy rozdělování těchto dat do shluků větších jak jedna a menších než počet prvků, proces ukončíme v momenté, kdy jsme spokojeni s celkovým počtem shluků, případně velikostí těchto skupin.
+
+\subsection{Rozhodovací stromy}
