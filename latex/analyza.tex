@@ -79,3 +79,19 @@
 \par Pro shrnutí je potřeba si uvědomit dvě věci, jaký je nejmenší počet shluků a naopak jaký je největzší počet těchto shluků. Na první otázku je jednoduché odpovědět, je to v podstatě celý seznam datových bodů v jednom shluku (není nám to příliš užitečné, ale je to shluk dat). Na otázku největšího počtu shluků můžeme říct, že jím je počet všech datových bodů (toto opět není příliš užitečné). Proces shlukování je tedy rozdělování těchto dat do shluků větších jak jedna a menších než počet prvků, proces ukončíme v momenté, kdy jsme spokojeni s celkovým počtem shluků, případně velikostí těchto skupin.
 
 \subsection{Rozhodovací stromy}
+\par Tento algoritmus slouží k získání pravidel a vztahů v datovém souboru pomocí větvení. Díky použití stromů je tento algoritmus rychlý a výhodný pro použití s počítačem. Složení stromu je takové že na vrcholu je jeden uzel, kterému se říká kořen, ze kterého vede několik hran spojující vnitřní uzly, které mají opět několik hran projujících další uzly. Každý uzel musí mít právě jednoho předka (ne více ani méně), kromě kořenového uzlu, který nemá žádného předka. Výhodou je jednoduchost, efektivnost a možnost použít i pro velký objem dat, na druhou stranu pokud nám budou některá data chybět, nebo budeme mít spojitá data rozhodovací stromy budou mít problémy. Při výběru vlastnosti, která je nejvíce odlišná od ostatních příkladů v ostatních třídách se požívá takzvané entropie, její výpočet lze vidět na \ref{entropie}, kde \(p_t\) je pravděpodobnost výskytu třídy \(t\) a \(t\) je počet tříd
+\begin{equation} \label{entropie}
+E(S) = - \sum_{t=1}^{T}(p_t log_2 p_t)
+\end{equation}
+
+\par Pro vytvoření stromu se vezme tabulka hodnot a pro každý atribut se vypočítá jeho entropie, ta znázorňuje homogenitu prvku. Pokud je prvek naprosto homogenní (nácházející se ve všech atributech) jeho entropie je 0, naopak pokud je prvek naprosto heterogenní (nachází se pouze v jednom atributu) jeho entropie je 1. Při prvnotním vytvoření rozhodovacího stromu je tedy potřeba mít co nejlepší trénovací data, nicméně velké množství dat může mít za následek příliš složitý strom, který je opět nepoužitelný (proto je potřeba dbát na vhodnou velikost učebních dat). Pokud nám vznikne složitý a ne příliš efektivní rozhodovací strom je vhodné použít takzvané prořezávání, kdy odstraníme nadbytečné podstromy (velice vhodné v případě že jsme použili velký vzorek dat pro vytvoření stromu).
+
+\par Příklad algoritmu, který se používá pro vytváření rozhodovacích stromů je takzvaný ID3, je založen na booleanovských hodnotách, používá hladové vyhledávání v prostoru \footnote{Pro bližší informace o hladovém prohledávání \url{http://www.how2examples.com/artificial-intelligence/tree-search}} a strom je vytvářen odshora dolů. Vstupní parametry tohoto algoritmu jsou \textbf{příklady} -- data na kterých je rozhodovací strom vytrénován \textbf{atributy} -- nad nimiž ude strom testován a \textbf{cílový atribut} -- tento atribut se bude vytvořený strom snažit predikovat. ID3 algoritmus byl několikrát vylepšen a upraven pro použití za různých podmínek jako například C4.5 (vhodné při chybejících, nebo spojitých datech), C5 (vylepšený C4.5), pro vytvoření binárních rozhodovacích stromů je například vhodné použít klasifikační a regresní stromy (CART), případně pro práci s opravdu velkým množstvím dat je možné použít algoritmus SPRINT.
+
+\par Na obrázku \ref{decision-tree} můžeme vidět příklad stromu, který vznikl pro rozhodování zda jít hrát badminton, pro jeho vytvoření byl použit algoritmus ID3 s menším vzorekem dat.
+\begin{figure}[hb]
+  \centering
+  \includegraphics[max size={\textwidth}]{decision.pdf}
+  \caption{Příklad rozhodovacího stromu při použití algoritmu ID3.}
+  \label{decision-tree}
+\end{figure}
