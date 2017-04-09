@@ -74,7 +74,7 @@
 
 \paragraph{Nehierarchické} metody mohou být tvrdé nebo jemné, tvrdé seskupují data na základě specifické shlukové vlastnosti -- pokud patří do tohoto shluku namůže patřit do jiného. Jemné na druhou stranu nedefinují přesnou hranici -- patří do tohoto shluku, ale má některé vlatnosti daotových bodů jiných shluků. Pro dělení můžeme použít metodu K-means, která přiřadí každý bod do shluku jemuž středu je nejblíže a při každém běhu algoritmu se středy shluků přepočítávají jako aritmetické průměry všech bodů.
 
-\paragraph{Hierarchické} metody můžeme použít ve dvou způsobech ze shora dolů a odspodu nahoru. V prnvím případě vezmeme všechny datové body a označíme jej za shluk, který poté rozdělíme na další shluky, které dále dělíme. Opět můžeme využít K-means pro dělení shluků. Druhý způsob (odspodu nahoru) je nejlépe použít v případě že máme menší vzorek dat a chceme co nejlepší shluk. 
+\paragraph{Hierarchické} metody můžeme použít ve dvou způsobech ze shora dolů a odspodu nahoru. V prnvím případě vezmeme všechny datové body a označíme jej za shluk, který poté rozdělíme na další shluky, které dále dělíme. Opět můžeme využít K-means pro dělení shluků. Druhý způsob (odspodu nahoru) je nejlépe použít v případě že máme menší vzorek dat a chceme co nejlepší shluk.
 
 \par Pro shrnutí je potřeba si uvědomit dvě věci, jaký je nejmenší počet shluků a naopak jaký je největzší počet těchto shluků. Na první otázku je jednoduché odpovědět, je to v podstatě celý seznam datových bodů v jednom shluku (není nám to příliš užitečné, ale je to shluk dat). Na otázku největšího počtu shluků můžeme říct, že jím je počet všech datových bodů (toto opět není příliš užitečné). Proces shlukování je tedy rozdělování těchto dat do shluků větších jak jedna a menších než počet prvků, proces ukončíme v momenté, kdy jsme spokojeni s celkovým počtem shluků, případně velikostí těchto skupin.
 
@@ -89,9 +89,25 @@ E(S) = - \sum_{t=1}^{T}(p_t log_2 p_t)
 \par Příklad algoritmu, který se používá pro vytváření rozhodovacích stromů je takzvaný ID3, je založen na booleanovských hodnotách, používá hladové vyhledávání v prostoru \footnote{Pro bližší informace o hladovém prohledávání \url{http://www.how2examples.com/artificial-intelligence/tree-search}} a strom je vytvářen odshora dolů. Vstupní parametry tohoto algoritmu jsou \textbf{příklady} -- data na kterých je rozhodovací strom vytrénován \textbf{atributy} -- nad nimiž ude strom testován a \textbf{cílový atribut} -- tento atribut se bude vytvořený strom snažit predikovat. ID3 algoritmus byl několikrát vylepšen a upraven pro použití za různých podmínek jako například C4.5 (vhodné při chybejících, nebo spojitých datech), C5 (vylepšený C4.5), pro vytvoření binárních rozhodovacích stromů je například vhodné použít klasifikační a regresní stromy (CART), případně pro práci s opravdu velkým množstvím dat je možné použít algoritmus SPRINT.
 
 \par Na obrázku \ref{decision-tree} můžeme vidět příklad stromu, který vznikl pro rozhodování zda jít hrát badminton, pro jeho vytvoření byl použit algoritmus ID3 s menším vzorekem dat.
-\begin{figure}[hb]
+\begin{figure}[htp]
   \centering
   \includegraphics[max size={\textwidth}]{decision.pdf}
   \caption{Příklad rozhodovacího stromu při použití algoritmu ID3.}
   \label{decision-tree}
 \end{figure}
+
+\subsection{Aplikace využívající datovou analýzu}
+\par V průběhu využívání dolování dat a využívání datové analýzy se nástroje a aplikace postupně zdokonalovali a začínají být čím dál tím více uživatelsky přístupné. Firmy se snaží propojit několik takovýchto aplikací a dát uživatelům silné nástroje pro snadné a rychlé získání dodatečných informací z velkého množství dat. Často se objevuje možnost připojit různé zdroje dat do těchto aplikací.
+
+\paragraph{Power BI} je sada obchodních analytických nástrojů od firmy Microsoft, tyto nástroje vynikají především možností připojení na velké množství datových zdrojů a také možností publikovat vytvořené reporty na webové rozhraní takzvaný dashboard. Pro připojení na různé datové zdroje je použit nástroj Power BI gateway, který umožňuje, mimo jiné, připojit na rázné SQL databáze a analytické modely. \cite{powerbi}
+
+\paragraph{IBM Watson Analytics} hlavní motto tohoto nástroje je poskytnutí silných a pokročilých analytických technik bez přílišné komplexnosti. Výhodou oproti ostatním nástrojům a aplikacím je jednoznačně možnost rychle, a bez nutnosti pokročilých technik dolování dat, získat ukryté informace v zákaznických datech. Tohoto docíli inženýři ve firmě IBM tím, že vyvinuli velice silnou a rychlou umělou inteligenci, která má za úkol hledat skrytou podstatu v datech. \footnote{Více o této umělé inteligenci pojmenované Watson se můžete dočíst zde \url{http://www.slate.com/blogs/future_tense/2014/02/14/watson_is_real_artificial_intelligence_despite_claims_to_the_contrary.html}} \cite{watson}
+
+\paragraph{MicroStrategy} platforma podporuje dashboardy, interaktivní reporty a dotazování, upozornění a mnoho dalšího potřebného pro vytváření strategie podniku a zjišťování informací z dat. Tato platforma nevyužívá klasické multidimenzionální OLAP kostky, ale využívá relační OLAP architekturu, což umožňuje možnost použítí nástroje drill down v jakékoliv dimenzi. Výhodou této platformy pro programátory je jistě dodávaný vývojářský balíček, který umožňuje dalšímu upravování vytvořených reportů a grafů. \cite{microstrategy}
+
+\paragraph{SAP} nabízí hned dvě řešení pro možné dolování informací z dat \textbf{SAP BusinessObjects} a \textbf{SAP HANA}. První ze jmenovaných je sada fron-end aplikací která nabízejí uživateli prohlížet, řadit a pracovat s BI datami. Druhým je platforma, která má za úkol zpracovávat velké množství dat v reálném čase, jako bonus firma SAP nabízí vývojářský balík, kterým si uživatelé mohou upravit tuto platformu a rozšířit tak její využití. \cite{sap}
+
+\section{Databázové aplikační platformy}
+\par Mnoho firem v současné době nabízí různá řešení platforem, které zobrazují a umožňují práci s daty bez nutnosti instalace sofistikovaného programu u uživatele, ale za pomoci webového rozhraní. Tyto aplikace jsou převážně inspirovány úspěchem aplkace excel od firmy Microsoft, který v aktuální době používá více než 1,2 miliardy uživatelů \footnote{Podle oficiální zprávy od Microsoftu v roce 2016 \url{http://www.windowscentral.com/there-are-now-12-billion-office-users-60-million-office-365-commercial-customers}}. \par Firma Microsoft začala v nedávné době využívat možnost sdílet dokument mezi uživateli, kteří v reálném čase vidí změny prováděné na daném dokumentu. Podobnou funkci nabízí také firma Google, nicméně již nenabízí plnohodnou aplikaci, kterou by měl uživatel nainstalovanou na počítači a která by umožňovala uživateli pracovat pohodlněji s dokumenty (jak tomu je při použití aplikací od firmy Microsoft).
+
+\paragraph{Fusioo} je webová aplikace, která nabízí jednoduchou integraci v rámci týmu pro správu důležitých informací. Je zde možné si nastavit dashboard, který nabízí metriky, grafy a upozorňení. Jeho velkou výhodou je možnost provázanosti do kalendáře, díky teré je možné jednoduše managovat tým a jeho aktivity. \cite{fusioo}
