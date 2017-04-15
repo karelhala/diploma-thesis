@@ -96,6 +96,22 @@ E(S) = - \sum_{t=1}^{T}(p_t log_2 p_t)
   \label{decision-tree}
 \end{figure}
 
+
+\subsection{Dolování dat na webové aplikaci}
+\par Toto získávání dalších informací z dat je v podstatě dolování z webových dokumentů, hyperlinků mezi nimi a získání informací z logů a webových stránek. \cite{minigbook}
+
+\par Na webu lze využít několik možných technik dolování:
+\begin{itemize}
+  \item \textbf{Webového obsahu} je proces získávání informací z webových dokumentů, mohou to být jak samotné stránky, tak videa, zvukových stop a obrázků. Hlavním zaměřením je však získání informací ze samotných textů na webovém dokumentu.
+  \item \textbf{Webové struktury} strukturu webových stránek si lze představit jako, uzlový graf, ve kterém jednotlivé uzly jsou samotné stránky a hrany spojující tyto stránky jsou vzájemné odkazy. Lze se také dále zanořit v jednotlivých dokumentech a ty znázornit pomocí stromové struktyry \footnote{Přesný popis tohoto zápisu je znám pod zkratkou DOM (Document object model) \url{https://www.w3.org/TR/DOM-Level-2-Core/introduction.html}}.
+  \item \textbf{Webového použití} je název pro označení technik, díky kterým lze získat další informace z používání webových stránek. Tyto data lze získat z několika zdrojů \textbf{webový server} -- záznamy, které vygeneroval server během jeho používání (IP adresy uživatelů, navštívenou stránku a čas navštívené stránky ...), \textbf{aplikační server} -- použití moderních aplikačních serverů dovloluje hladší vytvoření podnikových aplikací, tyto servery nadále dovolují bližší sledování uživatelských interakcí, \textbf{data aplikací} -- dále je možné v samotné aplikaci zapnout výpis dalších informací. \cite{minigbook}
+\end{itemize}
+
+\paragraph{PageRank} je označení pro stránkové ohodnocení, což má za následek vyšší skóre ve vyhledávacích nástrojích (jako je Google, Seznam, Yahoo, atd.). V jednoduchosti označují metriku pro ohodnocení dokumentů a zjištění jejich kvality. Takže hodnocení jednotlivých stránek záleží na hodnocení stránek, které odkazují na tuto stránku. Výpočet ohodnocení stránky \(p\) lze použitím rovnice \ref{pageRank}, kde \(n\) je počet odchozích uzlů, \(Outdegree(q)\) je počet hyperlinků na stránce q, \(d\) znamená pravděpodobnost, že uživatel zadá stránku přímo bez prokliknutí z jiné stránky a \(1 - d\) označuje pravděpodobnost že uživatel navštívá stránku z prokliknutého hyperlinku. \cite{minigbook}
+\begin{equation} \label{pageRank}
+PR(p) = d/n + (1-d) \sum_{(q,p) \in G}(\frac{PR(q)}{Outdegree(q)})
+\end{equation}
+
 \subsection{Aplikace využívající datovou analýzu}
 \par V průběhu využívání dolování dat a využívání datové analýzy se nástroje a aplikace postupně zdokonalovali a začínají být čím dál tím více uživatelsky přístupné. Firmy se snaží propojit několik takovýchto aplikací a dát uživatelům silné nástroje pro snadné a rychlé získání dodatečných informací z velkého množství dat. Často se objevuje možnost připojit různé zdroje dat do těchto aplikací.
 
@@ -112,7 +128,7 @@ E(S) = - \sum_{t=1}^{T}(p_t log_2 p_t)
 
 \paragraph{Fusioo} je webová aplikace, která nabízí jednoduchou integraci v rámci týmu pro správu důležitých informací. Je zde možné si nastavit dashboard, který nabízí metriky, grafy a upozorňení. Jeho velkou výhodou je možnost provázanosti do kalendáře, díky teré je možné jednoduše managovat tým a jeho aktivity.
 
-\paragraph{Ragic} tato platforma nabízí uživatelům možnost snadného přechodu z klasických excelových tabulek do datbázového světa bez nutnosti jejich pochopení. Hlavním tahákem této platformy je určitě její chytré a intuitivní vyhledávání a při zadávání dat možnost zapnutí validace pro jednotlivé položky. Oproti konkurenci nabízejí neobvyklé reporty jako například TODO listy, náleky, kontingenční tabulky a mapy. 
+\paragraph{Ragic} tato platforma nabízí uživatelům možnost snadného přechodu z klasických excelových tabulek do datbázového světa bez nutnosti jejich pochopení. Hlavním tahákem této platformy je určitě její chytré a intuitivní vyhledávání a při zadávání dat možnost zapnutí validace pro jednotlivé položky. Oproti konkurenci nabízejí neobvyklé reporty jako například TODO listy, náleky, kontingenční tabulky a mapy.
 
 \paragraph{Quickbase} je aplikace zaměřené na pokročilé uživatele, nenabízí příliš jednoduchý způsob zadání dat, nicméně dovoluje upravovat data v připojené databázi za pomoci nástroje, který připomíná Access od firmy microsoft. Tato platforma se zaměřuje převážně na vývoj aplikací bez nutnosti psát kód, takovéto aplikace poté může zákazník dále nabízet ostatním uživatelům. Firma nabízí možnost definovat přístupová práva k jednotlivým dokumentům, skrze nastavení přístupových práv pro jednotlivé skupiny. Aplikace disponuje jedním velice zajímavým nástrojem ganttovým diagramem, který napomáhá k rozvržení práce v rámci týmu a naplánování vývoje.
 
