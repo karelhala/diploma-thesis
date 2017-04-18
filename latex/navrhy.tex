@@ -3,3 +3,17 @@
 %------------------------------------------------------------------------------------------------------------------------------------------
 \chapter{VLASTNÍ NÁVRHY}
 \par text\cite{latexcompanion}\cite{1}
+
+\par Aplikace je postavena na základě aplikačního serveru WildFly, který pracuje s moduly napsanými v jazyce Java. Základní rozdělení aplikace je tedy \textbf{Engine} a \textbf{UI}, engine je připojen na databázi MongoDb, což je NoSql databáze. Výhodou tohtoto nastavení je vysoká pružnost v rámci zapsaných dat a není tedy nutné  přesně definovat závislosti v rámci databáze (každý zákazník si může definovat jiné důležité atributy pro každý projekt).
+\par Další výhodou oddělení uživatelského rozhraní a samostaného enginu je možnost lépeřídit vývojářský tým, lépe rozdělit práci a v neposledn řadě, také možnost později vytvořit klienta nezávislého na dosavadním uživatelském rozhraní -- například vytvoření mobilní aplikace, která se bude specializovat na určitou část systému. Celý sysém spolu komunikuje tedy pomocí REST rozhraní a o zabezpečení se stará vrstva Keycloak, ve kterém jsou oba moduly registrovány a slouží jako takový středobod celého systému. Jak jsou jednotlivé části propojeny můžete vidět na obázku \ref{schema}, kde hrany znamenají komunikační zprávy a uzly logické bloky.
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{placeholder.pdf}
+  \caption{Diagram znázorňující schéma nástroje.}
+  \label{schema}
+\end{figure}
+
+\par Pokud uživatel již disponuje velkým datovým uložištěm je ho možné připojit do systému jednoduchou konfigurací v rámci UI, systém prozkoumá tyto data, některá si nakopíruje a začne je uživateli nabízet podobně, jako kdyby je uživatel měl již dříve v systému. Podobně je tomu s dolováním dat -- modul, který je zodpovědný za samostatné dolování je možné připojit do systému, odkázat jej na datové uložiště a spustit samostatné dolování dat. Vše je nastavitelné jak z uživatelského prostředí, tak pomocí volání na předem definované RESTové služby.
+
+\section{Cenový model}
