@@ -2,8 +2,9 @@
 %  Navrhy
 %------------------------------------------------------------------------------------------------------------------------------------------
 \chapter{VLASTNÍ NÁVRHY}
-\par text\cite{latexcompanion}\cite{1}
+\par Nástroj, který je součástí této práce se zaměří z velké části na uživatelské rozhraní a do jisté části využije technologie a nástroje, které jsou dostupné a usnadní takto vývoj a nasazení tohoto nástroje. Dále se zaměříme na životaschopnost tohoto nástroje a způsobu jakým bude takto vytvořený nástroj nabízen veřejnosti. Rozsah firem, pro které bude tato aplikace doporučována je malé, až střední podniky, které pracují s větším množstvím dat a potřebují nějakým způsobem najít zkryté informace.
 
+\section{Návrh aplikace}
 \par Aplikace je postavena na základě aplikačního serveru WildFly, který pracuje s moduly napsanými v jazyce Java. Základní rozdělení aplikace je tedy \textbf{Engine} a \textbf{UI}, engine je připojen na databázi MongoDb, což je NoSql databáze. Výhodou tohtoto nastavení je vysoká pružnost v rámci zapsaných dat a není tedy nutné  přesně definovat závislosti v rámci databáze (každý zákazník si může definovat jiné důležité atributy pro každý projekt).
 \par Další výhodou oddělení uživatelského rozhraní a samostaného enginu je možnost lépeřídit vývojářský tým, lépe rozdělit práci a v neposledn řadě, také možnost později vytvořit klienta nezávislého na dosavadním uživatelském rozhraní -- například vytvoření mobilní aplikace, která se bude specializovat na určitou část systému. Celý sysém spolu komunikuje tedy pomocí REST rozhraní a o zabezpečení se stará vrstva Keycloak, ve kterém jsou oba moduly registrovány a slouží jako takový středobod celého systému. Jak jsou jednotlivé části propojeny můžete vidět na obázku \ref{schema}, kde hrany znamenají komunikační zprávy a uzly logické bloky.
 
