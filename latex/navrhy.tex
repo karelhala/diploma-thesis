@@ -17,4 +17,28 @@
 
 \par Pokud uživatel již disponuje velkým datovým uložištěm je ho možné připojit do systému jednoduchou konfigurací v rámci UI, systém prozkoumá tyto data, některá si nakopíruje a začne je uživateli nabízet podobně, jako kdyby je uživatel měl již dříve v systému. Podobně je tomu s dolováním dat -- modul, který je zodpovědný za samostatné dolování je možné připojit do systému, odkázat jej na datové uložiště a spustit samostatné dolování dat. Vše je nastavitelné jak z uživatelského prostředí, tak pomocí volání na předem definované RESTové služby.
 
+\subsection{Vedení vývojového týmu}
+\par Pro snadný a rychlý vývoj bylo nutné zvolit vhodné vedení vývojového týmu, který se podílel na vývoji celé aplikace. Ze skušeností bylo určeno že rychlého vývoje se dosáhne použitím agilní metody vedení týmu, inspirováno scrumem. Nicméně, protože jednotliví čleové týmu se nenacházeli v dostatečné vzdálenosti a nebyl tento projekt veden jako hlavní úkol jednotlivých členů, některé setkání, která jsou definována ve scrumu byla vyškrtnuta. Nejenom proto nelze vedení týmu, které bylo zvoleno označit jako čistokrevný scrum, ale pouze že jsme se při vedení inspirovali touto metodikou.
+
+\par Nastavili jsme si třítýdenní zveřejnění jednotlivýchh částí a každý týden jsme se scházeli abychom si ujasnili na čem jaký člen týmu dělá a zda nemá nějaký problém. Použili jsme také nástroje určené ke snadnějšímu rozdělování práce, kdy jsme začali s používáním nástroje \textbf{Trello} \footnote{Jedoduchý nástroj, který vizualizuje aktuální práci za použití jednoduchých tabulí \url{https://trello.com/}}, který nám postupně přestal stačit a tak jsme využili opensource licence \textbf{Youtrack} \footnote{Tento nástroj je podobný Trellu, nicméně dovoluje snadnější a pro tým důležitou vizualizaci práce \url{https://www.jetbrains.com/youtrack/}}
+
+\section{Použité technologie}
+\par Může se zdát že pro vytvoření tohoto nástroje bylo použito velké množství technologií, proto se následující kapitola bude věnovat jednotlivým částem aplikace. Jaké technologie přesně používá, jak jsou tyto technologie propojeny a k čemu je to dobré.
+
+\subsection{Engine}
+\par Základní část celé aplikace a jeji středobod se skládá ze tří pomyslných částí \textbf{Databáze}, \textbf{REST rozhraní} a \textbf{hlavní logika}. Díky tomuto rozdělení je možné snadně a hlavně rychle přidat novou funkcionalitu, dále je také možné rozdělit jednotlivé části vývojářům, kteří se mohou zaměřit na menší úkoly a pracovat tak efektivněji.
+
+\par Hlavní logika byla naprogramována v jazyce Java a jako aplikační server poté Wildfly, díky jeho snadnému propojení do Keycloaku a převážně díky jeho robustnosti -- největší předností je jednoduché napojení na velké množství různých databází. K načtení závislostí, sestavení a nasazení tohoto modulu byl použit nástroj maven. V podstatě pro jednoduchost si můžeme představit jako vstup databázi a jako výstop RESTové rozhraní.
+
+\begin{itemize}
+  \item \textbf{Databáze} postavena nad technologií NoSql, MongoDb. V pozdějšm použití budeme pravděpodobně muset sáhnout po nějakém indexovacím nástroji, jako je například Elasticsearch, nebo Solr, který nám umožní snadnější hledání napříč složitější databázovou strukturou.
+  \item \textbf{REST rozhraní} nástroji slouží pro snadnější přístup k jednotlivým datům a definuje snadno dostupné koncové uzly. Pokud bude potřeba nástroj rozšířit a hlavně zmapovat jednotlivé koncové uzly budeme moci použít například technologii Swagger \footnote{Slouží pro vizualizaci a zobrazení jaké data jednotlivý uzel očekává a jaké produkuje \url{http://swagger.io/}}
+\end{itemize}
+
+\subsection{Uživatelské rozhraní}
+\ref Vzhledem k tomu, že hlavní část aplikace je nasazována na aplikační server Wildfly, také uživatelské rozhraní je sestaveno a možno nasadit jako samostatný modul. Samotný proces sestavení používá nástroje \textbf{Webpack}, který celý zdrojový kód rozdělí do dvou javascriptových souborů.
+
+\subsection{Zabezpečení}
+\par V mnoha moderních aplikacích dochází k problémům se zabezpečením, ať již je to nedostatečné zabezpečení vůči případným útokům, tak nechtěného dovolení přístupu různým uživatelům k datům, ke kterým by neměli mít přístup. Tento nástroj se na toto téma snaží co nejvíce zacílit a použít řešení, které nebude příliš komplexní k nastavení pro zákazníka a zároveň bude poskytovat silné zabezpečení. Proto byl zvolen nástroj od firmy RedHat \textbf{Keycloak}, jehož fungování je popsáno v sekci o autentikačních serverech \ref{auth-server}.
+
 \section{Cenový model}
