@@ -22,6 +22,9 @@
 
 \par Nastavili jsme si třítýdenní zveřejnění jednotlivýchh částí a každý týden jsme se scházeli abychom si ujasnili na čem jaký člen týmu dělá a zda nemá nějaký problém. Použili jsme také nástroje určené ke snadnějšímu rozdělování práce, kdy jsme začali s používáním nástroje \textbf{Trello} \footnote{Jedoduchý nástroj, který vizualizuje aktuální práci za použití jednoduchých tabulí \url{https://trello.com/}}, který nám postupně přestal stačit a tak jsme využili opensource licence \textbf{Youtrack} \footnote{Tento nástroj je podobný Trellu, nicméně dovoluje snadnější a pro tým důležitou vizualizaci práce \url{https://www.jetbrains.com/youtrack/}}
 
+\subsection{Popis aplikační funkčnosti}
+\par Před samotným popisem co a jak je propojeno si musíme určit co vlastně bude tato aplikace dělat a důvod jejího vzniku. Hlavním důvodem vzniku této aplikace je usnadnění editace často složitých záznamů (souborů) pomocí moderních technologií, záznamy můžeme rozumět například tabulky, grafy, kontingenční tabulky, atd. Mezi jednotlivými záznamy mohou vznikat a zanikat propojení, které umožní snadné napovídání datových záznamů a popisu dat (v případě tabulky si toto lze představit že nám aplikace bude napovídat možné záhlaví tabulky a data v tabulce). Editace a nahlédnutí do záznamů bude povolena pouze určitému uživateli. Dále jednotlivé soubory bude uživatel moci seskupovat do takzvaných kolekcí, tímto dosáhneme jisté abstrakce nad soubory, tak aby uživatel přibližně tušil již při prvním pohledu na záznam jaká data v něm mohou být. Vzhledem k tomu, že aplikace bude cílena na větší množství uživatelů aplikaci je možné přepínat mezi různými projekty a organizacemi, takže uživatel může mít několik záznamů se stejným jménem ve stejné kolekci pod různými projekty a organizacemi.
+
 \section{Použité technologie}
 \par Může se zdát že pro vytvoření tohoto nástroje bylo použito velké množství technologií, proto se následující kapitola bude věnovat jednotlivým částem aplikace. Jaké technologie přesně používá, jak jsou tyto technologie propojeny a k čemu je to dobré.
 
@@ -36,9 +39,115 @@
 \end{itemize}
 
 \subsection{Uživatelské rozhraní}
-\ref Vzhledem k tomu, že hlavní část aplikace je nasazována na aplikační server Wildfly, také uživatelské rozhraní je sestaveno a možno nasadit jako samostatný modul. Samotný proces sestavení používá nástroje \textbf{Webpack}, který celý zdrojový kód rozdělí do dvou javascriptových souborů.
+\par Vzhledem k tomu, že hlavní část aplikace je nasazována na aplikační server Wildfly, také uživatelské rozhraní je sestaveno a možno nasadit jako samostatný modul. Samotný proces sestavení používá nástroj \textbf{Webpack}, který celý zdrojový kód rozdělí do dvou javascriptových souborů. Jeden obsahuje yávislosti nutné pro chod aplikace a druhý obsahuje samostatný kód aplikace. V rámci usnadnění a jednoduššího přístupu k aplikaci jsme se rozhodli vělkou část Javascriptových souborů umístnit na vřejné CDN \footnote{CDN je v podstatě systém serverů, které nabízejí JS a CSS soubory uživatelům s ohledem na jejich geografickou lokaci, tak aby měli tyto soubory co nejdříve.}.
+
+\par Vzhledem k rozsáhlosti a složitosti uživatelského rozhraní bylo rozhodnuto, že se použije aplikační framework s podporou jednostránkové aplikace, po prozkoumání alternativ byl následně vybrán rámec \textbf{Angula 2}. S výběrem tohoto aplikačního rámce jde ruku v ruce také výběr jazyku ve kterém je uživatelské rozhraní napsáno, což je silně typovaný jazyk \textbf{Typescript}.
+
+\par Uživatelské rozhraní se postupně upravovalo a byla snaha o co možná najjednodušší používání této aplikace, proto byla první verze rozhraní představena několika méně zkušeným uživatelům počítače, kterým se dali jednoduché úkoly a byl sledován jejich postup a následně jim byla položena otázka zda byl úkol snadný. Systém jim byl pouze zevrubně vysvětlen slovy, že se jedná o aplikaci, která obsahuje kolekce souborů, které jsou mezi sebou propojeny.
+
+\subsubsection{Úkol číslo 1} Výběr kolekce a následně zjištění informací o této kolekci. Úrověň náročnosti \textbf{lehká}.
+\begin{table}[htp]
+\begin{center}
+\begin{tabular}{ || c || c | c |  m{5cm} || } 
+ \hline
+ Číslo uživatele & Rychlost vykonání & Ohodnocení & Slovní popis \\ [0.5ex] 
+ \hline
+ \hline
+ 1 & 25s & 87837 & 787 \\ 
+ \hline
+ 2 & 38s & 78 & 5415 \\
+ \hline
+ 3 & 43s & 778 & 7507 \\
+ \hline
+\end{tabular}
+\end{center}
+\caption{The caption without a number}
+\end{table}
+\subsubsection{Úkol číslo 2} Výběr kolekce a dokumentu v kolekci pro který budou upraveny propojení. \textbf{středně těžká}
+\begin{table}[htp]
+\begin{center}
+\begin{tabular}{ || c || c | c |  m{5cm} || } 
+ \hline
+ Číslo uživatele & Rychlost vykonání & Ohodnocení & Slovní popis \\ [0.5ex] 
+ \hline
+ \hline
+ 1 & 25s & 87837 & 787 \\ 
+ \hline
+ 2 & 38s & 78 & 5415 \\
+ \hline
+ 3 & 43s & 778 & 7507 \\
+ \hline
+\end{tabular}
+\end{center}
+\caption{The caption without a number}
+\end{table}
+\subsubsection{Úkol číslo 3} Výběr kolekce a dokumentu v kolekci pro který se zobrazí práva. Úroveň náročnosti \textbf{těžká}
+\begin{table}[htp]
+\begin{center}
+\begin{tabular}{ || c || c | c |  m{5cm} || } 
+ \hline
+ Číslo uživatele & Rychlost vykonání & Ohodnocení & Slovní popis \\ [0.5ex] 
+ \hline
+ \hline
+ 1 & 25s & 87837 & 787 \\ 
+ \hline
+ 2 & 38s & 78 & 5415 \\
+ \hline
+ 3 & 43s & 778 & 7507 \\
+ \hline
+\end{tabular}
+\end{center}
+\caption{The caption without a number}
+\end{table}
+
+\par Vzhledem na výsledky hodnocení a uživatelské podněty se tým rozhodl přepracovat UI do více uživatelsky přívětivého způsobu. Hlavní výtka všech uživatelů bylo příliš mnoho navigačních prvků na stránce, což vede k nepřehlednosti a uživatelé tak nevědí na co kliknout a co použít. Na druhou stranu většina uživatelů, kterým byla aplikace představena zdůraznili výhodu vyhledávání a filtrování v rámci kolekcí, dokumentů a propojení. Z těchto poznatků bylo tedy určeno, že nejlepší bude zvýraznit vyhledávací formulář, který bude na všech stránkách aplikace. Dále také nějakým způsobem sjednotit všechny prvky aplikace do jednoho vyhledávání, tak aby uživatelé měli přehledně a snadno dostupné například dokumenty a hned vedle nich propojení. Z těchto požadavků bylo tedy navrhnuto nové uživatelské rozhraní, které lze vidět na \ref{new-ui}.
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{placeholder.pdf}
+  \caption{Návrh nového uživatelského rozhraní.}
+  \label{new-ui}
+\end{figure}
 
 \subsection{Zabezpečení}
 \par V mnoha moderních aplikacích dochází k problémům se zabezpečením, ať již je to nedostatečné zabezpečení vůči případným útokům, tak nechtěného dovolení přístupu různým uživatelům k datům, ke kterým by neměli mít přístup. Tento nástroj se na toto téma snaží co nejvíce zacílit a použít řešení, které nebude příliš komplexní k nastavení pro zákazníka a zároveň bude poskytovat silné zabezpečení. Proto byl zvolen nástroj od firmy RedHat \textbf{Keycloak}, jehož fungování je popsáno v sekci o autentikačních serverech \ref{auth-server}.
 
 \section{Cenový model}
+
+\section{Dolování dat}
+\par Pokud vezmeme v úvahu samostatný hlavní modul v rámci části dolování dat se zaměříme převážně na tři části. \textbf{Heuristiky pro automatické linkování} -- pokud vznikne, nebo je upraven nějaký dokument je spuštěna řada automatických metod, které provedou případné automatické spojení, \textbf{Nejčastěji používané entity} -- na mnoha místech se aplikace snaží usnadnit práci uživateli tím, že mu nabídne ty, které jsou nejčastěji používané a \textbf{Přibližné napovídání} -- technika, která umožní napovídat uživateli možné výsledky při hledání bez nutnosti vyplnění celého jména.
+
+\subsection{Heuristiky pro automatické linkován}
+\par Systém disponuje několika heuristikami, které se snaží vyhledávat skrytý význam v jednotlivých dokumentech a napomáhat tak uživateli při propojování dokumentů. Vezměme si například dva dokumenty, jeden obsahuje jména, příjmení a telefonní čísla, nazvěme ho \textbf{uživatelský dokument}. Druhý bude například \textbf{studentský dokument}, ten bude obsahovat spojená jména a příjmení studentů spolu s jejich celkovým prospěchem. Po vytvoření studentského dokumentu nemusí mít uživatel tušení, že existuje uživatelský dokument a tak nevytvoří manuální propojení, nicméně systém si označí tyto dva dokumenty jako potencionální spojení a při zadávání dat do dokumentu studentů nám bude napovídat jména a příjmení z uživatelského dokumentu. Propojení těchto dokumentů tedy vznikne automaticky. Uživatel o tomto propojení nemusí být nijak informován, ale na stránce detailu studentského dokumentu uvidí informativní hlášku, která mu sdělí, že vzniklo nové propojení. Tento link může dále uživatel upravit, případně ho může odstranit a systém mu již nebude napovídat jména a příjmení.
+
+\par Toto automatické propojení vzniká na základě dvou heuristických technik a následného vyhodnocení pomocí složení dvou sloupců z jedné tabulky do druhé. Tímto docílíme jednoduchost, snadnost a hlavně rychlost zadávání nových záznamů. Velkou výhodou této techniky je že sloupce, které jsou označeny jako propojené a získávané z různých tabulek se automaticky obnovují, takže v případě změny jména v souboru uživatelů se tato změna automaticky projeví také ve studentském dokumentu (opět tato funkce lze vypnout pro celý dokument, případně pro jednotlivé záznamy).
+
+\par Nad takto nově vzniklými propojeními lze provádět samozřejmě stejné operace jako v případě klasických propojení, tedy definovat propojovací řetězec a jednoduché funkce. Nicméně při definování jednoduchých funkcí uživatel bohužel ztrácí automatické znovunačtení záznamů v případě změn v propojených souborech, pokud chce načíst změny v takových záznamech musí si vyžádat načtení hodnot, které jsou uloženy do souboru.
+
+\subsubsection{Heuristika 1}
+\par V případě první heuristiky se kontrolují pouze záhlaví tabulky, takže pokud vezmeme v úvahu definovaný příklad, v momentě vytvoření dokumentu se provede kontrola nad podobnými soubory a pokud se najde shoda propojení se automaticky vytvoří.
+\subsubsection{Heuristika 2}
+\par Tato heuristika je složitější a znamená velkou zátěž pro systém, proto je potřeba dopředu provést nastavení tabulky při vytváření. Funguje tak, že při vytvoření nové tabulky uživatel může definovat tuto tabulku jako zdrojové data a kdykoliv se bude vytvářet nový soubor provede se kontrola nad zdrojovými tabulkami zda některá neobsahuje příslušný zázam. Vzhledem k náročnosti na systém jsme se rozhodli, že tuto vlastnost odstupňujeme pro jednotlivé druhy zákazníků.
+
+\subsection{Nejčastěji používané entity}
+\par S přihlédnutím na uživatelské požadavky obsahuje systém možnost zobrazit entity, které jsou nejčastěji používané daným uživatelem pro jednu organizaci a projekt. Pro zobrazení požadovaných entit jsme nejdříve vybrali elgoritmus \textbf{zásobníku}, ale tento model se nám neosvědčil protože se často stávalo, že často používané entity mizeli a méně časté se nacházeli v nabídce, proto jsme do systému naimplementovali možnost přepnutí na takzvaný \textbf{zásobník s počítadlem} -- možnost pouze pro zákazníky s kvalitnější podporou. Přepnutí těchto technik se poté nachází v uživatelském nastavení, takže každý uživatel je schopen si toto řezení změnit.
+
+\begin{itemize}
+  \item \textbf{Zásobník} funguje na stylu omezeného počtu záznamů, které mohou být zobrazeny a pokud je tento počet překročen, poslední záznam, který byl zaktivován je odstraněn. Toto řešení je dostačující, nicméně může nastat to že entita, která je často otevíraná zmizí z tohoto seznamu kvůli otevření několika stejných entit. Chování v aplikaci lze vidět na obrázku \ref{zasobnik}, kdy zásobník obsahuje entity označené 1, 2, 3, 4 a 5. Uživatel otevřel nově entitu s označením c a entity v zásobníku jsou tedy (od spodu zásobníku) c, 1, 2, 3 a 4.
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{placeholder.pdf}
+  \caption{Návrh nového uživatelského rozhraní.}
+  \label{zasobnik}
+\end{figure}
+  \item \textbf{Zásobník s počítadlem} je v podstatě rozšířená implementace zásobníku. Pokud je některá entita otevíraná častěji je u ní zvyšován počet otevření, entita s největším počtem otevření je na spodu zásobníku a entita s nejmenším počtem na vrchu. Pokud se otevře nový dokument je mu zvýšen počet otevření a pokud překročí toto číslo nejvrchnější prvek na zásobníku, tato nově otevřená entita nahradí tu, která byla na vrcholu zásobníku. Jak je to provedeno v rámci aplikace můžeme vidět na obrázku \ref{counter}, nejčastěji používaná entita je označena 2 a nejméně používaná je označena 5, dále uživatel otevřel nově dokument s označením c a poté otevřel dokument d, který byl předtím otevřen dvakrát. Nově tedy zásobník obsahuje entity d, 2, 3, 4 a 1.
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{placeholder.pdf}
+  \caption{Návrh nového uživatelského rozhraní.}
+  \label{counter}
+\end{figure}
+\end{itemize}
+
+\subsection{Přibližné napovídání}
+\par Pracuje nad takzvanou fuzzy logikou a funguje na principu, že zadaný řetězec nemusí být vždy přesně zadán, aby uživateli byl dodán výsledek, který požaduje. V aplikaci přibližné napovídání funguje tak, že v momentě, kdy uživatel zadá hledaný řeťezec jsou mu zobrazeny záznamy, které se nejblíže shodují k danému řeťezci (případně obsahují prvních pár písmen), ideálně jsou tyto řeťezce shodné, aplikace nabízí možnost nabídnout uživateli entity, které se neshodují v jednom písmeni. Pokud uživatel následně vybere entitu, je k ní tento hledaný řetězec přidán. Entita tedy obsahuje seznam možných hledaných řetězců, které se dále mohou lišit o jedno písmeno. Například pokud budeme hledat entitu s názvem \textbf{Restaurace}, tato entita dále obsahuje seznam možných hledaných řetězců \textit{Rez}, \textit{taue}, \textit{auea} a \textit{Res}. Uživatel zadá do hledání \textbf{Restaues} a systém mu nabídne entitu \textbf{Restaurace}.
