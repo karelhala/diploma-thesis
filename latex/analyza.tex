@@ -120,6 +120,13 @@ PR(p) = d/n + (1-d) \sum_{(q,p) \in G}(\frac{PR(q)}{Outdegree(q)})
   \label{pageRankFig}
 \end{figure}
 
+\subsection{Ukládání a práce s velkým objemem dat}
+\par Při použití většiny technik na dolování dat je potřeba toto dolování spustit nad velkým množstvím dat, proto vzniklo několik technik jak na ukládání, tak na práci s tak velkým objemem dat. Pro ukládání se často přiliš nehodí klasická relační databáze a proto se používají například takzvané NoSql datbáze. Jednou z technik jak propojit několik datových uzlů je použít takzvané \textbf{Datové sklady} -- ty mají možnost připojit se na několik databází (bez ohledu na jejich typ) a za pomocí sofistikovaných reportingových nástrojů vytahovat z těchto databází informace, které dále transformují a upravují.
+
+\par V případě použití NoSql databáze je potřeba data nějakým způsobem provázat (indexovat), aby s nimi šlo pracovat ve velice rychlém časovém úseku bez nutnosti při každém dotazu brát data přímo z databáze. Mezi indexovací nástroje patří například nástroje \textbf{Solr} \footnote{Jednoduchý a otevřený indexační nástroj \url{http://lucene.apache.org/solr/}} nebo \textbf{Elasticsearch} \footnote{Nástroj, který vyhledává a dokže také analyzovat data \url{https://www.elastic.co/}}
+
+\par Pokud naopak využijeme datových skladů můžeme pro následnou vyzualizaci využít takzvané OLAP kostky, což je sada nástrojů pro práci s daty (mezi tyto nástroje patří naříklad pivoting, řezy, drill down/up atd.)
+
 \subsection{Aplikace využívající datovou analýzu}
 \par V průběhu využívání dolování dat a využívání datové analýzy se nástroje a aplikace postupně zdokonalovali a začínají být čím dál tím více uživatelsky přístupné. Firmy se snaží propojit několik takovýchto aplikací a dát uživatelům silné nástroje pro snadné a rychlé získání dodatečných informací z velkého množství dat. Často se objevuje možnost připojit různé zdroje dat do těchto aplikací.
 
