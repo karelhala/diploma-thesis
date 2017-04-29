@@ -109,6 +109,15 @@
   \label{new-ui}
 \end{figure}
 
+\subsection{Práce s grafy}
+\par Díky tomu, že využíváme ěebové technologie můžeme jednoduše vytvořit grafy, pro znázornění některých datových sad. Aplikace využívá více knihoven pro práci s daty, aby umožnila uživateli jednoduchou práci a možnost měnit typ grafů, upravovat datovou sadu atd.
+
+\subsubsection{Jednoduché grafy}
+\par Pro znázornění a práci s jednoduchými grafy jsme využili knihovny \textbf{chart.js}, tato knihovna se snadno ovlává a je jednoduchá pro nastavení, nicméně složitější grafické útvary nejsou jednoduché na vytvoření. Základní uživatel disponuje několika druhy grafů z této knihovny. Pokud chce používat složtější grafické znázornění musí si více připlatit a v aplikaci se zpřístupní možnost používat složitější grafy, které jsou vytvořeny v knihovně \textbf{D3}. V základních operacích s grafy nabízí aplikace jednoduché sloupcové, spojnicové, koláčové a radarové grafy. Uživatel si může zvolit z jakých datových sad bude čerpat data, jak je namapuje na grafy a případně možnost exportu grafu do pdf a obrázku.
+
+\subsubsection{Složitější grafy}
+\par Jak již bylo nastíněno v předešlé sekci pro platící uživatele nabízí aplikace rozšířenou práci s grafy, převážně rozšíření typů grafů se kterými může uživatel pracovat. Také možnost exportovat grafy do formátu, který přečte aplikace Microsoft excel. Ale hlavní výhodou oproti jednoduchým grafům má použití knihovny D3, ta nabízí velké možnosti vytvoření jak grafů, tak různých grafických prvků. Tato knihovna je používaná nadstavbou \textbf{C3}, která definuje základní grafy, které je jednoduché vytvořit, ale je značně rozšiřitelná. Také v rámci složitější práce s grafy nabízíme uživateli možnost importovat data z různých formátů (CSV, XLS, XLSX atd.) a poté zvolit dokument do kterého se tato data vloží, případně pouze pracovat s těmito daty a vytvořit graf, který poté může uživatel uložit jako samostatnou entitu.
+
 \subsection{Vyhledávací jazyk}
 \par Vzhledem k tomu, že součástí požadavků na aplikaci bylo také možnost jednoduše filtrovat a hledat v jednotlivých entitách, museli jsme přijít s vyhledávacím jazykem, který pokryje jak složité vyhledávací dotazy, tak je pro uživatele jednoduchý pro pochopení.
 
@@ -127,7 +136,7 @@
 \begin{figure}[htp]
   \centering
   \includegraphics[max size={\textwidth}]{placeholder.pdf}
-  \caption{Návrh nového uživatelského rozhraní.}
+  \caption{Binární strom pro roztřídění věty.}
   \label{binarni-strom}
 \end{figure}
 
@@ -163,14 +172,14 @@
 \begin{figure}[htp]
   \centering
   \includegraphics[max size={\textwidth}]{placeholder.pdf}
-  \caption{Návrh nového uživatelského rozhraní.}
+  \caption{Zásobník, plnění.}
   \label{zasobnik}
 \end{figure}
   \item \textbf{Zásobník s počítadlem} je v podstatě rozšířená implementace zásobníku. Pokud je některá entita otevíraná častěji je u ní zvyšován počet otevření, entita s největším počtem otevření je na spodu zásobníku a entita s nejmenším počtem na vrchu. Pokud se otevře nový dokument je mu zvýšen počet otevření a pokud překročí toto číslo nejvrchnější prvek na zásobníku, tato nově otevřená entita nahradí tu, která byla na vrcholu zásobníku. Jak je to provedeno v rámci aplikace můžeme vidět na obrázku \ref{counter}, nejčastěji používaná entita je označena 2 a nejméně používaná je označena 5, dále uživatel otevřel nově dokument s označením c a poté otevřel dokument d, který byl předtím otevřen dvakrát. Nově tedy zásobník obsahuje entity d, 2, 3, 4 a 1.
 \begin{figure}[htp]
   \centering
   \includegraphics[max size={\textwidth}]{placeholder.pdf}
-  \caption{Návrh nového uživatelského rozhraní.}
+  \caption{Rozšířený zásobník, plnění.}
   \label{counter}
 \end{figure}
 \end{itemize}
@@ -178,4 +187,101 @@
 \subsection{Přibližné napovídání}
 \par Pracuje nad takzvanou fuzzy logikou a funguje na principu, že zadaný řetězec nemusí být vždy přesně zadán, aby uživateli byl dodán výsledek, který požaduje. V aplikaci přibližné napovídání funguje tak, že v momentě, kdy uživatel zadá hledaný řeťezec jsou mu zobrazeny záznamy, které se nejblíže shodují k danému řeťezci (případně obsahují prvních pár písmen), ideálně jsou tyto řeťezce shodné. Aplikace nabízí možnost nabídnout uživateli entity, které mají v názvu, nebo v možných řetězcích jedno písmeno jiné. Pokud uživatel následně vybere entitu, je k ní tento hledaný řetězec přidán. Entita tedy obsahuje seznam možných hledaných řetězců, které se dále mohou lišit o jedno písmeno. Například pokud budeme hledat entitu s názvem \textbf{Restaurace}, tato entita dále obsahuje seznam možných hledaných řetězců \textit{Rez}, \textit{taue}, \textit{auea} a \textit{Res}. Uživatel zadá do hledání \textbf{Restaues} a systém mu nabídne entitu \textbf{Restaurace}.
 
+\section{Analýza rizik}
+\par Vlzhledem k tomu, že vytvořit takto náročnou aplikaci není triviální jsme si na začátku vývoje vytvořili analýzu možných rizik na která můžeme narazit během vývoje a při distribuci. Také jsme si tyhle rizika ohodnotili a pro některé, které by měli vysoký dopad na aplikaci jsme si připravili riziková opatření.
+
+\par Následující tabulky znázorňují pravděpodobnost výskytu a dopad rizika.
+
+\begin{tabular}{|c | c |}
+\hline
+Pravděpodobnost&Hodnota\\
+\hline
+0 - 20 \%&1\\
+\hline
+20 - 40 \%&2\\
+\hline
+40 - 60 \%&3\\
+\hline
+60 - 80 \%&4\\
+\hline
+80 - 100 \%&5\\
+\hline
+\end{tabular}
+\qquad\qquad\qquad\qquad
+\begin{tabular}{|c | c |}
+\hline
+Hodnota&Dopad\\
+\hline
+1&Velmi nízký\\
+\hline
+2&Nízký\\
+\hline
+3&Střední\\
+\hline
+4&Vysoký\\
+\hline
+5&Velmi vysoký\\
+\hline
+\end{tabular}
+
+\par Po vytvoření základních tabulek pro odhadnutí rizik, jsme jednotlivá rizika zapsali do tabulky a ohodnotli jsme je možnou pravděpodobností a případně jaký by mělo dopan na funkčnost, samotné nasazení nebo celkové nepřijetí uživateli. Kde jako mezní jsme si uričli hodnotu 14 bodů při ohodnocení pravděpodobnosti a dopadu rizika.
+
+\begin{longtable}{ || c || m{3cm} | m{4cm} | c | c | c | c | } 
+ \hline
+ Č. & Scénář & Hrozba & Pravděp. & Dopad & Hodnocení \\ 
+ \hline
+\endhead
+ 1 & Pomalý vývoj & S příchodem zákazníků budou přibývat požadavky na systém, které nemusíme stíhat přidávat & 2 & 3 & 6 \\ 
+ \hline
+ 2 & Uživatelé nebudou rozumět aplikaci & uživatelské rozhraní nebude intuitivní a snadno ovládatelné & 3 & 3 & 9 \\ 
+ \hline
+ 3 & Nezabezpečená data & Kdokoli se dostane k uživatelským datům & 3 & 5 & \cellcolor{red!55}15 \\ 
+ \hline
+ 4 & Napadení aplikace & Napadení aplikace třetí stranou & 2 & 5 & 10 \\
+ \hline
+ 5 & Pomalá práce s daty & Při velkém objemu dat může nastat zamrzání aplikace & 4 & 3 & \cellcolor{yellow!55}12 \\ 
+ \hline
+ 6 & Nezájem investorů & Aplikace nazujme případné investory, což povede k nedostatku zdrojů v prvotním spuštění & 3 & 5 & \cellcolor{red!55}15 \\ 
+ \hline
+\caption{Možné scénáře rizik při vývoji a nasazení}
+\label{rizika}
+\end{longtable}
+
+\par Jak lze vidět na tabulce \ref{rizika}, tak pouze 2 rizika si vyžadují speciální pozornost, protože překračují námi definovanou hranici rizika, zaměříme se také na riziko s číslem \textbf{5}, které je by mělo také kritický dopad na chod aplikace.
+
+\begin{longtable}{ || c || m{3cm} | m{4cm} | c | c | c | c | } 
+ \hline
+ Č. & Opatření & Cena & Pravděp.\_ & Dopad\_ & Hodnocení\_ \\ 
+ \hline
+\endhead
+ 3 & Při vývoji použijeme nástroj, který zabezpečí data. & Cena nástroje pro zabezpečení & 2 & 5 & 10 \\ 
+ \hline
+ 5 & Použití indexovacího nástroje & Cena nástroje pro indexaci dat & 3 & 3 & 9 \\ 
+ \hline
+ 6 & Dedikování člověka pro komunikaci s investory & Cena člověka pro komunikaci & 2 & 5 & 10 \\ 
+ \hline
+\caption{Opatření pro vyhnutí rizikům.}
+\label{rizika}
+\end{longtable}
+
+\par Z možných opatření vyplívá že všem potencionálním technickým rizikům, které by měli vysoký dopad se dá vyhnout použitím vhodných technologií a v případě rizika \textbf{6}, které by znamenalo možný nezájem investorů musíme dedikovat člověka pro komunikaci a vytváření povědomí o tomto nástroji.
+
+\par Pro znázornění zavedení opatření pro vyhnutí rizik jsme zvolili terčový graf na kterém lze vidět že žádné riziko po nepřekračuje hodnotu 14 bodů, které jsme si nastavili jako kritický bod. Nezajímali jsme se reizikům, které nemají tak vysokou pravděpodobnost, že by nastali, nicméně i na ty je si potřeba dávat pozor a proto je dobré, že jsme na kěteré z nich narazili již nyní.
+
+\begin{figure}[!htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{graph.pdf}
+  \caption{Graf znázorňující rizika před a po zavedení opatřeních.}
+  \label{risk-graph}
+\end{figure}
+
 \section{Cenový model}
+\par Jak již bylo řečeno několikrát v předešlém textu aplikace se bude nabízet v několika cenových relacích. Kdy více platící zákazníci dostanou na výběr větší množství funkcí a také větší podporu od vývojového týmu.
+
+\par Cenový model můžeme shrnout do třech skupin -- \textbf{základní}, \textbf{střední} a \textbf{nejvyšší} (označováno též jako stříbrný, zlatý a platinový zákazník). Zákazníci si sami vyberou jaké funkcionality se jim více hodí, kdy první 2 měsíce mají placení zdarma na vyzkoušení. Takže zákazník dostane na začátku plnou podporu všech funkcí systému bez nutnosti platit jakoukoliv částku, až v případě že by chtěl školení, případně podporu v těchto dvou měsících je s ním vytvořena smlouva, která může pokrývat například tyto dva zkušební měsíce. Pokud nechce na začátku zákazník nic platit, nemusí, dostane návod jak aplikaci používat a menší představení co s aplikací dělat a má možnost dva měsíce bezplatně testovat náš produkt.
+
+\par Po uplynutí dvouměsíční lhůty si s námi zákazník sjedná schůzku, kde se domluví bližší detaily přechodu do systému. Na začátku zákazník platí za služby jako například převod celé databáze, školení uživatelů, podpora při problémech a výpadcích atd. Každý tento úkon je ohodnocen individuálně na základě velikosti databáze a době strávené na přechodu pod náš systém.
+
+\par Pokud zákazník souhlasí se všemi podmínkami a je ochotný začít používat aplikaci je s ním také vytvořen speciální platící plán ve kterém záleží na počtu uživatelů, kteří budou mít přístup k systému a k funkcionalitám, které jednotliví uživatelé požadují. Tento platící plán je opět individuální a nejvíce se mění v počtu a druhu aktivovaných funkcí a do jaké ze tří skupin se zákazník řadí.
+
+\par Vzhledem na to, že vývoj aplikace probíhá formou opensource tak nemáme možnost, aby si schopnější uživatelé nevzali náši aplikaci a nespustili si ji sami na svém vlastním stroji, tomuto se nijak nebráníme a je nám jasné že takové případy budou vznikat, proto musíme vsázet na to, že zákazníci budou chtít platit za podporu a za přidané hodnoty na které mají nárok v rámci cenových modelů.
