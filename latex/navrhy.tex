@@ -8,11 +8,20 @@
 \par Aplikace je postavena na základě aplikačního serveru WildFly, který pracuje s moduly napsanými v jazyce Java. Základní rozdělení aplikace je tedy \textbf{Engine} a \textbf{UI}, engine je připojen na databázi MongoDb, což je NoSql databáze. Výhodou tohtoto nastavení je vysoká pružnost v rámci zapsaných dat a není tedy nutné  přesně definovat závislosti v rámci databáze (každý zákazník si může definovat jiné důležité atributy pro každý projekt).
 \par Další výhodou oddělení uživatelského rozhraní a samostaného enginu je možnost lépeřídit vývojářský tým, lépe rozdělit práci a v neposledn řadě, také možnost později vytvořit klienta nezávislého na dosavadním uživatelském rozhraní -- například vytvoření mobilní aplikace, která se bude specializovat na určitou část systému. Celý sysém spolu komunikuje tedy pomocí REST rozhraní a o zabezpečení se stará vrstva Keycloak, ve kterém jsou oba moduly registrovány a slouží jako takový středobod celého systému. Jak jsou jednotlivé části propojeny můžete vidět na obázku \ref{schema}, kde hrany znamenají komunikační zprávy a uzly logické bloky.
 
-\begin{figure}[htp]
+\begin{figure}[!htp]
   \centering
-  \includegraphics[max size={\textwidth}]{placeholder.pdf}
+  \includegraphics[max size={\textwidth}]{navrh.pdf}
   \caption{Diagram znázorňující schéma nástroje.}
   \label{schema}
+\end{figure}
+
+\par Pro znázornění jak dochází k získání dat se můžeme podívat na diagram \ref{komunikace}. Kde uživatel vyvolá jakoukoliv akci, která vyžaduje získání dat ze serveru, uživatelské rozhraní se nejdříve zeptá keycloak serveru, zda má aktivní token stále aktivní a pokud ne, autentizační server mu vytvoří nový. Poté uživatelské rozhraní pošle dotaz na samotný engine (v tomto dotazu se nachází autentikační token), kde se skontroluje opět životnost tokenu a zda má uživatel práva pro daná data. Pokud je vše v pořádku server vrátí data, pokud ne odpoví chybovou hláškou. Výhodou takovéto komunikace je, že nezáleží na implementaci uživatelského rozhraní, to může být napsáno jak pomocí webových technologií (JavaScript), tak jako mobilní aplikace.
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{komunikace.pdf}
+  \caption{Diagram znázorňující schéma nástroje.}
+  \label{komunikace}
 \end{figure}
 
 \par Pokud uživatel již disponuje velkým datovým uložištěm je ho možné připojit do systému jednoduchou konfigurací v rámci UI, systém prozkoumá tyto data, některá si nakopíruje a začne je uživateli nabízet podobně, jako kdyby je uživatel měl již dříve v systému. Podobně je tomu s dolováním dat -- modul, který je zodpovědný za samostatné dolování je možné připojit do systému, odkázat jej na datové uložiště a spustit samostatné dolování dat. Vše je nastavitelné jak z uživatelského prostředí, tak pomocí volání na předem definované RESTové služby.
@@ -43,9 +52,16 @@
 
 \par Vzhledem k rozsáhlosti a složitosti uživatelského rozhraní bylo rozhodnuto, že se použije aplikační framework s podporou jednostránkové aplikace, po prozkoumání alternativ byl následně vybrán rámec \textbf{Angula 2}. S výběrem tohoto aplikačního rámce jde ruku v ruce také výběr jazyku ve kterém je uživatelské rozhraní napsáno, což je silně typovaný jazyk \textbf{Typescript}.
 
-\par Uživatelské rozhraní se postupně upravovalo a byla snaha o co možná najjednodušší používání této aplikace, proto byla první verze rozhraní představena několika méně zkušeným uživatelům počítače, kterým se dali jednoduché úkoly a byl sledován jejich postup a následně jim byla položena otázka zda byl úkol snadný. Systém jim byl pouze zevrubně vysvětlen slovy, že se jedná o aplikaci, která obsahuje kolekce souborů, které jsou mezi sebou propojeny.
+\par Uživatelské rozhraní se postupně upravovalo a byla snaha o co možná najjednodušší používání této aplikace, proto byla první verze rozhraní představena několika méně zkušeným uživatelům počítače, kterým se dali jednoduché úkoly a byl sledován jejich postup a následně jim byla položena otázka zda byl úkol snadný. Systém jim byl pouze zevrubně vysvětlen slovy, že se jedná o aplikaci, která obsahuje kolekce souborů, které jsou mezi sebou propojeny. Jak vypadalo uživatelské rozhraní před těmito úkoly se můžete podívat na obrázku \ref{old-ui}.
 
-\subsubsection{Úkol číslo 1} Výběr kolekce a následně zjištění informací o této kolekci. Úrověň náročnosti \textbf{lehká}.
+\begin{figure}[!h]
+  \centering
+  \includegraphics[max size={\textwidth}]{old-design}
+  \caption{Návrh nového uživatelského rozhraní.}
+  \label{old-ui}
+\end{figure}
+
+\subsubsection{Úkol číslo 1} Výběr kolekce a následně zjištění informací o této kolekci. Úrověň náročnosti \textbf{lehká}, na výsledky hodnocení se můžete podívat v tabulce \ref{ukol-1}.
 \begin{table}[htp]
 \begin{center}
 \begin{tabular}{ || c || c | c |  m{5cm} || } 
@@ -61,9 +77,10 @@
  \hline
 \end{tabular}
 \end{center}
-\caption{The caption without a number}
+\caption{Vyhodnocení úkolu číslo 1.}
+\label{ukol-1}
 \end{table}
-\subsubsection{Úkol číslo 2} Výběr kolekce a dokumentu v kolekci pro který budou upraveny propojení. \textbf{středně těžká}
+\subsubsection{Úkol číslo 2} Výběr kolekce a dokumentu v kolekci pro který budou upraveny propojení. \textbf{středně těžká}, na výsledky hodnocení se můžete podívat v tabulce \ref{ukol-2}.
 \begin{table}[htp]
 \begin{center}
 \begin{tabular}{ || c || c | c |  m{5cm} || } 
@@ -79,9 +96,10 @@
  \hline
 \end{tabular}
 \end{center}
-\caption{The caption without a number}
+\caption{Vyhodnocení úkolu číslo 2.}
+\label{ukol-2}
 \end{table}
-\subsubsection{Úkol číslo 3} Výběr kolekce a dokumentu v kolekci pro který se zobrazí práva. Úroveň náročnosti \textbf{těžká}
+\subsubsection{Úkol číslo 3} Výběr kolekce a dokumentu v kolekci pro který se zobrazí práva. Úroveň náročnosti \textbf{těžká}, na výsledky hodnocení se můžete podívat v tabulce \ref{ukol-3}.
 \begin{table}[htp]
 \begin{center}
 \begin{tabular}{ || c || c | c |  m{5cm} || } 
@@ -97,14 +115,15 @@
  \hline
 \end{tabular}
 \end{center}
-\caption{The caption without a number}
+\caption{Vyhodnocení úkolu číslo 3.}
+\label{ukol-3}
 \end{table}
 
 \par Vzhledem na výsledky hodnocení a uživatelské podněty se tým rozhodl přepracovat UI do více uživatelsky přívětivého způsobu. Hlavní výtka všech uživatelů bylo příliš mnoho navigačních prvků na stránce, což vede k nepřehlednosti a uživatelé tak nevědí na co kliknout a co použít. Na druhou stranu většina uživatelů, kterým byla aplikace představena zdůraznili výhodu vyhledávání a filtrování v rámci kolekcí, dokumentů a propojení. Z těchto poznatků bylo tedy určeno, že nejlepší bude zvýraznit vyhledávací formulář, který bude na všech stránkách aplikace. Dále také nějakým způsobem sjednotit všechny prvky aplikace do jednoho vyhledávání, tak aby uživatelé měli přehledně a snadno dostupné například dokumenty a hned vedle nich propojení. Z těchto požadavků bylo tedy navrhnuto nové uživatelské rozhraní, které lze vidět na \ref{new-ui}.
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[max size={\textwidth}]{placeholder.pdf}
+  \includegraphics[max size={\textwidth}]{new-design}
   \caption{Návrh nového uživatelského rozhraní.}
   \label{new-ui}
 \end{figure}
@@ -114,6 +133,13 @@
 
 \subsubsection{Jednoduché grafy}
 \par Pro znázornění a práci s jednoduchými grafy jsme využili knihovny \textbf{chart.js}, tato knihovna se snadno ovlává a je jednoduchá pro nastavení, nicméně složitější grafické útvary nejsou jednoduché na vytvoření. Základní uživatel disponuje několika druhy grafů z této knihovny. Pokud chce používat složtější grafické znázornění musí si více připlatit a v aplikaci se zpřístupní možnost používat složitější grafy, které jsou vytvořeny v knihovně \textbf{D3}. V základních operacích s grafy nabízí aplikace jednoduché sloupcové, spojnicové, koláčové a radarové grafy. Uživatel si může zvolit z jakých datových sad bude čerpat data, jak je namapuje na grafy a případně možnost exportu grafu do pdf a obrázku.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[max size={\textwidth}]{placeholder.pdf}
+  \caption{Příklad použitých jednoduchých grafů.}
+  \label{binarni-strom}
+\end{figure}
 
 \subsubsection{Složitější grafy}
 \par Jak již bylo nastíněno v předešlé sekci pro platící uživatele nabízí aplikace rozšířenou práci s grafy, převážně rozšíření typů grafů se kterými může uživatel pracovat. Také možnost exportovat grafy do formátu, který přečte aplikace Microsoft excel. Ale hlavní výhodou oproti jednoduchým grafům má použití knihovny D3, ta nabízí velké možnosti vytvoření jak grafů, tak různých grafických prvků. Tato knihovna je používaná nadstavbou \textbf{C3}, která definuje základní grafy, které je jednoduché vytvořit, ale je značně rozšiřitelná. Také v rámci složitější práce s grafy nabízíme uživateli možnost importovat data z různých formátů (CSV, XLS, XLSX atd.) a poté zvolit dokument do kterého se tato data vloží, případně pouze pracovat s těmito daty a vytvořit graf, který poté může uživatel uložit jako samostatnou entitu.
@@ -133,9 +159,9 @@
 
 \par Fulltextové vyhledávání je složitější pro server, převážně kvůli tomu, že jako dotaz bude mít vždy jeden dlouhý řetězec, který musí rozpadnout do jednotlivých prvků a nad těmi provést výsledné vyhledávání v rámci databáze. Server funguje tak, že si větu nejdříve rozdělí do jednotlivých slov a ty roztřídí do binárního stromu. Jak lze například vidět na obrázku \ref{binarni-strom}, kde je věta \textit{Restaurant in Brno with burger and pizza}. Server zpracovává binární strom od spodu a vždy když se mu povede vyhledat některý prvek označí větev za vyřešenou a již ji dále nezpracovává. Takže při použití tohoto příkladu server zjistí že uživatel hledá kolekci s názvem Restaurant, která obsahuje atribut Brno, dále server vyfiltruje všechny restaurace, které mají buger a které mají pizzu. Bohužel není vyhledávací algoritmus natolik přesný, aby vyhledal dokumenty ve kterých jsou tyto proměnné spojené.
 
-\begin{figure}[htp]
+\begin{figure}[!htb]
   \centering
-  \includegraphics[max size={\textwidth}]{placeholder.pdf}
+  \includegraphics[max size={\textwidth}]{tree.pdf}
   \caption{Binární strom pro roztřídění věty.}
   \label{binarni-strom}
 \end{figure}
@@ -165,21 +191,21 @@
 \par Tato heuristika je složitější a znamená velkou zátěž pro systém, proto je potřeba dopředu provést nastavení tabulky při vytváření. Funguje tak, že při vytvoření nové tabulky uživatel může definovat tuto tabulku jako zdrojové data a kdykoliv se bude vytvářet nový soubor provede se kontrola nad zdrojovými tabulkami zda některá neobsahuje příslušný zázam. Vzhledem k náročnosti na systém jsme se rozhodli, že tuto vlastnost odstupňujeme pro jednotlivé druhy zákazníků.
 
 \subsection{Nejčastěji používané entity}
-\par S přihlédnutím na uživatelské požadavky obsahuje systém možnost zobrazit entity, které jsou nejčastěji používané daným uživatelem pro jednu organizaci a projekt. Pro zobrazení požadovaných entit jsme nejdříve vybrali elgoritmus \textbf{zásobníku}, ale tento model se nám neosvědčil protože se často stávalo, že často používané entity mizeli a méně časté se nacházeli v nabídce, proto jsme do systému naimplementovali možnost přepnutí na takzvaný \textbf{zásobník s počítadlem} -- možnost pouze pro zákazníky s kvalitnější podporou. Přepnutí těchto technik se poté nachází v uživatelském nastavení, takže každý uživatel je schopen si toto řezení změnit.
+\par S přihlédnutím na uživatelské požadavky obsahuje systém možnost zobrazit entity, které jsou nejčastěji používané daným uživatelem pro jednu organizaci a projekt. Pro zobrazení požadovaných entit jsme nejdříve vybrali elgoritmus \textbf{fronta}, ale tento model se nám neosvědčil protože se často stávalo, že často používané entity mizeli a méně časté se nacházeli v nabídce, proto jsme do systému naimplementovali možnost přepnutí na takzvaný \textbf{fronta s počítadlem} -- možnost pouze pro zákazníky s kvalitnější podporou. Přepnutí těchto technik se poté nachází v uživatelském nastavení, takže každý uživatel je schopen si toto řezení změnit.
 
 \begin{itemize}
-  \item \textbf{Zásobník} funguje na stylu omezeného počtu záznamů, které mohou být zobrazeny a pokud je tento počet překročen, poslední záznam, který byl zaktivován je odstraněn. Toto řešení je dostačující, nicméně může nastat to že entita, která je často otevíraná zmizí z tohoto seznamu kvůli otevření několika stejných entit. Chování v aplikaci lze vidět na obrázku \ref{zasobnik}, kdy zásobník obsahuje entity označené 1, 2, 3, 4 a 5. Uživatel otevřel nově entitu s označením c a entity v zásobníku jsou tedy (od spodu zásobníku) c, 1, 2, 3 a 4.
+  \item \textbf{Fronta} funguje na stylu omezeného počtu záznamů, které mohou být zobrazeny a pokud je tento počet překročen, poslední záznam, který byl zaktivován je odstraněn. Toto řešení je dostačující, nicméně může nastat to že entita, která je často otevíraná zmizí z tohoto seznamu kvůli otevření několika stejných entit. Chování v aplikaci lze vidět na obrázku \ref{zasobnik}, kdy fronta obsahuje entity označené 1, 2, 3, 4 a 5. Uživatel otevřel nově entitu s označením c a entity v zásobníku jsou tedy (od spodu fronty) c, 1, 2, 3 a 4.
 \begin{figure}[htp]
   \centering
-  \includegraphics[max size={\textwidth}]{placeholder.pdf}
-  \caption{Zásobník, plnění.}
+  \includegraphics[max size={\textwidth}]{zasobnik.pdf}
+  \caption{Příklad plnění fronty.}
   \label{zasobnik}
 \end{figure}
-  \item \textbf{Zásobník s počítadlem} je v podstatě rozšířená implementace zásobníku. Pokud je některá entita otevíraná častěji je u ní zvyšován počet otevření, entita s největším počtem otevření je na spodu zásobníku a entita s nejmenším počtem na vrchu. Pokud se otevře nový dokument je mu zvýšen počet otevření a pokud překročí toto číslo nejvrchnější prvek na zásobníku, tato nově otevřená entita nahradí tu, která byla na vrcholu zásobníku. Jak je to provedeno v rámci aplikace můžeme vidět na obrázku \ref{counter}, nejčastěji používaná entita je označena 2 a nejméně používaná je označena 5, dále uživatel otevřel nově dokument s označením c a poté otevřel dokument d, který byl předtím otevřen dvakrát. Nově tedy zásobník obsahuje entity d, 2, 3, 4 a 1.
+  \item \textbf{Fronta s počítadlem} je v podstatě rozšířená implementace fronty. Pokud je některá entita otevíraná častěji je u ní zvyšován počet otevření, entita s největším počtem otevření je na spodu fronty a entita s nejmenším počtem na vrchu. Pokud se otevře nový dokument je mu zvýšen počet otevření a pokud překročí toto číslo nejvrchnější prvek ve frontě, tato nově otevřená entita nahradí tu, která byla na vrcholu fronty. Jak je to provedeno v rámci aplikace můžeme vidět na obrázku \ref{counter}, nejčastěji používaná entita je označena 2 a nejméně používaná je označena 5, dále uživatel otevřel nově dokument s označením c a poté otevřel dokument d, který byl předtím otevřen jednou. Nově tedy zásobník obsahuje entity 2, 3, 4, 1 a d.
 \begin{figure}[htp]
   \centering
-  \includegraphics[max size={\textwidth}]{placeholder.pdf}
-  \caption{Rozšířený zásobník, plnění.}
+  \includegraphics[max size={\textwidth}]{rozsireny-zasobnik.pdf}
+  \caption{Příklad plnění rozšířené fronty s počítadlem.}
   \label{counter}
 \end{figure}
 \end{itemize}
