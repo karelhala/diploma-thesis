@@ -63,7 +63,14 @@ Platforma jako služba tento pojem označuje službu, která zahrnuje kompletní
 
 \par Pravděpodobně nejvíce rozšířeným aplikováním data-miningu je marketing -- sledování nakupování a chování zákazníků. V této oblasti je možné vybrat si každého zákazníka, a v případě že máme dostatek dat, cílit na něj lépe reklamu. \cite{data-science-business}
 
-\par Pro plné využití BI nástrojů potřebujeme sledované subjekty rozdělit do několika skupin, tyto skupiny musí být co nejvíce \textbf{Heterogenní} (rozdílné) vůči sobě, a subjekty v rámci jedné skupiny musí být na druhou stranu co nejvíc \textbf{Homogenní} (stejné). Pokud sledované subjekty spadají do více skupin (toto se může hodit z mnoha důvodů) můžeme použít takzvané  \textbf{Clustery}. Což jsou skupiny objektů, které si jsou co nejvíce podobné, ale objekty v jiné skupině se jim budou co nejvíce lišit. \cite{data-science-business}
+\par Pro plné využití BI nástrojů potřebujeme sledované subjekty rozdělit do několika skupin, tyto skupiny musí být co nejvíce \textbf{Heterogenní} (rozdílné) vůči sobě, a subjekty v rámci jedné skupiny musí být na druhou stranu co nejvíc \textbf{Homogenní} (stejné). Pokud sledované subjekty spadají do více skupin (toto se může hodit z mnoha důvodů) můžeme použít takzvané  \textbf{Clustery}. Což jsou skupiny objektů, které si jsou co nejvíce podobné, ale objekty v jiné skupině se jim budou co nejvíce lišit. \cite{data-science-business} Jak takové clustery vypadají můžeme vidět na obrázku \ref{cluster-fig}, kde jsou tři druhy skupin do kterých jsou jednotlivá data rozdělována.
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{kmeans1}
+  \caption{Příklad dělení dat do clusterů.}
+  \label{cluster-fig}
+\end{figure}
 
 \par Samostatá data jako taková však nejsou to nejdůležitější, pokud nebudeme schopni vhodně interpretovat a využít data, která jsme nashromáždili jsou nám k ničemu, z toho důvodu vzniklo strojové učení. V podstatě to znamená, že pokud předáme stroji dostatečně velké možství dat a nastavíme správně parametry, tak nám mohou stroje umožnit rychlejší interpretaci takových dat. Ale na předpovědi je nutno nahlížet s odstupem a nebrat je příliš vážně a přesně, naštěstí například pro úspěšný prodej není potřeba přesných předpovědí, stačí pouze vědět kdy a komu poslat přesně cílenou reklamu. Pokud se systém trefí do těhcot kritérií je velká pravděpodobnost že si námi zacílený zákazník pořídí produkt, který se mu snažíme prodat. \cite{predictive-analytics}
 
@@ -232,4 +239,13 @@ Největším problémem při přístupu k datům, pří použití REST je rozhod
 
 \paragraph{Náklad} zde se nachází data, která služba poskytuje. Často jsou zde přihlašovací údaje (uživatelské jméno a čas vypršení), dále může obsahovat jakákoliv data chceme, například pohlaví uživatele, věk, email, atd.
 
-\paragraph{Podpis} je text, který vznikne spojením hlavičky a nákladu, který je poté zahashován pomocí algoritmu, který je určen v hlavičce tokenu. \cite{rfc-jwt}
+\paragraph{Podpis} je text, který vznikne spojením hlavičky a nákladu, který je poté zahashován pomocí algoritmu, který je určen v hlavičce tokenu. Součástí tohoto algoritmu také může být tajné heslo. \cite{rfc-jwt}
+
+\par Příklad jak vypadá zakódovaný a odkódovaný token můžeme vidět na \ref{jwt-token-fig}, kde obsah dat, která JWT nese jsou jméno uživatel, zda je administrátor a čas teokenu. Jak lze vidět, tak součástí hlavičky je také algoritmus použitý pro zahashování.
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{jwt-token.pdf}
+  \caption{Příklad zakódovaného a odkódovaného JWT.}
+  \label{jwt-token-fig}
+\end{figure}

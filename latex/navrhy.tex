@@ -133,12 +133,13 @@
 
 \subsubsection{Jednoduché grafy}
 \par Pro znázornění a práci s jednoduchými grafy jsme využili knihovny \textbf{chart.js}, tato knihovna se snadno ovlává a je jednoduchá pro nastavení, nicméně složitější grafické útvary nejsou jednoduché na vytvoření. Základní uživatel disponuje několika druhy grafů z této knihovny. Pokud chce používat složtější grafické znázornění musí si více připlatit a v aplikaci se zpřístupní možnost používat složitější grafy, které jsou vytvořeny v knihovně \textbf{D3}. V základních operacích s grafy nabízí aplikace jednoduché sloupcové, spojnicové, koláčové a radarové grafy. Uživatel si může zvolit z jakých datových sad bude čerpat data, jak je namapuje na grafy a případně možnost exportu grafu do pdf a obrázku.
-
 \begin{figure}[!htb]
-  \centering
-  \includegraphics[max size={\textwidth}]{placeholder.pdf}
-  \caption{Příklad použitých jednoduchých grafů.}
-  \label{binarni-strom}
+    \centering
+    \subfloat[Sloupcový]{{\includegraphics[width=5cm]{chart_bar} }}%
+    \subfloat[Spojnicový]{{\includegraphics[width=5cm]{chart_line} }}%
+    \subfloat[Koláčový]{{\includegraphics[width=5cm]{chart_pie} }}%
+    \caption{2 Figures side by side}%
+    \label{fig:example}%
 \end{figure}
 
 \subsubsection{Složitější grafy}
@@ -185,30 +186,40 @@
 
 \par Nad takto nově vzniklými propojeními lze provádět samozřejmě stejné operace jako v případě klasických propojení, tedy definovat propojovací řetězec a jednoduché funkce. Nicméně při definování jednoduchých funkcí uživatel bohužel ztrácí automatické znovunačtení záznamů v případě změn v propojených souborech, pokud chce načíst změny v takových záznamech musí si vyžádat načtení hodnot, které jsou uloženy do souboru.
 
+\par Příklady takových propojení můžeme vidět na obrázku \ref{linkovani}, kde jedna tabulka s nabízeným zbožím získává data ze dvou tabulek a poté další tabulka o informacích o uživatelích získává jména z dokumentu, který obsahuje všechna možná jména.
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{linkovani}
+  \caption{Příklad automaticky prolinkovaných dokumentů.}
+  \label{linkovani}
+\end{figure}
+
 \subsubsection{Heuristika 1}
 \par V případě první heuristiky se kontrolují pouze záhlaví tabulky, takže pokud vezmeme v úvahu definovaný příklad, v momentě vytvoření dokumentu se provede kontrola nad podobnými soubory a pokud se najde shoda propojení se automaticky vytvoří.
 \subsubsection{Heuristika 2}
 \par Tato heuristika je složitější a znamená velkou zátěž pro systém, proto je potřeba dopředu provést nastavení tabulky při vytváření. Funguje tak, že při vytvoření nové tabulky uživatel může definovat tuto tabulku jako zdrojové data a kdykoliv se bude vytvářet nový soubor provede se kontrola nad zdrojovými tabulkami zda některá neobsahuje příslušný zázam. Vzhledem k náročnosti na systém jsme se rozhodli, že tuto vlastnost odstupňujeme pro jednotlivé druhy zákazníků.
 
 \subsection{Nejčastěji používané entity}
-\par S přihlédnutím na uživatelské požadavky obsahuje systém možnost zobrazit entity, které jsou nejčastěji používané daným uživatelem pro jednu organizaci a projekt. Pro zobrazení požadovaných entit jsme nejdříve vybrali elgoritmus \textbf{fronta}, ale tento model se nám neosvědčil protože se často stávalo, že často používané entity mizeli a méně časté se nacházeli v nabídce, proto jsme do systému naimplementovali možnost přepnutí na takzvaný \textbf{fronta s počítadlem} -- možnost pouze pro zákazníky s kvalitnější podporou. Přepnutí těchto technik se poté nachází v uživatelském nastavení, takže každý uživatel je schopen si toto řezení změnit.
+\par S přihlédnutím na uživatelské požadavky obsahuje systém možnost zobrazit entity, které jsou nejčastěji používané daným uživatelem pro jednu organizaci a projekt. Pro zobrazení požadovaných entit jsme nejdříve vybrali elgoritmus \textbf{fronta}, ale tento model se nám neosvědčil protože se často stávalo, že často používané entity mizeli a méně časté se nacházeli v nabídce, proto jsme do systému naimplementovali možnost přepnutí na takzvaný \textbf{fronta s počítadlem} -- možnost pouze pro zákazníky s kvalitnější podporou. Přepnutí těchto technik se poté nachází v uživatelském nastavení, takže každý uživatel je schopen si toto řazení změnit.
 
-\begin{itemize}
-  \item \textbf{Fronta} funguje na stylu omezeného počtu záznamů, které mohou být zobrazeny a pokud je tento počet překročen, poslední záznam, který byl zaktivován je odstraněn. Toto řešení je dostačující, nicméně může nastat to že entita, která je často otevíraná zmizí z tohoto seznamu kvůli otevření několika stejných entit. Chování v aplikaci lze vidět na obrázku \ref{zasobnik}, kdy fronta obsahuje entity označené 1, 2, 3, 4 a 5. Uživatel otevřel nově entitu s označením c a entity v zásobníku jsou tedy (od spodu fronty) c, 1, 2, 3 a 4.
+\subsubsection{Fronta}
+\par Funguje na stylu omezeného počtu záznamů, které mohou být zobrazeny a pokud je tento počet překročen, poslední záznam, který byl zaktivován je odstraněn. Toto řešení je dostačující, nicméně může nastat to že entita, která je často otevíraná zmizí z tohoto seznamu kvůli otevření několika stejných entit. Chování v aplikaci lze vidět na obrázku \ref{zasobnik}, kdy fronta obsahuje entity označené 1, 2, 3, 4 a 5. Uživatel otevřel nově entitu s označením c a entity v zásobníku jsou tedy (od spodu fronty) c, 1, 2, 3 a 4.
 \begin{figure}[htp]
   \centering
   \includegraphics[max size={\textwidth}]{zasobnik.pdf}
-  \caption{Příklad plnění fronty.}
+  \caption{Příklad plnění jednoduché fronty.}
   \label{zasobnik}
 \end{figure}
-  \item \textbf{Fronta s počítadlem} je v podstatě rozšířená implementace fronty. Pokud je některá entita otevíraná častěji je u ní zvyšován počet otevření, entita s největším počtem otevření je na spodu fronty a entita s nejmenším počtem na vrchu. Pokud se otevře nový dokument je mu zvýšen počet otevření a pokud překročí toto číslo nejvrchnější prvek ve frontě, tato nově otevřená entita nahradí tu, která byla na vrcholu fronty. Jak je to provedeno v rámci aplikace můžeme vidět na obrázku \ref{counter}, nejčastěji používaná entita je označena 2 a nejméně používaná je označena 5, dále uživatel otevřel nově dokument s označením c a poté otevřel dokument d, který byl předtím otevřen jednou. Nově tedy zásobník obsahuje entity 2, 3, 4, 1 a d.
+
+\subsubsection{Fronta s počítadlem}
+\par Je v podstatě rozšířená implementace fronty. Pokud je některá entita otevíraná častěji je u ní zvyšován počet otevření, entita s největším počtem otevření je na spodu fronty a entita s nejmenším počtem na vrchu. Pokud se otevře nový dokument je mu zvýšen počet otevření a pokud překročí toto číslo nejvrchnější prvek ve frontě, tato nově otevřená entita nahradí tu, která byla na vrcholu fronty. Jak je to provedeno v rámci aplikace můžeme vidět na obrázku \ref{counter}, nejčastěji používaná entita je označena 2 a nejméně používaná je označena 5, dále uživatel otevřel nově dokument s označením c a poté otevřel dokument d, který byl předtím otevřen jednou. Nově tedy zásobník obsahuje entity 2, 3, 4, 1 a d.
 \begin{figure}[htp]
   \centering
   \includegraphics[max size={\textwidth}]{rozsireny-zasobnik.pdf}
   \caption{Příklad plnění rozšířené fronty s počítadlem.}
   \label{counter}
 \end{figure}
-\end{itemize}
 
 \subsection{Přibližné napovídání}
 \par Pracuje nad takzvanou fuzzy logikou a funguje na principu, že zadaný řetězec nemusí být vždy přesně zadán, aby uživateli byl dodán výsledek, který požaduje. V aplikaci přibližné napovídání funguje tak, že v momentě, kdy uživatel zadá hledaný řeťezec jsou mu zobrazeny záznamy, které se nejblíže shodují k danému řeťezci (případně obsahují prvních pár písmen), ideálně jsou tyto řeťezce shodné. Aplikace nabízí možnost nabídnout uživateli entity, které mají v názvu, nebo v možných řetězcích jedno písmeno jiné. Pokud uživatel následně vybere entitu, je k ní tento hledaný řetězec přidán. Entita tedy obsahuje seznam možných hledaných řetězců, které se dále mohou lišit o jedno písmeno. Například pokud budeme hledat entitu s názvem \textbf{Restaurace}, tato entita dále obsahuje seznam možných hledaných řetězců \textit{Rez}, \textit{taue}, \textit{auea} a \textit{Res}. Uživatel zadá do hledání \textbf{Restaues} a systém mu nabídne entitu \textbf{Restaurace}.

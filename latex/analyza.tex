@@ -38,11 +38,32 @@
 \subsection{Responzivní aplikační rámec}
 \par Pro usnadnění používání webových aplikací na jekémkoliv zařízení vzniká aktuálně mnoho knihoven a aplikačních rámců, které mají za úkol sjednotit design napříč několika aplikacemi a také jejich responzibilitu. To znamená že stejná aplikace se bude chovat a vypadat stejně bez ohledu na to, na jakém zařízení ji otevřeme (mobilní zařízení, tablet, počítač, televize, atd.)
 
-\paragraph{Material design} vznikl na popud zjednodušení a zpřehlednění uživatelského rozhraní, jeho hlavním zaměřením je dotek, hlas a kliknutí. Definuje tři pravidla \textbf{Material je metafora} -- chytře využívat prostor a pohyb jednotlivých elementů. \textbf{Tučné, grafické, záměrné} -- základními stavebními bloky jsou typografie, mřížka, místo, barva a použití obrázků. \textbf{Pohyb má význam} -- pokud uživatel vykoná nějakou akci design mu napoví jaká akce se stane pohybem. \cite{material}
+\paragraph{Material design} vznikl na popud zjednodušení a zpřehlednění uživatelského rozhraní, jeho hlavním zaměřením je dotek, hlas a kliknutí. Definuje tři pravidla \textbf{Material je metafora} -- chytře využívat prostor a pohyb jednotlivých elementů. \textbf{Tučné, grafické, záměrné} -- základními stavebními bloky jsou typografie, mřížka, místo, barva a použití obrázků. \textbf{Pohyb má význam} -- pokud uživatel vykoná nějakou akci design mu napoví jaká akce se stane pohybem. \cite{material} Příklad aplikace napsané pomocí Materialu můžeme vidět na \ref{material-fig}.
 
-\paragraph{Boostrap} jeden z prvních responzivních rámců, který přivedl sjednocení uživatelského rozhraní napříč všemi platformami s největším důrazem na mobilní platformy. Dost často jsou vytvořeny webové aplikace, které nerespektují různé rozlyšení pro různé uživatele, tomuto se chtěl bootstrap vyhnout. Nyní nabízí velké množství doplňků a rozšíření, díky kterým z něj dělají rávem nejrozšířenější responzivní rámec. \cite{bootstrap}
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{material}
+  \caption{Příklad tématu pro aplikaci napsanou technologií material.}
+  \label{material-fig}
+\end{figure}
 
-\paragraph{Patternfly} se inspiroval bootsrapem a vytvořil vlastní responzivní rámec, dále nabízí několik widgetů pro zobrazování složitějších uživatelských dat. Jeho hlavním zaměřením je unifikovat jednotlivé aplikace ve firmě, tak aby měli stejný, ale unikátní design. Proto nabízí několik jednoduchých přístupů co a jak dělat pro dosažení co nejvíce podobného vzhledu napříč aplikacemi. \cite{patternfly}
+\paragraph{Boostrap} jeden z prvních responzivních rámců, který přivedl sjednocení uživatelského rozhraní napříč všemi platformami s největším důrazem na mobilní platformy. Dost často jsou vytvořeny webové aplikace, které nerespektují různé rozlyšení pro různé uživatele, tomuto se chtěl bootstrap vyhnout. Nyní nabízí velké množství doplňků a rozšíření, díky kterým z něj dělají rávem nejrozšířenější responzivní rámec. \cite{bootstrap} Příklad aplikace napsané pomocí Bootstrapu můžeme vidět na oficiální tématu na \ref{bootstrap-fig}.
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{bootstrap}
+  \caption{Příklad tématu pro aplikaci napsanou technologií bootstrap.}
+  \label{bootstrap-fig}
+\end{figure}
+
+\paragraph{Patternfly} se inspiroval bootsrapem a vytvořil vlastní responzivní rámec, dále nabízí několik widgetů pro zobrazování složitějších uživatelských dat. Jeho hlavním zaměřením je unifikovat jednotlivé aplikace ve firmě, tak aby měli stejný, ale unikátní design. Proto nabízí několik jednoduchých přístupů co a jak dělat pro dosažení co nejvíce podobného vzhledu napříč aplikacemi. \cite{patternfly}  Příklad aplikace napsané pomocí Materialu můžeme vidět na \ref{patternfly-fig}.
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{patternfly}
+  \caption{Příklad tématu pro aplikaci napsanou technologií patternfly.}
+  \label{patternfly-fig}
+\end{figure}
 
 \section{Single sign-on}
 \par V aktuální době velká část společností nabízejících větší potrfolio aplikací volí takzvanou službu single sign-on, kdy uživatel nemusí pokaždé zadávat své přihlašovací údaje, ale o jeho identifikaci se postará specializovaná služba. Většinou se stačí do této služby přihlásit jednou a dokud nevyprší čas od posledního použití aplikace, která používá tuto službu, nebo není uživatel schválně  odhlášen nemusí se znovu přihlašovat. Jako protiklad je postaven Single sign-off, kdy při odhlášení v jedné aplikaci je uživatel automaticky odhlášen ze všech ostatních aplikací, toto napomáhá dalšímu zabezpečení.
@@ -52,7 +73,7 @@
 \paragraph{OpenID Connect} je v podstatě identitní vrstva postavená nad OAuth 2.0, poskytuje možnost identifikace uživatele a také získání základních informací. Modernější a v aktuální době více používaný způsob převážně kvůli jeho jednoduchosti a nižšímu zatížení serveru. \cite{oidc}
 
 \paragraph{SAML} se skládá ze dvou částí, poskytovatele služby a poskytovatele totožnosti (tím může být například Facebook, Google, Github, atd.). Jakým způsobem je uživatel přihlášen do služby můžeme vidět na obrázku \ref{saml2}. Nejdříve uživatel vytvoří požadavek na poskytovatele služby, ten vygeneruje SAML požadavek v URL, aplikace přesměruje uživatele na poskytovatele totožnosti, ten ověří přihlašovací údaje, přepošle zpět na poskytovatele služby požadavek na potvrzení, dále je uživatel přesměrován na cílový požadavake, o který si znovu požádá a server mu jej vrátí. \cite{saml}
-\begin{figure}[hp]
+\begin{figure}[!htp]
   \centering
   \includegraphics[max size={\textwidth}{\textheight}]{SAML2.pdf}
   \caption{Předání uživatelského požadavku při použití SAML2}
@@ -60,9 +81,17 @@
 \end{figure}
 
 \subsection{Autentikační servery} \label{auth-server}
-\par Aktuální trh nabízí velké množství autentikačních serverů, které spravují uživatele a poskytují přihlášení do více aplikací. Některé jsou dokonce volně k použití bez nutnosti zakoupit licenci, je nutné pouze spravovat servery na kterých takováto služba poběží.
+\par Aktuální trh nabízí velké množství autentikačních serverů, které spravují uživatele a poskytují přihlášení do více aplikací. Některé jsou dokonce volně k použití bez nutnosti zakoupit licenci, je nutné pouze spravovat servery na kterých takováto služba poběží. Mezi tyto servery patří například \textbf{Keycloak}, \textbf{Sterling externí autentikační server} a \textbf{Active Directory Federation Services}.
 
-\paragraph{Keycloak} je open sourcové řešení, které nabízí připojení jak přes sociální síťe a možnost získání uživatelských účtů z LDAP, Active Directory a nebo přímo z databáze. Jeho velkou premisou je jednoduchost správy uživatelů, včetně definice přístupových práv pro jednotlivé části aplikace. \cite{keycloak}
+\paragraph{Keycloak} je open sourcové řešení, které nabízí připojení jak přes sociální síťe a možnost získání uživatelských účtů z LDAP, Active Directory a nebo přímo z databáze. Jeho velkou premisou je jednoduchost správy uživatelů, včetně definice přístupových práv pro jednotlivé části aplikace. \cite{keycloak} Jak uživatel získá JWT při použití nástroje keycloak můžeme vidět na obrázku \ref{keycloak-jwt-fig}, kde si uživatel zažádá o nový token, kterým se poté autorizuje u aplikačního serveru.
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}{\textheight}]{jwt.pdf}
+  \caption{Znázornění získání JWT z nástroje keycloak.}
+  \label{keycloak-jwt-fig}
+\end{figure}
+
 \paragraph{Sterling externí autentikační server} je řešení od IBM nabízející rozšířené autentizace a validace služeb pro IBM produkty, nabízí napojení například na LDAP a možnost SSH autentizace. \cite{ibm-ster}
 \paragraph{Active Directory Federation Services} od firmy Microsoft nabízí možnost sdílet identifikační informace napříč důveryhodným obchodním partnerům skrze extranet. Výhodou je že se nemusí aplikace starat o všechny uživatele, ale pouze si vyžádá od spřátelené aplikace jeho práva.  \cite{ADFS}
 
@@ -96,14 +125,13 @@ E(S) = - \sum_{t=1}^{T}(p_t log_2 p_t)
   \label{decision-tree}
 \end{figure}
 
-
 \subsection{Dolování dat na webové aplikaci}
 \par Toto získávání dalších informací z dat je v podstatě dolování z webových dokumentů, hyperlinků mezi nimi a získání informací z logů a webových stránek. \cite{minigbook}
 
 \par Na webu lze využít několik možných technik dolování:
 \begin{itemize}
   \item \textbf{Webového obsahu} je proces získávání informací z webových dokumentů, mohou to být jak samotné stránky, tak videa, zvukových stop a obrázků. Hlavním zaměřením je však získání informací ze samotných textů na webovém dokumentu.
-  \item \textbf{Webové struktury} strukturu webových stránek si lze představit jako, uzlový graf, ve kterém jednotlivé uzly jsou samotné stránky a hrany spojující tyto stránky jsou vzájemné odkazy. Lze se také dále zanořit v jednotlivých dokumentech a ty znázornit pomocí stromové struktyry \footnote{Přesný popis tohoto zápisu je znám pod zkratkou DOM (Document object model) \url{https://www.w3.org/TR/DOM-Level-2-Core/introduction.html}}.
+  \item \textbf{Webové struktury} strukturu webových stránek si lze představit jako, uzlový graf, ve kterém jednotlivé uzly jsou samotné stránky a hrany spojující tyto stránky jsou vzájemné odkazy. Lze se také dále zanořit v jednotlivých dokumentech a ty znázornit pomocí stromové struktyry \footnote{Přesný popis tohoto zápisu je znám pod zkratkou DOM (Document object model)}.
   \item \textbf{Webového použití} je název pro označení technik, díky kterým lze získat další informace z používání webových stránek. Tyto data lze získat z několika zdrojů \textbf{webový server} -- záznamy, které vygeneroval server během jeho používání (IP adresy uživatelů, navštívenou stránku a čas navštívené stránky ...), \textbf{aplikační server} -- použití moderních aplikačních serverů dovloluje hladší vytvoření podnikových aplikací, tyto servery nadále dovolují bližší sledování uživatelských interakcí, \textbf{data aplikací} -- dále je možné v samotné aplikaci zapnout výpis dalších informací. \cite{minigbook}
 \end{itemize}
 
@@ -166,7 +194,14 @@ PR(p) = d/n + (1-d) \sum_{(q,p) \in G}(\frac{PR(q)}{Outdegree(q)})
 
 \paragraph{Google analytics} je poskytován zdarma od firmy Google, poskytuje statistické a základní nástroje analýzy používání webové stránky. Kromě toho, že je produkt zdarma má další výhody v podobě napojení na další nástroje od firmy Google, jako například \textbf{AdWords} \footnote{Placená služba, která dovoluje zákazníkům předplatit si reklamu na webových stránkách.}. Služba nabízí základní grafy a reporty spolu s možností zobrazit je na dashboardu. Těhcto druhů dashboardu může být několik druhů -- základní, SEO analýza, sociální média, geografie, mobilní analýza, příchozí/odchozí a technický (uživatel si saozřejmě může vytvořit vlastní dashboard).
 
-\paragraph{KissMetrics} je placená alternatica ke Google analytics, cílí především na velké webové stránky a nabízí mnoho způsobů jak monitorovat zákazníky. Mezi přední výhodu patří možnost identifikace uživatele ještě před jeho přihlášením, kdy se ukládá jeho pohyb do anonymního účtu a pokud se tento uživatel v budoucnu identifikuje všechna anonymní data se automaticky spárují s tímto účtem. Tento nástroj také nabízí mnohem jednodušší možnost nastavení A/B testování \footnote{A/B testování je v podstatě vytvoření dvou různých variant jedné stránky a testování, která je více úspěšnější mezi uživateli (více stráveného času, koupě produktu, více kliknutí na stránce ...)}, kdy není potřeba vytvořit dvě různé URL pro jednu stránku. Dále tento nástroj nabízí velice jednoduché nastavení sledování chování uživatelů na jednotlivých stránkách, kdy je velice snadné nastavit například sledování času stráveného na stránce, dobu vyplňování formuláře, pohyb kurzoru po stránce atd.
+\paragraph{KissMetrics} je placená alternatica ke Google analytics, cílí především na velké webové stránky a nabízí mnoho způsobů jak monitorovat zákazníky. Mezi přední výhodu patří možnost identifikace uživatele ještě před jeho přihlášením, kdy se ukládá jeho pohyb do anonymního účtu a pokud se tento uživatel v budoucnu identifikuje všechna anonymní data se automaticky spárují s tímto účtem. Tento nástroj také nabízí mnohem jednodušší možnost nastavení A/B testování \footnote{A/B testování je v podstatě vytvoření dvou různých variant jedné stránky a testování, která je více úspěšnější mezi uživateli (více stráveného času, koupě produktu, více kliknutí na stránce ...)}, kdy není potřeba vytvořit dvě různé URL pro jednu stránku. Dále tento nástroj nabízí velice jednoduché nastavení sledování chování uživatelů na jednotlivých stránkách, kdy je velice snadné nastavit například sledování času stráveného na stránce, dobu vyplňování formuláře, pohyb kurzoru po stránce atd. Na obrázku \ref{ab-fig} můžeme lehce vidět výsledky A/B testování v nástroji KissMetrics.
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[max size={\textwidth}]{A_B}
+  \caption{Získání dat z A/B testování v nástroji KissMetrics.}
+  \label{ab-fig}
+\end{figure}
 
 \section{Shrnutí}
 \par Aplikace zaměřující se na ukládání a práci s daty pomocí webového rozhraní se zaměřují převážně na větší podniky, případně nemají tolik intuitivní uživatelské rozhraní. Dále rozšiřitelnost dostupných aplikací není snadná a nastavení uživatelských práv je pouze v mizivém množství dostupných aplikací. Proto se dále zaměříme na vývoj samostatné aplikace, která spojí myšlenky z aktuálních aplikací a využije opensource nástroje, které umožní snadnější práci s uživateli.
