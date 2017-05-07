@@ -29,7 +29,7 @@
 \subsection{Vedení vývojového týmu}
 \par Pro snadný a rychlý vývoj bylo nutné zvolit vhodné vedení vývojového týmu, který se podílel na vývoji celé aplikace. Ze zkušeností bylo určeno že rychlého vývoje se dosáhne použitím agilní metody vedení týmu, inspirováno scrumem. Nicméně, protože jednotliví členové týmu se nenacházeli v dostatečné vzdálenosti a nebyl tento projekt veden jako hlavní úkol jednotlivých členů, některé setkání, která jsou definována ve scrumu byla vyškrtnuta. Nejenom proto nelze vedení týmu, které bylo zvoleno označit jako čistokrevný scrum, ale pouze že jsme se při vedení inspirovali touto metodikou.
 
-\par Nastavili jsme si třítýdenní zveřejnění jednotlivých částí a každý týden jsme se scházeli abychom si ujasnili na čem jaký člen týmu dělá a zda nemá nějaký problém. Použili jsme také nástroje určené ke snadnějšímu rozdělování práce, kdy jsme začali s používáním nástroje \textbf{Trello} \footnote{Jednoduchý nástroj, který vizualizuje aktuální práci za použití jednoduchých tabulí \url{https://trello.com/}}, který nám postupně přestal stačit a tak jsme využili opensource licence \textbf{Youtrack} \footnote{Tento nástroj je podobný Trellu, nicméně dovoluje snadnější a pro tým důležitou vizualizaci práce \url{https://www.jetbrains.com/youtrack/}}
+\par Nastavili jsme si třítýdenní zveřejnění jednotlivých částí a každý týden jsme se scházeli abychom si ujasnili na čem jaký člen týmu dělá a zda nemá nějaký problém. Použili jsme také nástroje určené ke snadnějšímu rozdělování práce, kdy jsme začali s používáním nástroje \textbf{Trello}\footnote{Jednoduchý nástroj, který vizualizuje aktuální práci za použití jednoduchých tabulí \url{https://trello.com/}.}, který nám postupně přestal stačit a tak jsme využili opensource licence \textbf{Youtrack}\footnote{Tento nástroj je podobný Trellu, nicméně dovoluje snadnější a pro tým důležitou vizualizaci práce \url{https://www.jetbrains.com/youtrack/}.}
 
 \subsection{Popis aplikační funkčnosti}
 \par Před samotným popisem co a jak je propojeno si musíme určit co vlastně bude tato aplikace dělat a důvod jejího vzniku. Hlavním důvodem vzniku této aplikace je usnadnění editace často složitých záznamů (souborů) pomocí moderních technologií, záznamy můžeme rozumět například tabulky, grafy, kontingenční tabulky, atd. Mezi jednotlivými záznamy mohou vznikat a zanikat propojení, které umožní snadné napovídání datových záznamů a popisu dat (v případě tabulky si toto lze představit že nám aplikace bude napovídat možné záhlaví tabulky a data v tabulce). Editace a nahlédnutí do záznamů bude povolena pouze určitému uživateli. Dále jednotlivé soubory bude uživatel moci seskupovat do takzvaných kolekcí, tímto dosáhneme jisté abstrakce nad soubory, tak aby uživatel přibližně tušil již při prvním pohledu na záznam jaká data v něm mohou být. Vzhledem k tomu, že aplikace bude cílena na větší množství uživatelů aplikaci je možné přepínat mezi různými projekty a organizacemi, takže uživatel může mít několik záznamů se stejným jménem ve stejné kolekci pod různými projekty a organizacemi.
@@ -44,11 +44,11 @@
 
 \begin{itemize}
 \item \textbf{Databáze} postavena nad technologií NoSql, MongoDb. V pozdějším použití budeme pravděpodobně muset sáhnout po nějakém indexovacím nástroji, jako je například Elasticsearch, nebo Solr, který nám umožní snadnější hledání napříč složitější databázovou strukturou.
-\item \textbf{REST rozhraní} nástroji slouží pro snadnější přístup k jednotlivým datům a definuje snadno dostupné koncové uzly. Pokud bude potřeba nástroj rozšířit a hlavně zmapovat jednotlivé koncové uzly budeme moci použít například technologii Swagger \footnote{Slouží pro vizualizaci a zobrazení jaké data jednotlivý uzel očekává a jaké produkuje \url{http://swagger.io/}}
+\item \textbf{REST rozhraní} nástroji slouží pro snadnější přístup k jednotlivým datům a definuje snadno dostupné koncové uzly. Pokud bude potřeba nástroj rozšířit a hlavně zmapovat jednotlivé koncové uzly budeme moci použít například technologii Swagger\footnote{Slouží pro vizualizaci a zobrazení jaké data jednotlivý uzel očekává a jaké produkuje \url{http://swagger.io/}.}
 \end{itemize}
 
 \subsection{Uživatelské rozhraní}
-\par Vzhledem k tomu, že hlavní část aplikace je nasazována na aplikační server Wildfly, také uživatelské rozhraní je sestaveno a možno nasadit jako samostatný modul. Samotný proces sestavení používá nástroj \textbf{Webpack}, který celý zdrojový kód rozdělí do dvou Javascriptových souborů. Jeden obsahuje závislosti nutné pro chod aplikace a druhý obsahuje samostatný kód aplikace. V rámci usnadnění a jednoduššího přístupu k aplikaci jsme se rozhodli velkou část Javascriptových souborů umístit na veřejné CDN \footnote{CDN je v podstatě systém serverů, které nabízejí JS a CSS soubory uživatelům s ohledem na jejich geografickou lokaci, tak aby měli tyto soubory co nejdříve.}.
+\par Vzhledem k tomu, že hlavní část aplikace je nasazována na aplikační server Wildfly, také uživatelské rozhraní je sestaveno a možno nasadit jako samostatný modul. Samotný proces sestavení používá nástroj \textbf{Webpack}, který celý zdrojový kód rozdělí do dvou Javascriptových souborů. Jeden obsahuje závislosti nutné pro chod aplikace a druhý obsahuje samostatný kód aplikace. V rámci usnadnění a jednoduššího přístupu k aplikaci jsme se rozhodli velkou část Javascriptových souborů umístit na veřejné CDN\footnote{CDN je v podstatě systém serverů, které nabízejí JS a CSS soubory uživatelům s ohledem na jejich geografickou lokaci, tak aby měli tyto soubory co nejdříve.}.
 
 \par Vzhledem k rozsáhlosti a složitosti uživatelského rozhraní bylo rozhodnuto, že se použije aplikační framework s podporou jednostránkové aplikace, po prozkoumání alternativ byl následně vybrán rámec \textbf{Angular 2}. S výběrem tohoto aplikačního rámce jde ruku v ruce také výběr jazyku ve kterém je uživatelské rozhraní napsáno, což je silně typovaný jazyk \textbf{Typescript}.
 
@@ -64,12 +64,12 @@
 \subsubsection{Úkol číslo 1} Výběr kolekce a následně zjištění informací o této kolekci. Úrověň náročnosti \textbf{lehká}, na výsledky hodnocení se můžete podívat v tabulce \ref{ukol-1}.
 \begin{table}[htp]
 \begin{center}
-\begin{tabular}{ || c || c | c | m{5cm} || } 
+\begin{tabular}{ || c || c | c | m{5cm} || }
 \hline
-Číslo uživatele & Rychlost vykonání & Ohodnocení & Slovní popis \\ [0.5ex] 
+Číslo uživatele & Rychlost vykonání & Ohodnocení & Slovní popis \\ [0.5ex]
 \hline
 \hline
-1 & 25s & Snadný & Úkol se mi zdál ze začátku těžký, ale postupně jsem přišel na to kam kliknout. \\ 
+1 & 25s & Snadný & Úkol se mi zdál ze začátku těžký, ale postupně jsem přišel na to kam kliknout. \\
 \hline
 2 & 38s & Středně těžký & Úkol se mi zádl celkem těžký a byl jsem docela zmatený s aplikací. \\
 \hline
@@ -83,12 +83,12 @@
 \subsubsection{Úkol číslo 2} Výběr kolekce a dokumentu v kolekci pro který budou upraveny propojení. \textbf{středně těžká}, na výsledky hodnocení se můžete podívat v tabulce \ref{ukol-2}.
 \begin{table}[htp]
 \begin{center}
-\begin{tabular}{ || c || c | c | m{5cm} || } 
+\begin{tabular}{ || c || c | c | m{5cm} || }
 \hline
-Číslo uživatele & Rychlost vykonání & Ohodnocení & Slovní popis \\ [0.5ex] 
+Číslo uživatele & Rychlost vykonání & Ohodnocení & Slovní popis \\ [0.5ex]
 \hline
 \hline
-1 & 40s & Středně těžký & I po předhozím pochopení aplikace jsem měl s aplikací celkem problém.\\ 
+1 & 40s & Středně těžký & I po předhozím pochopení aplikace jsem měl s aplikací celkem problém.\\
 \hline
 2 & 48s & Těžký & Vůbec jsem něvěděl kam kliknout a co dělat. \\
 \hline
@@ -102,12 +102,12 @@
 \subsubsection{Úkol číslo 3} Výběr kolekce a dokumentu v kolekci pro který se zobrazí práva. Úroveň náročnosti \textbf{těžká}, na výsledky hodnocení se můžete podívat v tabulce \ref{ukol-3}.
 \begin{table}[htp]
 \begin{center}
-\begin{tabular}{ || c || c | c | m{5cm} || } 
+\begin{tabular}{ || c || c | c | m{5cm} || }
 \hline
-Číslo uživatele & Rychlost vykonání & Ohodnocení & Slovní popis \\ [0.5ex] 
+Číslo uživatele & Rychlost vykonání & Ohodnocení & Slovní popis \\ [0.5ex]
 \hline
 \hline
-1 & 30s & Středně těžký & Vzhledem k tomu že tento úkol navazoval na předešlý, hned jsem věděl kde přibližně hledat. \\ 
+1 & 30s & Středně těžký & Vzhledem k tomu že tento úkol navazoval na předešlý, hned jsem věděl kde přibližně hledat. \\
 \hline
 2 & 52s & Těžký & Úkol navazoval na druhý a proto jsem přibližně věděl co a kam kliknout. \\
 \hline
@@ -263,22 +263,22 @@ Hodnota&Dopad\\
 
 \par Po vytvoření základních tabulek pro odhadnutí rizik, jsme jednotlivá rizika zapsali do tabulky a ohodnotili jsme je možnou pravděpodobností a případně jaký by mělo dopad na funkčnost, samotné nasazení nebo celkové nepřijetí uživateli. Kde jako mezní jsme si určili hodnotu 14 bodů při ohodnocení pravděpodobnosti a dopadu rizika.
 
-\begin{longtable}{ || c || m{3cm} | m{4cm} | c | c | c | c | } 
+\begin{longtable}{ || c || m{3cm} | m{4cm} | c | c | c | c | }
 \hline
-Č. & Scénář & Hrozba & Pravděp. & Dopad & Hodnocení \\ 
+Č. & Scénář & Hrozba & Pravděp. & Dopad & Hodnocení \\
 \hline
 \endhead
-1 & Pomalý vývoj & S příchodem zákazníků budou přibývat požadavky na systém, které nemusíme stíhat přidávat & 2 & 3 & 6 \\ 
+1 & Pomalý vývoj & S příchodem zákazníků budou přibývat požadavky na systém, které nemusíme stíhat přidávat & 2 & 3 & 6 \\
 \hline
-2 & Uživatelé nebudou rozumět aplikaci & uživatelské rozhraní nebude intuitivní a snadno ovládatelné & 3 & 3 & 9 \\ 
+2 & Uživatelé nebudou rozumět aplikaci & uživatelské rozhraní nebude intuitivní a snadno ovládatelné & 3 & 3 & 9 \\
 \hline
-3 & Nezabezpečená data & Kdokoli se dostane k uživatelským datům & 3 & 5 & \cellcolor{red!55}15 \\ 
+3 & Nezabezpečená data & Kdokoli se dostane k uživatelským datům & 3 & 5 & \cellcolor{red!55}15 \\
 \hline
 4 & Napadení aplikace & Napadení aplikace třetí stranou & 2 & 5 & 10 \\
 \hline
-5 & Pomalá práce s daty & Při velkém objemu dat může nastat zamrzání aplikace & 4 & 3 & \cellcolor{yellow!55}12 \\ 
+5 & Pomalá práce s daty & Při velkém objemu dat může nastat zamrzání aplikace & 4 & 3 & \cellcolor{yellow!55}12 \\
 \hline
-6 & Nezájem investorů & Aplikace nazujme případné investory, což povede k nedostatku zdrojů v prvotním spuštění & 3 & 5 & \cellcolor{red!55}15 \\ 
+6 & Nezájem investorů & Aplikace nazujme případné investory, což povede k nedostatku zdrojů v prvotním spuštění & 3 & 5 & \cellcolor{red!55}15 \\
 \hline
 \caption{Možné scénáře rizik při vývoji a nasazení}
 \label{rizika}
@@ -286,16 +286,16 @@ Hodnota&Dopad\\
 
 \par Jak lze vidět na tabulce \ref{rizika}, tak pouze 2 rizika si vyžadují speciální pozornost, protože překračují námi definovanou hranici rizika, zaměříme se také na riziko s číslem \textbf{5}, které je by mělo také kritický dopad na chod aplikace.
 
-\begin{longtable}{ || c || m{3cm} | m{4cm} | c | c | c | c | } 
+\begin{longtable}{ || c || m{3cm} | m{4cm} | c | c | c | c | }
 \hline
-Č. & Opatření & Cena & Pravděp.\_ & Dopad\_ & Hodnocení\_ \\ 
+Č. & Opatření & Cena & Pravděp.\_ & Dopad\_ & Hodnocení\_ \\
 \hline
 \endhead
-3 & Při vývoji použijeme nástroj, který zabezpečí data. & Cena nástroje pro zabezpečení & 2 & 5 & 10 \\ 
+3 & Při vývoji použijeme nástroj, který zabezpečí data. & Cena nástroje pro zabezpečení & 2 & 5 & 10 \\
 \hline
-5 & Použití indexovacího nástroje & Cena nástroje pro indexaci dat & 3 & 3 & 9 \\ 
+5 & Použití indexovacího nástroje & Cena nástroje pro indexaci dat & 3 & 3 & 9 \\
 \hline
-6 & Dedikování člověka pro komunikaci s investory & Cena člověka pro komunikaci & 2 & 5 & 10 \\ 
+6 & Dedikování člověka pro komunikaci s investory & Cena člověka pro komunikaci & 2 & 5 & 10 \\
 \hline
 \caption{Opatření pro vyhnutí rizikům.}
 \label{rizika}
