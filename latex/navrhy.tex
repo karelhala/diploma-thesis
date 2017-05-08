@@ -230,10 +230,12 @@
 \par Přibližné napovídání pracuje nad takzvanou fuzzy logikou a funguje na principu, že zadaný řetězec nemusí být vždy přesně zadán, aby uživateli byl dodán výsledek, který požaduje. Přibližné napovídání v aplikaci přibližné napovídání funguje tak, že v momentě, kdy uživatel zadá hledaný řetězec, jsou mu zobrazeny záznamy, které se nejblíže shodují k danému řetězci (případně obsahují prvních pár písmen), ideálně jsou tyto řetězce shodné. Aplikace nabízí možnost zobrazit uživateli entity, které mají v názvu nebo v možných řetězcích jedno písmeno jiné. Pokud uživatel následně vybere entitu, je k ní tento hledaný řetězec přidán. Entita tedy obsahuje seznam možných hledaných řetězců, které se dále mohou lišit o jedno písmeno. Například pokud budeme hledat entitu s názvem \textbf{Restaurace}, tato entita dále obsahuje seznam možných hledaných řetězců -- například \textit{Rez}, \textit{taue}, \textit{auea} a \textit{Res}. Uživatel tak zadá do hledání \textbf{Restaues} a systém mu nabídne entitu \textbf{Restaurace}.
 
 \section{Analýza rizik}
-\par Vzhledem k tomu, že vytvořit takto náročnou aplikaci není triviální jsme si na začátku vývoje vytvořili analýzu možných rizik na která můžeme narazit během vývoje a při distribuci. Také jsme si tyhle rizika ohodnotili a pro některé, které by měli vysoký dopad na aplikaci jsme si připravili riziková opatření.
+\par Vzhledem k tomu, že vytvořit náročnou aplikaci není triviální, na začátku vývoje jsme si vytvořili analýzu možných rizik, na která můžeme narazit během vývoje a při distribuci. Také jsme si tato rizika ohodnotili a pro některé, které by měli vysoký dopad na aplikaci, jsme si připravili riziková opatření.
 
 \par Následující tabulky znázorňují pravděpodobnost výskytu a dopad rizika.
-
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+      \centering
 \begin{tabular}{|c | c |}
 \hline
 Pravděpodobnost&Hodnota\\
@@ -249,7 +251,11 @@ Pravděpodobnost&Hodnota\\
 80 - 100 \%&5\\
 \hline
 \end{tabular}
-\qquad\qquad\qquad\qquad
+      \caption{Pravděpodobnost výskytu}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+
 \begin{tabular}{|c | c |}
 \hline
 Hodnota&Dopad\\
@@ -265,17 +271,21 @@ Hodnota&Dopad\\
 5&Velmi vysoký\\
 \hline
 \end{tabular}
+        \caption{Dopad rizika}
+    \end{minipage} 
+    \caption{Ohodnocení pravděpodobnosti a dopadu rizika.}
+\end{table}
 
-\par Po vytvoření základních tabulek pro odhadnutí rizik, jsme jednotlivá rizika zapsali do tabulky a ohodnotili jsme je možnou pravděpodobností a případně jaký by mělo dopad na funkčnost, samotné nasazení nebo celkové nepřijetí uživateli. Kde jako mezní jsme si určili hodnotu 14 bodů při ohodnocení pravděpodobnosti a dopadu rizika.
+\par Po vytvoření základních tabulek pro odhadnutí rizik jsme jednotlivá rizika zapsali do tabulky a ohodnotili jsme je možnou pravděpodobností a dopadem na funkčnost, nasazení nebo nepřijetí uživateli. jako mezní hodnotu jsme si určili 14 bodů při ohodnocení pravděpodobnosti a dopadu rizika -- výsledek je možné vidět v tabulce \ref{rizika}.
 
 \begin{longtable}{ || c || m{3cm} | m{4cm} | c | c | c | c | }
 \hline
-Č. & Scénář & Hrozba & Pravděp. & Dopad & Hodnocení \\
+Č. & Scénář & Hrozba & Pravděp. & Dopad & Hodnocení\footnote{Hodnocení = Pravděpodobnost * Dopad.}\\
 \hline
 \endhead
 1 & Pomalý vývoj & S příchodem zákazníků budou přibývat požadavky na systém, které nemusíme stíhat přidávat & 2 & 3 & 6 \\
 \hline
-2 & Uživatelé nebudou rozumět aplikaci & uživatelské rozhraní nebude intuitivní a snadno ovládatelné & 3 & 3 & 9 \\
+2 & Uživatelé nebudou rozumět aplikaci & Uživatelské rozhraní nebude intuitivní a snadno ovladatelné & 3 & 3 & 9 \\
 \hline
 3 & Nezabezpečená data & Kdokoli se dostane k uživatelským datům & 3 & 5 & \cellcolor{red!55}15 \\
 \hline
@@ -283,20 +293,20 @@ Hodnota&Dopad\\
 \hline
 5 & Pomalá práce s daty & Při velkém objemu dat může nastat zamrzání aplikace & 4 & 3 & \cellcolor{yellow!55}12 \\
 \hline
-6 & Nezájem investorů & Aplikace nazujme případné investory, což povede k nedostatku zdrojů v prvotním spuštění & 3 & 5 & \cellcolor{red!55}15 \\
+6 & Nezájem investorů & Aplikace nezujme případné investory, což povede k nedostatku zdrojů v prvotním spuštění & 3 & 5 & \cellcolor{red!55}15 \\
 \hline
-\caption{Možné scénáře rizik při vývoji a nasazení}
+\caption{Možné scénáře rizik při vývoji a nasazení.}
 \label{rizika}
 \end{longtable}
 
-\par Jak lze vidět na tabulce \ref{rizika}, tak pouze 2 rizika si vyžadují speciální pozornost, protože překračují námi definovanou hranici rizika, zaměříme se také na riziko s číslem \textbf{5}, které je by mělo také kritický dopad na chod aplikace.
+\par Jak lze vidět v tabulce \ref{rizika}, tak pouze 2 rizika si vyžadují speciální pozornost, protože překračují námi definovanou hranici. Zaměříme se také na riziko s číslem \textbf{5}, které by mělo také kritický dopad na chod aplikace.
 
 \begin{longtable}{ || c || m{3cm} | m{4cm} | c | c | c | c | }
 \hline
-Č. & Opatření & Cena & Pravděp.\_ & Dopad\_ & Hodnocení\_ \\
+Č. & Opatření & Cena & Pravděp.\_ & Dopad\_ & Hodnocení\_\footnote{Hodnocení = Pravděpodobnost\_ * Dopad.\_} \\
 \hline
 \endhead
-3 & Při vývoji použijeme nástroj, který zabezpečí data. & Cena nástroje pro zabezpečení & 2 & 5 & 10 \\
+3 & Při vývoji použijeme nástroj, který zabezpečí data & Cena nástroje pro zabezpečení & 2 & 5 & 10 \\
 \hline
 5 & Použití indexovacího nástroje & Cena nástroje pro indexaci dat & 3 & 3 & 9 \\
 \hline
@@ -306,9 +316,9 @@ Hodnota&Dopad\\
 \label{rizika}
 \end{longtable}
 
-\par Z možných opatření vyplívá že všem potencionálním technickým rizikům, které by měli vysoký dopad se dá vyhnout použitím vhodných technologií a v případě rizika \textbf{6}, které by znamenalo možný nezájem investorů musíme dedikovat člověka pro komunikaci a vytváření povědomí o tomto nástroji.
+\par Z možných opatření vyplývá že všem potencionálním technickým rizikům, ktera by měla vysoký dopad, se dá vyhnout použitím vhodných technologií a v případě rizika \textbf{6}, které by znamenalo možný nezájem investorů, musíme dedikovat člověka pro komunikaci a vytváření povědomí o tomto nástroji.
 
-\par Pro znázornění zavedení opatření pro vyhnutí rizik jsme zvolili terčový graf \ref{risk-graph} na kterém lze vidět že žádné riziko po nepřekračuje hodnotu 14 bodů, které jsme si nastavili jako kritický bod. Nezajímali jsme se rizikům, které nemají tak vysokou pravděpodobnost, že by nastali, nicméně i na ty je si potřeba dávat pozor a proto je dobré, že jsme na některé z nich narazili již nyní.
+\par Pro znázornění zavedení opatření pro vyhnutí rizik jsme zvolili terčový graf \ref{risk-graph}, na kterém lze vidět, že žádné riziko nepřekračuje hodnotu 14 bodů, kteréou jsme si nastavili jako kritický bod. Nevěnovali jsme se rizikům, která nemají tak vysokou pravděpodobnost, že by nastala, nicméně i na ta je třeba dávat si pozor, a proto je dobré, že jsme na některá z nich narazili již na začátku.
 
 \begin{graph}[ht]
 \centering
