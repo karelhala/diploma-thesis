@@ -25,6 +25,11 @@
 \renewcommand{\baselinestretch}{1.5}
 \newcommand{\blank}[1]{\hspace*{#1}}
 
+\DeclareCaptionType{equationcap}[][Seznam rovnic]
+\captionsetup[equationcap]{name=Rovnice}
+\DeclareCaptionType{graph}[][Seznam grafů]
+\captionsetup[graph]{name=Graf}
+
 \usepackage{filecontents}
 \usepackage{pgfplots, pgfplotstable}
 
@@ -150,6 +155,12 @@ text
 \listoftables
 \addcontentsline{toc}{chapter}{Seznam tabulek}
 \newpage
+\addcontentsline{toc}{chapter}{Seznam rovnic}
+\newpage
+\listofequationcaps
+\addcontentsline{toc}{chapter}{Seznam grafů}
+\newpage
+\listofgraphs
 \addcontentsline{toc}{chapter}{Seznam použitých zdrojů}
 \input{Literatura}
 
