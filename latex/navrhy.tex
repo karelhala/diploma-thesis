@@ -36,24 +36,24 @@
 \par Před samotným popisem co a jak je propojeno, si musíme určit, co vlastně bude tato aplikace dělat a důvod jejího vzniku. Hlavním důvodem vzniku této aplikace je usnadnění editace často složitých záznamů (souborů) pomocí moderních technologií, záznamy můžeme rozumět například tabulky, grafy, kontingenční tabulky, atd. Mezi jednotlivými záznamy mohou vznikat a zanikat propojení, která umožní snadné napovídání datových záznamů a popisu dat (v případě tabulky si toto lze představit tak, že nám aplikace bude napovídat možné záhlaví tabulky a data v tabulce). Editování a nahlížení do záznamů bude povoleno pouze určitému uživateli. Dále jednotlivé soubory bude uživatel moci seskupovat do takzvaných kolekcí. Tímto dosáhneme jisté abstrakce nad soubory tak, aby uživatel přibližně tušil již při prvním pohledu na záznam, jaká data v něm mohou být. Vzhledem k tomu, že aplikace bude cílena na větší množství uživatelů, je možné aplikaci přepínat mezi různými projekty a organizacemi, takže uživatel může mít několik záznamů se stejným jménem ve stejné kolekci pod různými projekty a organizacemi.
 
 \section{Použité technologie}
-\par Může se zdát že pro vytvoření tohoto nástroje bylo použito velké množství technologií, proto se následující kapitola bude věnovat jednotlivým částem aplikace. Jaké technologie přesně používá, jak jsou tyto technologie propojeny a k čemu je to dobré.
+\par Může se zdát, že pro vytvoření tohoto nástroje bylo použito velké množství technologií, proto se následující kapitola bude věnovat jednotlivým částem aplikace -- jaké technologie přesně používá a jak jsou tyto technologie propojeny.
 
 \subsection{Engine}
-\par Základní část celé aplikace a její středobod se skládá ze tří pomyslných částí \textbf{Databáze}, \textbf{REST rozhraní} a \textbf{hlavní logika}. Díky tomuto rozdělení je možné snadně a hlavně rychle přidat novou funkcionalitu, dále je také možné rozdělit jednotlivé části vývojářům, kteří se mohou zaměřit na menší úkoly a pracovat tak efektivněji.
+\par Základní část celé aplikace a její středobod se skládá ze tří pomyslných částí \textbf{Databáze}, \textbf{REST rozhraní} a \textbf{hlavní logika}. Díky tomuto rozdělení je možné snadno a hlavně rychle přidat novou funkcionalitu, dále je také možné rozdělit jednotlivé části vývojářům, kteří se mohou zaměřit na menší úkoly a pracovat tak efektivněji.
 
-\par Hlavní logika byla naprogramována v jazyce Java a jako aplikační server poté Wildfly, díky jeho snadnému propojení do Keycloaku a převážně díky jeho robustnosti -- největší předností je jednoduché napojení na velké množství různých databází. K načtení závislostí, sestavení a nasazení tohoto modulu byl použit nástroj Maven. V podstatě pro jednoduchost si můžeme představit jako vstup databázi a jako výstup RESTové rozhraní.
+\par Hlavní logika byla naprogramována v jazyce Java a jako aplikační server poté použit Wildfly, díky jeho snadnému propojení do Keycloaku a také díky jeho robustnosti -- největší předností (aplikačního serveru wildfly) je jednoduché napojení na velké množství různých databází. K načtení závislostí, sestavení a nasazení tohoto modulu byl použit nástroj Maven.
 
 \begin{itemize}
-\item \textbf{Databáze} postavena nad technologií NoSql, MongoDb. V pozdějším použití budeme pravděpodobně muset sáhnout po nějakém indexovacím nástroji, jako je například Elasticsearch, nebo Solr, který nám umožní snadnější hledání napříč složitější databázovou strukturou.
-\item \textbf{REST rozhraní} nástroji slouží pro snadnější přístup k jednotlivým datům a definuje snadno dostupné koncové uzly. Pokud bude potřeba nástroj rozšířit a hlavně zmapovat jednotlivé koncové uzly budeme moci použít například technologii Swagger\footnote{Slouží pro vizualizaci a zobrazení jaké data jednotlivý uzel očekává a jaké produkuje \url{http://swagger.io/}.}
+\item \textbf{Databáze} --  postavena nad technologií NoSql a přesněji použit databázový nástroj MongoDb. V pozdějším použití budeme pravděpodobně muset sáhnout po nějakém indexovacím nástroji  jako je například Elasticsearch nebo Solr, který nám umožní snadnější hledání napříč složitější databázovou strukturou.
+\item \textbf{REST rozhraní} -- slouží pro snadnější přístup k jednotlivým datům a definuje jednoduše dostupné koncové uzly. Pokud bude potřeba nástroj rozšířit a hlavně zmapovat jednotlivé koncové uzly budeme moci použít například technologii Swagger\footnote{Slouží pro vizualizaci a zobrazení jaká data jednotlivý uzel očekává a jaké produkuje: \url{http://swagger.io/}.}
 \end{itemize}
 
 \subsection{Uživatelské rozhraní}
-\par Vzhledem k tomu, že hlavní část aplikace je nasazována na aplikační server Wildfly, také uživatelské rozhraní je sestaveno a možno nasadit jako samostatný modul. Samotný proces sestavení používá nástroj \textbf{Webpack}, který celý zdrojový kód rozdělí do dvou Javascriptových souborů. Jeden obsahuje závislosti nutné pro chod aplikace a druhý obsahuje samostatný kód aplikace. V rámci usnadnění a jednoduššího přístupu k aplikaci jsme se rozhodli velkou část Javascriptových souborů umístit na veřejné CDN\footnote{CDN je v podstatě systém serverů, které nabízejí JS a CSS soubory uživatelům s ohledem na jejich geografickou lokaci, tak aby měli tyto soubory co nejdříve.}.
+\par Hlavní část (Engine) funguje jako samostaný modul, který je nasazen do aplikačního serveru Wildfly, obdobně je tomu i v případě uživatelského rozhraní (samostatný modul, který je nasazena na Wildfly). Samotný proces sestavení používá nástroj \textbf{Webpack}, který celý zdrojový kód rozdělí do dvou Javascriptových souborů. Jeden obsahuje závislosti nutné pro chod aplikace a ve druhém je samostatný kód aplikace. V rámci usnadnění a jednoduššího přístupu k aplikaci jsme se rozhodli velkou část Javascriptových souborů umístit na veřejné CDN\footnote{CDN je v podstatě systém serverů, které nabízejí JS a CSS soubory uživatelům s ohledem na jejich geografickou lokaci, tak aby měli tyto soubory co nejdříve.}.
 
-\par Vzhledem k rozsáhlosti a složitosti uživatelského rozhraní bylo rozhodnuto, že se použije aplikační framework s podporou jednostránkové aplikace, po prozkoumání alternativ byl následně vybrán rámec \textbf{Angular 2}. S výběrem tohoto aplikačního rámce jde ruku v ruce také výběr jazyku ve kterém je uživatelské rozhraní napsáno, což je silně typovaný jazyk \textbf{Typescript}.
+\par Vzhledem k rozsáhlosti a složitosti uživatelského rozhraní bylo rozhodnuto, že se použije aplikační framework s podporou jednostránkové aplikace. Po prozkoumání alternativ byl následně vybrán aplikační rámec \textbf{Angular 2}. S výběrem tohoto aplikačního rámce jde ruku v ruce také výběr jazyka ve kterém je uživatelské rozhraní napsáno, což je silně typovaný jazyk \textbf{Typescript}.
 
-\par Uživatelské rozhraní se postupně upravovalo a byla snaha o co možná nejjednodušší používání této aplikace, proto byla první verze rozhraní představena několika méně zkušeným uživatelům počítače, kterým se dali jednoduché úkoly a byl sledován jejich postup a následně jim byla položena otázka zda byl úkol snadný. Systém jim byl pouze zevrubně vysvětlen slovy, že se jedná o aplikaci, která obsahuje kolekce souborů, které jsou mezi sebou propojeny. Jak vypadalo uživatelské rozhraní před těmito úkoly se můžete podívat na obrázku \ref{old-ui}.
+\par Uživatelské rozhraní se postupně upravovalo a byla snaha o co možná nejjednodušší používání této aplikace, proto byla první verze rozhraní představena několika méně zkušeným uživatelům počítače, kterým se dali jednoduché úkoly a byl sledován jejich postup a následně jim byla položena otázka, zda byl úkol snadný. Systém jim byl pouze zevrubně vysvětlen slovy, že se jedná o aplikaci, která obsahuje kolekce souborů, které jsou mezi sebou propojeny. Jak vypadalo uživatelské rozhraní před těmito úkoly se můžete podívat na obrázku \ref{old-ui}.
 
 \begin{figure}[!h]
 \centering
@@ -62,7 +62,7 @@
 \label{old-ui}
 \end{figure}
 
-\subsubsection{Úkol číslo 1} Výběr kolekce a následně zjištění informací o této kolekci. Úrověň náročnosti \textbf{lehká}, na výsledky hodnocení se můžete podívat v tabulce \ref{ukol-1}.
+\subsubsection{Úkol číslo 1} Výběr kolekce a následné zjištění informací o této kolekci. Úrověň náročnosti: \textbf{lehká}. Na výsledky hodnocení lze vidět v tabulce \ref{ukol-1}.
 \begin{table}[htp]
 \begin{center}
 \begin{tabular}{ || c || c | c | m{5cm} || }
@@ -81,7 +81,7 @@
 \caption{Vyhodnocení úkolu číslo 1.}
 \label{ukol-1}
 \end{table}
-\subsubsection{Úkol číslo 2} Výběr kolekce a dokumentu v kolekci pro který budou upraveny propojení. \textbf{středně těžká}, na výsledky hodnocení se můžete podívat v tabulce \ref{ukol-2}.
+\subsubsection{Úkol číslo 2} Výběr kolekce a dokumentu v kolekci pro který budou upraveny propojení. Náročnost: \textbf{středně těžká}. Výsledky hodnocení lze vidět v tabulce \ref{ukol-2}.
 \begin{table}[htp]
 \begin{center}
 \begin{tabular}{ || c || c | c | m{5cm} || }
@@ -100,7 +100,7 @@
 \caption{Vyhodnocení úkolu číslo 2.}
 \label{ukol-2}
 \end{table}
-\subsubsection{Úkol číslo 3} Výběr kolekce a dokumentu v kolekci pro který se zobrazí práva. Úroveň náročnosti \textbf{těžká}, na výsledky hodnocení se můžete podívat v tabulce \ref{ukol-3}.
+\subsubsection{Úkol číslo 3} Výběr kolekce a dokumentu v kolekci, pro který se zobrazí práva. Úroveň náročnosti: \textbf{těžká}. Výsledky hodnocení jsou k vidění v tabulce \ref{ukol-3}.
 \begin{table}[htp]
 \begin{center}
 \begin{tabular}{ || c || c | c | m{5cm} || }
@@ -120,7 +120,7 @@
 \label{ukol-3}
 \end{table}
 
-\par Vzhledem na výsledky hodnocení a uživatelské podněty se tým rozhodl přepracovat UI do více uživatelsky přívětivého způsobu. Hlavní výtka všech uživatelů bylo příliš mnoho navigačních prvků na stránce, což vede k nepřehlednosti a uživatelé tak nevědí na co kliknout a co použít. Na druhou stranu většina uživatelů, kterým byla aplikace představena zdůraznili výhodu vyhledávání a filtrování v rámci kolekcí, dokumentů a propojení. Z těchto poznatků bylo tedy určeno, že nejlepší bude zvýraznit vyhledávací formulář, který bude na všech stránkách aplikace. Dále také nějakým způsobem sjednotit všechny prvky aplikace do jednoho vyhledávání, tak aby uživatelé měli přehledně a snadno dostupné například dokumenty a hned vedle nich propojení. Z těchto požadavků bylo tedy navrhnuto nové uživatelské rozhraní, které lze vidět na \ref{new-ui}.
+\par Vzhledem k výsledkům hodnocení a uživatelským podnětům se tým rozhodl přepracovat UI do více uživatelsky přívětivého způsobu. Hlavní výtkou všech uživatelů bylo příliš mnoho navigačních prvků na stránce, což vede k nepřehlednosti a uživatelé tak nevědí, na co kliknout a co použít. Na druhou stranu většina uživatelů, kterým byla aplikace představena zdůraznili výhodu vyhledávání a filtrování v rámci kolekcí, dokumentů a propojení. Z těchto poznatků bylo tedy určeno, že nejlepší bude zvýraznit vyhledávací formulář, který bude na všech stránkách aplikace. Dále také bude třeba sjednotit všechny prvky aplikace do jednoho vyhledávání tak, aby uživatelé měli přehledně a snadno dostupné například dokumenty a hned vedle nich propojení. Z těchto požadavků bylo tedy navrhnuto nové uživatelské rozhraní, které lze vidět na obrázku \ref{new-ui}.
 
 \begin{figure}[htp]
 \centering
