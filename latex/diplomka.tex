@@ -6,6 +6,9 @@
 
 \usepackage[czech]{babel}
 \usepackage[IL2]{fontenc}
+\usepackage[automake, nogroupskip]{glossaries}
+\makeglossaries
+\loadglsentries{zkratky}
 
 \usepackage{ulem}
 \usepackage{parskip}
@@ -161,6 +164,9 @@ text
 \addcontentsline{toc}{chapter}{Seznam grafů}
 \newpage
 \listofgraphs
+\addcontentsline{toc}{chapter}{Seznam zkratek}
+\glsaddall
+\printglossary[title=Seznam zkratek, nonumberlist]
 \addcontentsline{toc}{chapter}{Seznam použitých zdrojů}
 \input{Literatura}
 
