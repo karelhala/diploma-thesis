@@ -133,7 +133,7 @@ Proces shlukování je tedy rozdělování těchto dat do shluků větších jak
 \begin{equation} \label{entropie}
 E(S) = - \sum_{t=1}^{T}(p_t log_2 p_t)
 \end{equation}
-\caption[Vzorec pro výpočet entropie v~rozhodovacích stromech]{Vzorec pro výpočet entropie v rozhodovacích stromech. Zdroj: \cite{data-mining-principles}}
+\caption[Vzorec pro výpočet entropie v~rozhodovacích stromech]{Vzorec pro výpočet entropie v~rozhodovacích stromech. Zdroj: \cite{data-mining-principles}}
 \end{equationcap}
 
 \par Pro vytvoření stromu se vezme tabulka hodnot a pro každý atribut se vypočítá jeho entropie -- ta znázorňuje homogenitu prvku. Pokud je prvek naprosto homogenní (nacházející se ve všech atributech), jeho entropie je 0, naopak pokud je prvek naprosto heterogenní (nachází se pouze v~jednom atributu), jeho entropie je 1. Při prvotním vytvoření rozhodovacího stromu je tedy potřeba mít co nejlepší trénovací data, nicméně velké množství dat může mít za následek příliš složitý strom, který je opět nepoužitelný (proto je potřeba dbát na vhodnou velikost učebních dat). Pokud nám vznikne složitý a ne příliš efektivní rozhodovací strom, je vhodné použít takzvané prořezávání, kdy odstraníme nadbytečné podstromy (velice vhodné v~případě, že jsme použili velký vzorek dat pro vytvoření stromu). \cite{data-mining}
