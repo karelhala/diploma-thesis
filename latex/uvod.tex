@@ -3,19 +3,19 @@
 %------------------------------------------------------------------------------------------------------------------------------------------
 \chapter*{ÚVOD}
 \addcontentsline{toc}{chapter}{ÚVOD} 
-\par V aktuální době je velké množství dokumentů ve firmách zpracováváno nástroji, které do jisté míry nepodporují spolupráci a často dochází k vytváření velkých a nepřehledných dokumentů, které se časem zvětšují a po několika letech se musí kompletně přepsat a případně zrušit.
+\par V~aktuální době je velké množství dokumentů ve firmách zpracováváno nástroji, které do jisté míry nepodporují spolupráci a často dochází k~vytváření velkých a nepřehledných dokumentů, které se časem zvětšují a po několika letech se musí kompletně přepsat a případně zrušit.
 
-\par S nástupem internetu tento problém částečně vymizel díky tomu, že se nyní dají takové dokumenty velice snadno sdílet, nicméně stále je zde problém, že velká část nástrojů pracujících s dokumenty nenabízí jednoduché a přehledné provázání.
+\par S~nástupem internetu tento problém částečně vymizel díky tomu, že se nyní dají takové dokumenty velice snadno sdílet, nicméně stále je zde problém, že velká část nástrojů pracujících s~dokumenty nenabízí jednoduché a přehledné provázání.
 
-\par Proto se v rámci této práce zaměříme na možná řešení některých problémů, které vznikají při sdílení dokumentů a při jejich propojování. Cílem této práce je tedy analýza současných nástrojů a následně návrh a vytvoření specifického nástroje, který se bude zaměřovat z velké části na jeho snadné používání uživateli.
+\par Proto se v~rámci této práce zaměříme na možná řešení některých problémů, které vznikají při sdílení dokumentů a při jejich propojování. Cílem této práce je tedy analýza současných nástrojů a následně návrh a vytvoření specifického nástroje, který se bude zaměřovat z~velké části na jeho snadné používání uživateli.
 
-\par Práce nás postupně provede několika kapitolami, kdy se nejdříve budeme věnovat teoretickým východiskům, kde si vysvětlíme některé pojmy zabývající se práci s dokumenty pomocí webových aplikací, poté se zaměříme na aktuální stav nástrojů a aplikací zabývající se touto problematikou. Část popisu aktuálního stavu se budeme věnovat nástrojům, které nám mohou pomoci při samotném vývoji aplikace. Na samotný návrh a vývoj aplikace se zaměříme v poslední kapitole, ve které si rozebereme také případná rizika vývoje takového nástroje. Od čtenáře se očekávají alespoň základní technické znalosti vývoje aplikací a práci s webovými technologiemi.
+\par Práce nás postupně provede několika kapitolami, kdy se nejdříve budeme věnovat teoretickým východiskům, kde si vysvětlíme některé pojmy zabývající se práci s~dokumenty pomocí webových aplikací, poté se zaměříme na aktuální stav nástrojů a aplikací zabývající se touto problematikou. Část popisu aktuálního stavu se budeme věnovat nástrojům, které nám mohou pomoci při samotném vývoji aplikace. Na samotný návrh a vývoj aplikace se zaměříme v~poslední kapitole, ve které si rozebereme také případná rizika vývoje takového nástroje. Od čtenáře se očekávají alespoň základní technické znalosti vývoje aplikací a práci s~webovými technologiemi.
 
 %------------------------------------------------------------------------------------------------------------------------------------------
 % Cíl a metodika práce
 %------------------------------------------------------------------------------------------------------------------------------------------
 \chapter*{CÍL DIPLOMOVÉ PRÁCE}
-Hlavním cílem této práce je vytvořit platformu, která bude schopná zpracovat data zadaná uživatelem, analyzovat je a na základě vnitřní logiky a informace nesené v těchto datech je uložit do logických celků. Tyto celky poté umožní zobrazit uživateli, nechá jej dále definovat dodatečné informace, provádět reporting a případně zobrazit v přehledných grafech.
+Hlavním cílem této práce je vytvořit platformu, která bude schopná zpracovat data zadaná uživatelem, analyzovat je a na základě vnitřní logiky a informace nesené v~těchto datech je uložit do logických celků. Tyto celky poté umožní zobrazit uživateli, nechá jej dále definovat dodatečné informace, provádět reporting a případně zobrazit v~přehledných grafech.
 
 Platforma se bude zaměřovat převážně na uživatelské rozhraní, tak aby její používání bylo co nejintuitivnější a nejjednodušší.
 \addcontentsline{toc}{chapter}{CÍL DIPLOMOVÉ PRÁCE}
@@ -23,14 +23,14 @@ Platforma se bude zaměřovat převážně na uživatelské rozhraní, tak aby j
 \chapter*{METODIKA PRÁCE}
 \addcontentsline{toc}{chapter}{METODIKA PRÁCE}
 \section*{Metody}
-\par Nejdůležitějším zaměřením této platformy je uživatelská přívětivost a jednoduchost na používání, proto bude při vývoji kladen důraz na spokojenost uživatelů. Tohoto bude dosaženo použitím agilních metodik při vývoji, kdy bude postupně dodávaný produkt předáván úzkému kruhu uživatelů, kteří se budou vyjadřovat k uživatelskému rozhraní. Platforma bude psána jako webová aplikace, která bude přistupovat do databáze přes rozhraní napsané v jazyce Java.
-\par V části zpracování dat bude použito několik ETL metodik a data mining technik, které povedou k získání logických informací ze zadaných dat. Platforma bude vyvíjena s možností 
+\par Nejdůležitějším zaměřením této platformy je uživatelská přívětivost a jednoduchost na používání, proto bude při vývoji kladen důraz na spokojenost uživatelů. Tohoto bude dosaženo použitím agilních metodik při vývoji, kdy bude postupně dodávaný produkt předáván úzkému kruhu uživatelů, kteří se budou vyjadřovat k~uživatelskému rozhraní. Platforma bude psána jako webová aplikace, která bude přistupovat do databáze přes rozhraní napsané v~jazyce Java.
+\par V~části zpracování dat bude použito několik ETL metodik a data mining technik, které povedou k~získání logických informací ze zadaných dat. Platforma bude vyvíjena s~možností 
 škálovatelnosti a použití nad velkým objemem dat.
 \addcontentsline{toc}{section}{Metody}
 
 \section*{Postupy}
 \addcontentsline{toc}{section}{Postupy}
-\par K vytvoření co nejpřívětivější platformy budou využity naše zkušenosti a knižní publikace zabývající se tímto tématem. Dále budou analyzovány jednotlivé postupy zadávání dat uživatelů do tohoto systému, které povedou ke zpřehlednění a zjednodušení používání.
-\par Pro komunikaci se serverem bude použit standard REST, který usnadní komunikaci se serverem a umožní případné navázání nových aplikací. V případě, že bude vytvořena mobilní aplikace pro získávání dat, nebude nutné psát znovu stejnou nebo podobnou logiku.
-\par Pro zabezpečené přihlášení do aplikace bude použit autentizační server, který bude zajišťovat vytváření a správu uživatelů spolu s jejich právy.
+\par K~vytvoření co nejpřívětivější platformy budou využity naše zkušenosti a knižní publikace zabývající se tímto tématem. Dále budou analyzovány jednotlivé postupy zadávání dat uživatelů do tohoto systému, které povedou ke zpřehlednění a zjednodušení používání.
+\par Pro komunikaci se serverem bude použit standard REST, který usnadní komunikaci se serverem a umožní případné navázání nových aplikací. V~případě, že bude vytvořena mobilní aplikace pro získávání dat, nebude nutné psát znovu stejnou nebo podobnou logiku.
+\par Pro zabezpečené přihlášení do aplikace bude použit autentizační server, který bude zajišťovat vytváření a správu uživatelů spolu s~jejich právy.
 
