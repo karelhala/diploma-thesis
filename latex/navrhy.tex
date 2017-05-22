@@ -2,7 +2,7 @@
 % Navrhy
 %------------------------------------------------------------------------------------------------------------------------------------------
 \chapter{VLASTNÍ NÁVRHY}
-\par Nástroj, který je součástí této práce se zaměří z~velké části na uživatelské rozhraní a do jisté míry využije technologie a nástroje, které jsou dostupné a usnadní tak vývoj a nasazení nového nástroje. Dále se budeme věnovat  životaschopnosti tohoto nástroje a způsobem jakým bude vytvořený nástroj nabízen veřejnosti. Firmy, pro které bude tato aplikace doporučována jsou malé, až střední podniky, které pracují s~větším množstvím dat a potřebují nějakým způsobem najít skryté informace. Celá aplikace je vyvíjena v~rámci open-source licence, proto je možné najít celý její kód (všech částí) na adrese \url{https://github.com/Lumeer}.
+\par Nástroj, který je součástí této práce se zaměří z~velké části na uživatelské rozhraní a do jisté míry využije technologie a nástroje, které jsou dostupné a usnadní tak vývoj a nasazení nového nástroje. Dále se budeme věnovat  životaschopnosti tohoto nástroje a způsobem, jakým bude vytvořený nástroj nabízen veřejnosti. Firmy, pro které bude tato aplikace doporučována jsou malé, až střední podniky, které pracují s~větším množstvím dat a potřebují nějakým způsobem najít skryté informace. Celá aplikace je vyvíjena v~rámci open-source licence, proto je možné najít celý její kód (všech částí) na adrese: \url{https://github.com/Lumeer}.
 
 \section{Návrh aplikace}
 \par Aplikace je postavena na základě aplikačního serveru WildFly, který pracuje s~moduly napsanými v~jazyce Java. Základní rozdělení aplikace je na \textbf{Engine} (veškerá serverová logika) a \textbf{UI} (webové uživatelské rozhraní). Engine je připojen na databázi MongoDb, což je NoSql databáze. Výhodou tohoto nastavení je vysoká pružnost v~rámci zapsaných dat a není tedy nutné přesně definovat závislosti v~rámci databáze (každý zákazník si může definovat jiné důležité atributy pro každý projekt).
@@ -26,7 +26,7 @@
 \end{figure}
 
 \par Pokud uživatel již disponuje velkým datovým uložištěm je možné ho připojit do systému jednoduchou konfigurací v~rámci UI. Systém prozkoumá tato data, některá si nakopíruje a začne je uživateli nabízet podobně, jako kdyby je uživatel měl již dříve v~systému. Stejně je tomu s~dolováním dat -- modul, který je zodpovědný za samostatné dolování, je možné připojit do systému, odkázat jej na datové uložiště a spustit dolování dat. Vše je nastavitelné jak z~uživatelského prostředí, tak pomocí volání na předem definované RESTové služby.
-
+\newpage
 \subsection{Vedení vývojového týmu}
 \par Pro snadný a rychlý vývoj bylo nutné zvolit vhodné vedení vývojového týmu, který se podílel na vývoji celé aplikace. Ze zkušeností bylo určeno, že rychlého vývoje se dosáhne použitím agilní metody vedení týmu (inspirováno scrumem). Nicméně, protože jednotliví členové týmu se nenacházeli v~dostatečné vzdálenosti, a nebyl tento projekt veden jako hlavní úkol jednotlivých členů, některá setkání, která jsou definována ve scrumu byla vyškrtnuta. Nejenom proto nelze vedení týmu, které bylo zvoleno, označit jako čistokrevný scrum, ale pouze jsme se při vedení inspirovali touto metodikou.
 
@@ -144,7 +144,7 @@
 \end{figure}
 
 \subsubsection{Složitější grafy}
-\par Jak již bylo nastíněno v~předešlé sekci pro platící uživatele nabízí aplikace rozšířenou práci s~grafy, převážně komplexnějších typů grafů se kterými může uživatel pracovat. Také možnost exportovat grafy do formátu, který přečte aplikace Microsoft Excel. Ale hlavní výhodou oproti jednoduchým grafům má použití knihovny D3 -- ta nabízí velké možnosti vytvoření jak grafů, tak různých grafických prvků. Tato knihovna je používaná nadstavbou \textbf{C3}, která definuje základní grafy, které je jednoduché vytvořit, ale je značně rozšiřitelná. Také v~rámci složitější práce s~grafy nabízíme uživateli možnost importovat data z~různých formátů (CSV, XLS, XLSX atd.) a poté zvolit dokument, do kterého se tato data vloží, případně pouze pracovat s~těmito daty a vytvořit graf, který poté může uživatel uložit jako samostatnou entitu.
+\par Jak již bylo nastíněno v~předešlé sekci, pro platící uživatele nabízí aplikace rozšířenou práci s~grafy, převážně komplexnějších typů grafů, se kterými může uživatel pracovat. Také možnost exportovat grafy do formátu, který přečte aplikace Microsoft Excel. Ale hlavní výhodou oproti jednoduchým grafům má použití knihovny D3 -- ta nabízí velké možnosti vytvoření jak grafů, tak různých grafických prvků. Tato knihovna je používaná nadstavbou \textbf{C3}, která definuje základní grafy, které je jednoduché vytvořit, ale je značně rozšiřitelná. Také v~rámci složitější práce s~grafy nabízíme uživateli možnost importovat data z~různých formátů (CSV, XLS, XLSX atd.) a poté zvolit dokument, do kterého se tato data vloží, případně pouze pracovat s~těmito daty a vytvořit graf, který poté může uživatel uložit jako samostatnou entitu.
 
 \subsection{Vyhledávací jazyk}
 \par Vzhledem k~tomu, že součástí požadavků na aplikaci bylo také možnost jednoduše filtrovat a hledat v~jednotlivých entitách, museli jsme přijít s~vyhledávacím jazykem, který pokryje jak složité vyhledávací dotazy, tak je pro uživatele jednoduchý pro pochopení.
@@ -171,7 +171,7 @@
 \end{figure}
 
 \par Pokud uživatel použije tokenového, vyhledávání usnadní tak serveru následné hledání, protože nemusí složitě rozdělovat větu a skládat ji do strojově srozumitelného vyhledávání. Pokud například vezmeme opět větu \textit{Restaurant in Brno with burger and pizza}, tak ta by v~tokenové verzi vypadala tak, že by vyhledávací dotaz obsahoval čtyři tokeny každý s~informací o~jednotlivých požadavcích. Tokenizované vyhledávání si uživatel může uložit do takzvaných pohledů, které může následně vyhledávat. Kliknutím na pohled se dostane rovnou na vyhledané entity skrz uložený dotaz.
-
+\newpage
 \subsection{Zabezpečení}
 \par V~mnoha moderních aplikacích dochází k~problémům se zabezpečením, ať již je to nedostatečné zabezpečení vůči případným útokům, nebo nechtěné dovolení přístupu různým uživatelům k~datům, ke kterým by neměli mít přístup. Vytvářený nástroj se na toto téma snaží co nejvíce zacílit a použít řešení, které nebude příliš komplexní k~nastavení pro zákazníka a zároveň bude poskytovat silné zabezpečení. Proto byl zvolen nástroj od firmy RedHat \textbf{Keycloak}, jehož fungování je popsáno v~sekci o~autentizačních serverech \ref{auth-server}.
 
@@ -219,7 +219,7 @@
 \caption{Příklad plnění jednoduché fronty.}
 \label{zasobnik}
 \end{figure}
-
+\newpage
 \subsubsection{Fronta s~počítadlem}
 \par Fronta s~počítadlem je v~podstatě rozšířená implementace fronty. Pokud je některá entita otevíraná častěji, je u~ní zvyšován počet otevření. Entita s~největším počtem otevření je na spodu fronty a entita s~nejmenším počtem navrchu. Pokud se otevře nový dokument, je mu zvýšen počet otevření, a pokud překročí toto číslo nejvrchnější prvek ve frontě, tato nově otevřená entita nahradí tu, která byla na vrcholu fronty. Provedeno v~rámci aplikace můžeme vidět na obrázku \ref{counter} -- nejčastěji používaná entita je označena 2 a nejméně používaná je označena 5; dále uživatel otevřel nově dokument s~označením c a poté otevřel dokument d, který byl předtím otevřen jednou. Nově tedy zásobník obsahuje entity 2, 3, 4, 1 a d.
 \begin{figure}[htp]
@@ -228,7 +228,7 @@
 \caption{Příklad plnění rozšířené fronty s~počítadlem.}
 \label{counter}
 \end{figure}
-
+\newpage
 \subsection{Přibližné napovídání}
 \par Přibližné napovídání pracuje nad takzvanou fuzzy logikou a funguje na principu, že zadaný řetězec nemusí být vždy přesně zadán, aby uživateli byl dodán výsledek, který požaduje. Přibližné napovídání v~aplikaci přibližné napovídání funguje tak, že v~momentě, kdy uživatel zadá hledaný řetězec, jsou mu zobrazeny záznamy, které se nejblíže shodují k~danému řetězci (případně obsahují prvních pár písmen), ideálně jsou tyto řetězce shodné. Aplikace nabízí možnost zobrazit uživateli entity, které mají v~názvu nebo v~možných řetězcích jedno písmeno jiné. Pokud uživatel následně vybere entitu, je k~ní tento hledaný řetězec přidán. Entita tedy obsahuje seznam možných hledaných řetězců, které se dále mohou lišit o~jedno písmeno. Například pokud budeme hledat entitu s~názvem \textbf{Restaurace}, tato entita dále obsahuje seznam možných hledaných řetězců -- například \textit{Rez}, \textit{taue}, \textit{auea} a \textit{Res}. Uživatel tak zadá do hledání \textbf{Restaues} a systém mu nabídne entitu \textbf{Restaurace}.
 
@@ -260,17 +260,17 @@ Pravděpodobnost&Hodnota\\
 
 \begin{tabular}{|c | c |}
 \hline
-Hodnota&Dopad\\
+Dopad&Hodnota\\
 \hline
-1&Velmi nízký\\
+Velmi nízký&1\\
 \hline
-2&Nízký\\
+Nízký&2\\
 \hline
-3&Střední\\
+Střední&3\\
 \hline
-4&Vysoký\\
+Vysoký&4\\
 \hline
-5&Velmi vysoký\\
+Velmi vysoký&5\\
 \hline
 \end{tabular}
     \end{minipage} 
@@ -313,7 +313,7 @@ Hodnota&Dopad\\
 \hline
 6 & Dedikování člověka pro komunikaci s~investory & Cena člověka pro komunikaci & 2 & 5 & 10 \\
 \hline
-\caption{Opatření pro vyhnutí rizikům.}
+\caption{Opatření pro vyhnutí se rizikům.}
 \label{rizika}
 \end{longtable}
 
@@ -337,4 +337,4 @@ Hodnota&Dopad\\
 
 \par Pokud zákazník souhlasí se všemi podmínkami a je ochotný začít používat aplikaci, je s~ním také vytvořen speciální platící plán, ve kterém záleží na počtu uživatelů, kteří budou mít přístup k~systému a k~funkcionalitám, které jednotliví uživatelé požadují. Tento platící plán je opět individuální a nejvíce se mění v~závislosti na počtu a druhu aktivovaných funkcí a na skupině zákazníka.
 
-\par Vzhledem k~tomu, že vývoj aplikace probíhá formou open-source, nemáme možnost, aby si schopnější uživatelé nevzali vyvýjenou aplikaci a nespustili si ji sami na svém vlastním stroji, tomuto se nijak nebráníme a je jasné, že takové případy budou vznikat, proto musíme sázet na to, že zákazníci budou chtít platit za podporu a za přidané hodnoty, na které mají nárok v~rámci cenových modelů.
+\par Vzhledem k~tomu, že vývoj aplikace probíhá formou open-source, nemáme možnost, aby si schopnější uživatelé nevzali vyvíjenou aplikaci a nespustili si ji sami na svém vlastním stroji, tomuto se nijak nebráníme a je jasné, že takové případy budou vznikat, proto musíme sázet na to, že zákazníci budou chtít platit za podporu a za přidané hodnoty, na které mají nárok v~rámci cenových modelů.

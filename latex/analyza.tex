@@ -61,17 +61,16 @@ Příklad aplikace napsané pomocí Materialu můžeme vidět na obrázku \ref{m
 \caption[Příklad tématu pro aplikaci napsanou technologií Bootstrap]{Příklad tématu pro aplikaci napsanou technologií Bootstrap. Zdroj: \cite{bootstrap}}
 \label{bootstrap-fig}
 \end{figure}
-\newpage
-\item \textbf{Patternfly} -- společnost RedHat se inspiroval Bootsrapem a vytvořila vlastní responzivní rámec s~ázvem Patternfly, který dále nabízí několik widgetů pro zobrazování složitějších uživatelských dat. Jeho hlavním zaměřením je unifikovat jednotlivé aplikace ve firmě, tak aby měli stejný, ale unikátní design. Proto nabízí několik jednoduchých přístupů co a jak dělat pro dosažení co nejvíce podobného vzhledu napříč aplikacemi. \cite{patternfly} Příklad aplikace napsané pomocí Patternfly můžeme vidět na obrázku \ref{patternfly-fig}.
-
 \begin{figure}[h!]
 \centering
 \includegraphics[max size={\textwidth}]{patternfly}
 \caption[Příklad tématu pro aplikaci napsanou technologií patternfly]{Příklad tématu pro aplikaci napsanou technologií patternfly. Zdroj: \cite{patternfly}}
 \label{patternfly-fig}
 \end{figure}
+\newpage
+\item \textbf{Patternfly} -- společnost RedHat se inspiroval Bootsrapem a vytvořila vlastní responzivní rámec s~ázvem Patternfly, který dále nabízí několik widgetů pro zobrazování složitějších uživatelských dat. Jeho hlavním zaměřením je unifikovat jednotlivé aplikace ve firmě, tak aby měli stejný, ale unikátní design. Proto nabízí několik jednoduchých přístupů co a jak dělat pro dosažení co nejvíce podobného vzhledu napříč aplikacemi. \cite{patternfly} Příklad aplikace napsané pomocí Patternfly můžeme vidět na obrázku \ref{patternfly-fig}.
 \end{itemize}
-
+\clearpage
 \section{Single sign-on (SSO)}
 \par V~aktuální době velká část společností nabízejících větší portfolio aplikací volí takzvanou službu single sign-on, kdy uživatel nemusí pokaždé zadávat své přihlašovací údaje, ale o~jeho identifikaci se postará specializovaná služba. Většinou se stačí do této služby přihlásit jednou, a dokud nevyprší čas od posledního použití aplikace, která používá tuto službu, nebo není uživatel schválně odhlášen, nemusí se znovu přihlašovat. Jako protiklad je postaven Single sign-off, kdy při odhlášení v~jedné aplikaci je uživatel automaticky odhlášen ze všech ostatních aplikací, toto napomáhá dalšímu zabezpečení.
 
@@ -87,11 +86,12 @@ Příklad aplikace napsané pomocí Materialu můžeme vidět na obrázku \ref{m
 \caption{Předání uživatelského požadavku při použití SAML2}
 \label{saml2}
 \end{figure}
-
+\newpage
 \subsection{Autentikační servery} \label{auth-server}
 \par Aktuální trh nabízí velké množství autentizačních serverů, které spravují uživatele a poskytují přihlášení do více aplikací. Některé jsou dokonce volně k~použití bez nutnosti zakoupit licenci -- je nutné pouze spravovat servery, na kterých takováto služba poběží. Mezi tyto servery patří například \textbf{Keycloak}, \textbf{Sterling externí autentizační server} a \textbf{Active Directory Federation Services}.
 
-\paragraph{Keycloak} -- open-source software řešení, které nabízí připojení i přes sociální sítě a možnost získání uživatelských účtů z~LDAP, Active Directory a nebo přímo z~databáze. Jeho velkou premisou je jednoduchost správy uživatelů, včetně definice přístupových práv pro jednotlivé části aplikace. \cite{keycloak} Jak uživatel získá JWT při použití nástroje Keycloak můžeme vidět na obrázku \ref{keycloak-jwt-fig}, kde si uživatel zažádá o~nový token, kterým se poté autorizuje u~aplikačního serveru.
+\subsubsection{Keycloak} 
+\par Keycloak je open-source software řešení, které nabízí připojení i přes sociální sítě a možnost získání uživatelských účtů z~LDAP, Active Directory a nebo přímo z~databáze. Jeho velkou premisou je jednoduchost správy uživatelů, včetně definice přístupových práv pro jednotlivé části aplikace. \cite{keycloak} Jak uživatel získá JWT při použití nástroje Keycloak můžeme vidět na obrázku \ref{keycloak-jwt-fig}, kde si uživatel zažádá o~nový token, kterým se poté autorizuje u~aplikačního serveru.
 
 \begin{figure}[htp]
 \centering
@@ -99,10 +99,12 @@ Příklad aplikace napsané pomocí Materialu můžeme vidět na obrázku \ref{m
 \caption{Znázornění získání JWT z~nástroje Keycloak.}
 \label{keycloak-jwt-fig}
 \end{figure}
+\newpage
+\subsubsection{Sterling externí autentizační server}
+\par Sterling externí autentizační server označuje řešení od IBM nabízející rozšířené autentizace a validace služeb pro IBM produkty. Nabízí napojení například na LDAP a možnost SSH autentizace. \cite{ibm-ster}
 
-\paragraph{Sterling externí autentizační server} je řešení od IBM nabízející rozšířené autentizace a validace služeb pro IBM produkty. Nabízí napojení například na LDAP a možnost SSH autentizace. \cite{ibm-ster}
-
-\paragraph{Active Directory Federation Services} od firmy Microsoft nabízí možnost sdílet identifikační informace napříč důvěryhodným obchodním partnerům skrze extranet. Výhodou je že se aplikace nemusí starat o~všechny uživatele, ale pouze si vyžádá od spřátelené aplikace jeho práva. \cite{ADFS}
+\subsubsection{Active Directory Federation Services}
+\par Active Directory Federation Services od firmy Microsoft nabízí možnost sdílet identifikační informace napříč důvěryhodným obchodním partnerům skrze extranet. Výhodou je že se aplikace nemusí starat o~všechny uživatele, ale pouze si vyžádá od spřátelené aplikace jeho práva. \cite{ADFS}
 
 \section{Datová analýza}
 \par Pokud firma disponuje velkým množstvím dat, je vhodné nad těmito daty najít nějaké souvislosti, které jí dopomůžou k~vytváření dalšího zisku, případně pouze pro pochopení daného zákazníka, nebo skupiny zákazníků. Jestliže je těchto dat opravdu hodně, můžeme je označit za Big Data (popsáno v~\ref{big-data}), poté procesům k~získání dalších informací říkáme dolování dat (blíže popsáno v~\ref{data-mining}).
@@ -126,7 +128,8 @@ Proces shlukování je tedy rozdělování těchto dat do shluků větších jak
 
 \subsection{Rozhodovací stromy}
 \par Algoritmus rozhodovacích stromů slouží k~získání pravidel a vztahů v~datovém souboru pomocí větvení. Díky použití stromů je tento algoritmus rychlý a výhodný pro použití s~počítačem. Složení stromu je takové, že na vrcholu je jeden uzel, kterému se říká kořen, ze kterého vede několik hran spojujících vnitřní uzly, které mají opět několik hran propojujících další uzly. Každý uzel musí mít právě jednoho předka (ne více ani méně), kromě kořenového uzlu, který nemá žádného předka. Výhodou je jednoduchost, efektivnost a možnost použít i pro velký objem dat. Na druhou stranu pokud nám budou některá data chybět, nebo budeme mít spojitá data rozhodovací stromy budou mít problémy. \cite{data-mining-principles} Při výběru vlastnosti, která je nejvíce odlišná od ostatních příkladů v~ostatních třídách se požívá takzvané entropie -- její výpočet lze vidět na \ref{entropie}, kde \(p_t\) je pravděpodobnost výskytu třídy \(t\) a \(t\) je počet tříd.
-\begin{equationcap}
+\begin{equationcap}[!htp]
+\centering
 \begin{equation} \label{entropie}
 E(S) = - \sum_{t=1}^{T}(p_t log_2 p_t)
 \end{equation}
@@ -135,7 +138,7 @@ E(S) = - \sum_{t=1}^{T}(p_t log_2 p_t)
 
 \par Pro vytvoření stromu se vezme tabulka hodnot a pro každý atribut se vypočítá jeho entropie -- ta znázorňuje homogenitu prvku. Pokud je prvek naprosto homogenní (nacházející se ve všech atributech), jeho entropie je 0, naopak pokud je prvek naprosto heterogenní (nachází se pouze v~jednom atributu), jeho entropie je 1. Při prvotním vytvoření rozhodovacího stromu je tedy potřeba mít co nejlepší trénovací data, nicméně velké množství dat může mít za následek příliš složitý strom, který je opět nepoužitelný (proto je potřeba dbát na vhodnou velikost učebních dat). Pokud nám vznikne složitý a ne příliš efektivní rozhodovací strom, je vhodné použít takzvané prořezávání, kdy odstraníme nadbytečné podstromy (velice vhodné v~případě, že jsme použili velký vzorek dat pro vytvoření stromu). \cite{data-mining}
 
-\par Příklad algoritmu, který se používá pro vytváření rozhodovacích stromů je takzvaný ID3. Ten je založen na booleovských hodnotách, používá hladové vyhledávání v~prostoru\footnote{Bližší informace o~hladovém prohledávání lze nalézt na: \url{http://www.how2examples.com/artificial-intelligence/tree-search}.} a strom je vytvářen odshora dolů. Vstupní parametry tohoto algoritmu jsou
+\par Příklad algoritmu, který se používá pro vytváření rozhodovacích stromů je takzvaný ID3. Ten je založen na booleovských hodnotách, používá hladové vyhledávání v~prostoru a strom je vytvářen odshora dolů. Vstupní parametry tohoto algoritmu jsou:
 \begin{itemize}
 \item \textbf{příklady} -- data, na kterých je rozhodovací strom vytrénován.
 \item \textbf{atributy} -- nad nimiž bude strom testován.
@@ -167,7 +170,8 @@ ID3 algoritmus byl několikrát vylepšen a upraven pro použití za různých p
 \end{itemize}
 
 \paragraph{PageRank} slouží k~hodnocení webových stránek, které pomáhá k~tomu, aby daný web byl na vyšších příčkách ve vyhledávačíh jako Google, Seznam, Yahoo, atd. Označuje tedy metriku pro ohodnocení dokumentů a zjištění jejich kvality. Výpočet ohodnocení stránky \(p\) lze získat použitím rovnice \ref{pageRank}, kde \(n\) je počet odchozích uzlů, \(Outdegree(q)\) je počet hyperlinků na stránce q, \(d\) znamená pravděpodobnost, že uživatel zadá stránku přímo bez prokliknutí z~jiné stránky a \(1 - d\) označuje pravděpodobnost, že uživatel navštíví stránku z~prokliknutého hyperlinku. \cite{minigbook}
-\begin{equationcap}
+\begin{equationcap}[!htp]
+\centering
 \begin{equation} \label{pageRank}
 PR(p) = d/n + (1-d) \sum_{(q,p) \in G}(\frac{PR(q)}{Outdegree(q)})
 \end{equation}
@@ -201,7 +205,7 @@ PR(p) = d/n + (1-d) \sum_{(q,p) \in G}(\frac{PR(q)}{Outdegree(q)})
 \paragraph{SAP} -- informační systém, který nabízí hned dvě řešení pro možné dolování informací z~dat -- \textbf{SAP BusinessObjects} a \textbf{SAP HANA}. První ze jmenovaných je sada fron-end aplikací, která nabízí uživateli možnost prohlížet, řadit a pracovat s~BI datami. Druhým řešením je platforma SAP HANA, která má za úkol zpracovávat velké množství dat v~reálném čase. Jako bonus firma SAP nabízí vývojářský balík, kterým si uživatelé mohou upravit tuto platformu a rozšířit tak její využití. \cite{sap}
 
 \section{Databázové aplikační platformy}
-\par Mnoho firem v~současné době nabízí různá řešení platforem, které zobrazují a umožňují práci s~daty bez nutnosti instalace sofistikovaného programu u~uživatele, ale za pomoci webového rozhraní. Tyto aplikace jsou převážně inspirovány úspěchem programu excel od firmy Microsoft, který v~aktuální době používá více než 1,2 miliardy uživatelů\footnote{Podle oficiální zprávy od Microsoftu v~roce 2016 \url{http://www.windowscentral.com/there-are-now-12-billion-office-users-60-million-office-365-commercial-customers}.}.
+\par Mnoho firem v~současné době nabízí různá řešení platforem, které zobrazují a umožňují práci s~daty bez nutnosti instalace sofistikovaného programu u~uživatele, ale za pomoci webového rozhraní. Tyto aplikace jsou převážně inspirovány úspěchem programu Excel od firmy Microsoft, který v~aktuální době používá více než 1,2 miliardy uživatelů\footnote{Podle oficiální zprávy od Microsoftu v~roce 2016 \url{http://www.windowscentral.com/there-are-now-12-billion-office-users-60-million-office-365-commercial-customers}.}.
 
 \par Firma Microsoft začala v~nedávné době využívat možnost sdílet dokument mezi uživateli, kteří v~reálném čase vidí změny prováděné na daném dokumentu. Podobnou funkci nabízí také firma Google, nicméně již nenabízí plnohodnotnou aplikaci, kterou by měl uživatel nainstalovanou na počítači a která by umožňovala uživateli pracovat pohodlněji s~dokumenty (jak tomu je při použití programu od firmy Microsoft).
 
@@ -216,7 +220,7 @@ PR(p) = d/n + (1-d) \sum_{(q,p) \in G}(\frac{PR(q)}{Outdegree(q)})
 \paragraph{Nintex workflow} -- platforma, která nabízí automatizaci procesů v~rámci firmy, což znamená, že zákazník může propojit jednotlivé aplikace (které jsou kompatibilní s~aplikací Nintex) a systémy do určité posloupnosti úkolů, které dostanou zaměstnanci. Výhodou této platformy je především možnost propojení do velkého portfolia firemních aplikací -- například NetSuite, Microsoft Dynamics a SAP, případně je možné vyvolat akci v~podobě odeslání emailu nebo SMS.
 
 \section{Management vztahu se zákazníky (CRM)}
-\par CRM (Client Relationship Management) je termín používaný pro označení strategií a technologií používaných společnostmi pro monitorování a zjišťování stavu co uživatelé dělají s~jejich produkty -- používají se jak k~monitorování webových aplikací, volání, chatování, mailů a sociálních sítí. Mezi funkce CRM patří \textbf{automatizace marketingu}, \textbf{automatizace prodeje}, \textbf{automatizace kontaktního centra} a \textbf{geolokační technologie}. \cite{crm}
+\par CRM (Client Relationship Management) je termín používaný pro označení strategií a technologií používaných společnostmi pro monitorování a zjišťování stavu, co uživatelé dělají s~jejich produkty -- používají se jak k~monitorování webových aplikací, volání, chatování, mailů a sociálních sítí. Mezi funkce CRM patří \textbf{automatizace marketingu}, \textbf{automatizace prodeje}, \textbf{automatizace kontaktního centra} a \textbf{geolokační technologie}. \cite{crm}
 
 \begin{itemize}
 \item \textbf{Automatizace marketingu} napomáhá marketingovému oddělení některé repetitivní úkoly provádět automaticky. Jako například při zavedení nového produktu není nutné psát každému zákazníkovi speciální email, ale je možně nechat CRM systém vygenerovat speciálně cílenou reklamu pro každého zákazníka.
@@ -232,12 +236,12 @@ PR(p) = d/n + (1-d) \sum_{(q,p) \in G}(\frac{PR(q)}{Outdegree(q)})
 
 \paragraph{KissMetrics} je placená alternativa ke Google analytics, cílí především na velké webové stránky a nabízí mnoho způsobů jak monitorovat zákazníky. Mezi přední výhodu patří možnost identifikace uživatele ještě před jeho přihlášením, kdy se ukládá jeho pohyb do anonymního účtu, a pokud se tento uživatel v~budoucnu identifikuje, všechna anonymní data se automaticky spárují s~tímto účtem. Tento nástroj také nabízí mnohem jednodušší možnost nastavení A/B testování\footnote{A/B testování je v~podstatě vytvoření dvou různých variant jedné stránky a testování, která je více úspěšnější mezi uživateli (více stráveného času, koupě produktu, více kliknutí na stránce ...).}, kdy není potřeba vytvořit dvě různé URL pro jednu stránku. Dále tento nástroj nabízí velice jednoduché nastavení sledování chování uživatelů na jednotlivých stránkách, kdy je velice snadné nastavit například sledování času stráveného na stránce, dobu vyplňování formuláře, pohyb kurzoru po stránce atd. Na obrázku \ref{ab-fig} můžeme vidět výsledky A/B testování v~nástroji KissMetrics.
 
-\begin{figure}[htp]
+\begin{figure}[!htp]
 \centering
-\includegraphics[max size={\textwidth}]{A_B}
-\caption[Data získána z~A/B testování v~nástroji KissMetrics]{Data získána z~A/B testování v~nástroji KissMetrics. Zdroj: \url{https://blog.kissmetrics.com/google-analytics-and-kissmetrics/}}
+\includegraphics[max size={\textwidth},scale=0.75]{A_B}
+\caption[Data získána z~A/B testování v~nástroji KissMetrics]{Data získána z~A/B testování v~nástroji KissMetrics. Zdroj: \cite{kiss-ab}}
 \label{ab-fig}
 \end{figure}
-
+\newpage
 \section{Shrnutí}
-\par Aplikace věnující se ukládání a práci s~daty pomocí webového rozhraní se zaměřují převážně na větší podniky a většinou nemají tolik intuitivní uživatelské rozhraní. Vylepšování dostupných aplikací není snadné a nastavení uživatelských práv je pouze v~mizivém množství dostupných aplikací. Proto se dále zaměříme na vývoj samotné aplikace, která spojí myšlenky z~aktuálních aplikací a využije open source nástroje, které umožní snadnější práci s~uživateli.
+\par Aplikace věnující se ukládání a práci s~daty pomocí webového rozhraní se zaměřují převážně na větší podniky a obvykle nemají tolik intuitivní uživatelské rozhraní. Vylepšování dostupných aplikací není snadné a nastavení uživatelských práv je pouze v~mizivém množství dostupných aplikací. Proto se dále zaměříme na vývoj samotné aplikace, která spojí myšlenky z~aktuálních aplikací a využije open source nástroje, které umožní snadnější práci s~uživateli.

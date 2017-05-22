@@ -19,10 +19,14 @@
 \end{itemize}
 
 \subsection{Příklady low-code platforem}
-\paragraph{Microsoft PowerApps}: Vývojová platforma od firmy Microsoft, která dovoluje vytvořit během několika málo kliknutí aplikaci jak pro mobilní platformy, tak jako webové služby. Při spojením této platformy a aplikace Power BI vzniká velice robustní vývojářský nástroj, díky kterému je možné rychle integrovat produkční data do aplikace, kterou budou uživatelé rádi používat. \cite{pcmag-no-coding}
-\paragraph{Zoho Creator}: Výhodou této platformy je využití techniky \uv{\tt{drag-and-drop}}, která umožňuje vytvářet aplikace a převážně jejich uživatelské rozhraní bez nutnosti psát jakýkoliv kód. \cite{zoho-review}
-\paragraph{Rollbase}: Při používání této platformy vývojář jako první definuje objekty, jejich vlastnosti a vztahy mezi těmito objekty. Po překonání tohoto kroku máme již plně funkční webovou aplikaci, která je použitelná napříč všemi mobilními zařízeními. \cite{what-is-low-code}
-\paragraph{Openshift}: Platforma pro vývoj webovým a mobilních aplikací, postavená na kontejnerech, které zajišťují rychlý vývoj a umožňují dedikovat vývojáře na vytvoření jednoduchých funckionalit, které fungují jako samostatné aplikace\footnote{Takovýmto aplikacím se říká Mikroservise \url{https://smartbear.com/learn/api-design/what-are-microservices/}.}. Tyto malé aplikace zaměřující sena jedoduchou funkci se poté za pomocí Openshiftu spojí dohromady a vytvoří jednu velkou platformu. Na Obrázku \ref{openshift-vrstvy} můžeme vidět, z~jakých vrstev se skládá Openshift a můžeme pozorovat jednotlivé aplikace znázorněné v~nodech, dále můžeme sledovat, jaké nástroje nabízí Openshift vývojářům (management zdrojových kódů -- SCM a kontinuální integrace -- CI/CD).\cite{openshift-overview}
+\subsubsection{Microsoft PowerApps}
+\par Vývojová platforma od firmy Microsoft, která dovoluje vytvořit během několika málo kliknutí aplikaci jak pro mobilní platformy, tak jako webové služby. Při spojením této platformy a aplikace Power BI vzniká velice robustní vývojářský nástroj, díky kterému je možné rychle integrovat produkční data do aplikace, kterou budou uživatelé rádi používat. \cite{pcmag-no-coding}
+\subsubsection{Zoho Creator}
+\par Výhodou této platformy je využití techniky \uv{\tt{drag-and-drop}}, která umožňuje vytvářet aplikace a převážně jejich uživatelské rozhraní bez nutnosti psát jakýkoliv kód. \cite{zoho-review}
+\subsubsection{Rollbase}
+\par Při používání této platformy vývojář jako první definuje objekty, jejich vlastnosti a vztahy mezi těmito objekty. Po překonání tohoto kroku máme již plně funkční webovou aplikaci, která je použitelná napříč všemi mobilními zařízeními. \cite{what-is-low-code}
+\subsubsection{Openshift}
+\par Platforma pro vývoj webovým a mobilních aplikací, postavená na kontejnerech, které zajišťují rychlý vývoj a umožňují dedikovat vývojáře na vytvoření jednoduchých funckionalit, které fungují jako samostatné aplikace\footnote{Takovým aplikacím se říká Mikroservise \url{https://smartbear.com/learn/api-design/what-are-microservices}.}. Tyto malé aplikace zaměřující sena jedoduchou funkci se poté za pomocí Openshiftu spojí dohromady a vytvoří jednu velkou platformu. Na Obrázku \ref{openshift-vrstvy} můžeme vidět, z~jakých vrstev se skládá Openshift a můžeme pozorovat jednotlivé aplikace znázorněné v~nodech, dále můžeme sledovat, jaké nástroje nabízí Openshift vývojářům (management zdrojových kódů -- SCM a kontinuální integrace -- CI/CD).\cite{openshift-overview}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{openshift}
@@ -43,7 +47,7 @@
 \item \textbf{Hybridní} -- vytvořené z~více druhů -- kombinují privátní a veřejný cloud. Mezi jejich portfolio často patří záloha ke kritickým službám.
 \item \textbf{DaaS (Data as a Service)} -- data jako služba, pouze data uložené v~cloudu.
 \item \textbf{PaaS (Platform as a Service)} -- platforma jako služba, pro vývoj a hostování celého vývojového cyklu, často včetně možnosti nasazení výsledné aplikace.
-\item \textbf{IaaS (Infrastrcure as a Service)} -- infrastruktura jako služba, opravdové, nebo virtuální počítače nabízené uživatelům. \cite{cloud-computing} \label{IaaS}
+\item \textbf{IaaS (Infrastructure as a Service)} -- infrastruktura jako služba, opravdové, nebo virtuální počítače nabízené uživatelům. \cite{cloud-computing} \label{IaaS}
 \end{itemize}
 
 \subsubsection{Platforma jako služba -- PaaS}
@@ -87,7 +91,7 @@ Platforma jako služba -- tento pojem označuje službu, která zahrnuje komplet
 \item \textit{Volatility} -- důraz na aktuálnost dat pro přesnější predikci a jejich pozdější zpracování. \cite{big-data-action}
 \end{itemize}
 
-Nejvhodnější místo pro uložení takového množství dat, je cloud, přesněji je žádoucí využít službu některých poskytovatelů privátních nebo veřejných IaaS. \ref{IaaS} Cloud je vhodný pro Big data převážně kvůli tomu, že jak uložení, tak práce s~takovým objemem dat, požaduje velké množství distribuované počítačové síly. Výhodami pro uložení velkého množství dat jsou škálovatelnost, pružnost, sdružování prostředků, samoobsluha, nízká pořizovací cena, platba za chodu a tolerance pádů. \cite{big-data-dummies}
+Nejvhodnější místo pro uložení takového množství dat, je cloud, přesněji je žádoucí využít službu některých poskytovatelů privátních nebo veřejných IaaS. Cloud je vhodný pro Big data převážně kvůli tomu, že jak uložení, tak práce s~takovým objemem dat, požaduje velké množství distribuované počítačové síly. Výhodami pro uložení velkého množství dat jsou škálovatelnost, pružnost, sdružování prostředků, samoobsluha, nízká pořizovací cena, platba za chodu a tolerance pádů. \cite{big-data-dummies}
 
 \paragraph{Škálovatelnost} se zaměřením na hardware znamená, že pro Big data je potřeba přejít z~relativně malého výpočetního výkonu na velký během několika chvil bez nutnosti změnit architekturu. Pokud budeme mluvit o~softwaru je zapotřebí zachovat stejnou jednotku síly, jak se zvětšuje hardware (při zvýšení objemu dat by mohlo dojít ke značnému poklesu výkonu, pokud na to není systém připraven). \cite{big-data-dummies}
 
@@ -129,6 +133,7 @@ Nejvhodnější místo pro uložení takového množství dat, je cloud, přesn�
 \label{crisp-dm}
 \end{figure}
 
+\clearpage
 \subsection{Extraction, Transformation, Loading}
 \par V~případě práce s~velkým objemem dat je musíme nejdříve očistit a upravit, tak aby byly co nejlépe použitelné pro náš případ, takovému procesu se říka Extraction, Transformation, Loading ve zkratce \textbf{ETL} (jsou to procesy zodpovědné za naplnění dat do datových skladů). Nejdříve jsou data vyextrahována z~různých uložišť (Extraction -- E). Těmito uložišti mohou být například OLTP (Online transaction processing -- detailní a aktuální data v~transakčních databázích), starší systémy, webové stránky atd. Poté jsou data očištěna, zbavena duplikátů a chybějících atributů  (Transformation -- T). Následně jsou data nahrána do datových skladů, kde se s~nimi může dále pracovat (Loading -- L).
 
@@ -147,7 +152,7 @@ Nejvhodnější místo pro uložení takového množství dat, je cloud, přesn�
 \end{itemize}
 
 \subsection{Single page aplikace}
-\par Tradiční přístup k~vývoji webové aplikace je že máme databázi připojenou do serverového back-endu ke kterému jsme schopní se dostat pomocí webového rozhraní. Veškerá práce se odehrává na serveru -- to znamená navigace, veškerá logika a práva. To často vede k~zatížení serveru a má za následek neresponzivní a pomalé aplikace. Z~toho důvodu byl vyvinut nový způsob zobrazování aplikace -- takzvané \textbf{Single page aplikace} (zkráceně pouze SPA). Tyto aplikace využívají Javascript k~vykreslení stránky a k~navigaci, což znamená méně dotazů na server při přechodu mezi jednotlivými částmi aplikace. V~případě, že server budeme využívat pouze jako zdroj informací, je možné uživateli doručit intuitivní a snadno použitelnou aplikaci, kdy například ani pád serveru, nefunkční nebo pomalé připojení, nemusí znamenat pád aplikace\footnote{Takovémuto přístupu se říká Service Worker a více se lze dozvědět na \url{https://developers.google.com/web/fundamentals/getting-started/codelabs/offline/}.}. \cite{serverless-singlepage-apps}
+\par Tradiční přístup k~vývoji webové aplikace je že máme databázi připojenou do serverového back-endu ke kterému jsme schopní se dostat pomocí webového rozhraní. Veškerá práce se odehrává na serveru -- to znamená navigace, veškerá logika a práva. To často vede k~zatížení serveru a má za následek neresponzivní a pomalé aplikace. Z~toho důvodu byl vyvinut nový způsob zobrazování aplikace -- takzvané \textbf{Single page aplikace} (zkráceně pouze SPA). Tyto aplikace využívají Javascript k~vykreslení stránky a k~navigaci, což znamená méně dotazů na server při přechodu mezi jednotlivými částmi aplikace. V~případě, že server budeme využívat pouze jako zdroj informací, je možné uživateli doručit intuitivní a snadno použitelnou aplikaci, kdy například ani pád serveru, nefunkční nebo pomalé připojení, nemusí znamenat pád aplikace\footnote{Takovémuto přístupu se říká Service Worker a více se lze dozvědět na \url{https://developers.google.com/web/fundamentals/getting-started/codelabs/offline}.}. \cite{serverless-singlepage-apps}
 
 \subsubsection{Výhody Single page aplikací}
 \begin{itemize}
@@ -156,7 +161,7 @@ Nejvhodnější místo pro uložení takového množství dat, je cloud, přesn�
 \item \textbf{Notifikace} -- pokud aplikace musí čekat na server může uživateli dát nějakým grafickým prvkem najevo. Případně je možné uživatele upozornit na zprávy ze serveru za pomocí \textbf{Webových notifikací}\footnote{Detailní popis lze nalézt zde: \url{https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API}.}.
 \item \textbf{Přístupnost} -- díky tomu, že jsou SPA napsány jako webové aplikace je možné se k~nim dostat odkudkoliv, pokud má uživatel připojení k~danému serveru, kde je takováto aplikace uložena.
 \item \textbf{Aktualizace} -- v~případě aplikací, které jsou uloženy u~uživatele je často potřeba vydat aktualizační balíček a uživatel si ho musí nainstalovat. V~případě SPA tomu tak není, aktualizace se provádí takřka automaticky stačí na server nahrát novou verzi aplikace. Jediný problém je, že si uživatel musí obnovit stránku.
-\item \textbf{Multiplatformnost} -- webové aplikace jsou dostupné takřka na všech platformách, od mobilních zařízení až po velkoplošné obrazovky. Limitací je snad pouze používání zastaralých prohlížečů, naštěstí však uživatelé začínají používat modernější prohlížeče a chápou nutnost aktualizací. Jak lze vidět na grafu \ref{browser-share}, tak modernější prohlížeč Chrome je o~hodně používanější než zastaralý prohlížeč Internet Explorer ve verzi 9 a méně (data pro vypracování grafu byla čerpána z~\url{http://gs.statcounter.com/browser-version-partially-combined-market-share/desktop/worldwide/#monthly-201612-201703-bar}). \cite{SPA}
+\item \textbf{Multiplatformnost} -- webové aplikace jsou dostupné takřka na všech platformách, od mobilních zařízení až po velkoplošné obrazovky. Limitací je snad pouze používání zastaralých prohlížečů, naštěstí však uživatelé začínají používat modernější prohlížeče a chápou nutnost aktualizací. \cite{SPA} Jak lze vidět na grafu \ref{browser-share}, tak modernější prohlížeč Chrome je o~hodně používanější než zastaralý prohlížeč Internet Explorer ve verzi 9 a méně.
 \end{itemize}
 \begin{graph}[H]
 \centering
@@ -167,6 +172,9 @@ symbolic y coords={Chrome,Firefox 5+,IE 11.0,Safari 10.0,Edge 14,Opera 15+,Safar
 ytick=data,
 y post scale=2,
 x post scale=1.75,
+ylabel style={yshift=1cm},
+ylabel= Prohlížeč,
+xlabel= Procento užiatelů,
 xmin=0,
 axis y line*=none,
 axis x line*=bottom]
@@ -188,7 +196,7 @@ axis x line*=bottom]
 };
 \end{axis}
 \end{tikzpicture}
-\caption{Podíl vybraných prohlížečů mezi uživateli.}
+\caption[Podíl vybraných prohlížečů mezi uživateli]{Podíl vybraných prohlížečů mezi uživateli. Data čerpána z: \cite{browser-usage}}
 \label{browser-share}
 \end{graph}
 \subsection{Dynamická a interaktivní vizualizace dat}
